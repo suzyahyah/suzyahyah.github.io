@@ -36,6 +36,7 @@ $$ \alpha_k^{new} = \frac{N_k}{N}, 1 \leq k \leq K $$
 2. Calculate mean $\mu_k$, and variance $\Sigma_k$ of the mixture component
 
 $$ \mu_k^{new} = (\frac{1}{N_k})\sum_{i=1}^{N}w_{ik}.x_i, 1 \leq k \leq K $$
+
 $$ \Sigma_k^{new} = (\frac{1}{N_k})\sum_{i=1}^{N}w_{ik}.(x_i - \mu_k^{new})(x_i - \mu_k^{new})^t$$
 
 After computing the parameters, we can recompute the membership weights with the E-step, and you get the idea. Repeat until convergence.
