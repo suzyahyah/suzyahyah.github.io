@@ -169,9 +169,20 @@ def EM(data, init_means, init_covariances, init_cluster_weights, maxiter=1000, t
 
   return {"membership_weights":membership_weights, "cluster_weights":, cluster_weights, "means":means, "covs": covariances, "lll":ll_track}  
 {% endhighlight %}
+#### Strengths of the Algorithm
+* EM with GMM is an extension of K-means. Whereas in k-means we made hard assignments of the datapoints to each cluster centre, in EM-GMM a data point can have "membership weights" i.e., uncertainty over which cluster it belongs to. 
+#### Relation to K-means
+* K-means is a unique case of EM-GMM, when the variance of the cluster is 0. Then, the membership of the data point to the cluster depends solely on the distance to the cluster center.
 
-### Weaknesses of the Algorithm
+#### Weaknesses of the Algorithm
 * EM is prone to converging to local optimum. In practice, use EM with multiple random initialization of cluster centers. 
-* We need to specify the number of cluster centers. 
+* We need to specify the number of cluster centers and initialize cluster means.
+  * selecting cluster centre with kmeans, kmeans++
+* EM is prone to overfitting in high dimensions. 
 * High dimensional data points have complexity \$ D^2 \times K \$ in the number of dimensions \$D\$ and number of clusters \$K\$ 
-* To reduce the number of parameters, we can use diagonal covariance matrices. i.e. non diagonal elements are zero, only the diagonal of the matrix has covariance of the dimensions.
+  * To reduce the number of parameters, we can use diagonal covariance matrices. i.e. non diagonal elements are zero, only the diagonal of the matrix has covariance of the dimensions.
+
+#### References
+[Emily Fox, UW/Coursera ML Specialization](https://www.coursera.org/specializations/machine-learning)
+<br>
+[Pahraic Smyth, UCI, CS274 Lecture Notes](http://www.ics.uci.edu/~smyth/courses/cs274/notes/EMnotes.pdf)
