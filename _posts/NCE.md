@@ -1,7 +1,7 @@
 ---
 layout: post
 
-title:  "Markov Chain Monte-Carlo"
+title:  "Noise Contrastive Estimation"
 date:   2017-11-18 21:09:09 +0800
 mathjax: true
 categories: jekyll update

@@ -1,17 +1,16 @@
 ---
 layout: post
-
-title:  "Markov Chain Monte-Carlo"
-date:   2017-11-18 21:09:09 +0800
+title:  "Noise Contrastive Estimation"
+date:   2017-07-01 21:09:09 +0800
 mathjax: true
 categories: jekyll update
 ---
 ### Key Concepts
-* Markov-Chain Monte-Carlo is a class of algorithms, which seek to use sampling over a distribution, to provide a principled way to approximate the value of an integral. For Machine Learning, we need to approximate integrals when doing probability estimation over continuous-valued parameters of the model.
+* A language model is a probability distribution over sequence of words. It is a generative model that can be used to generate words based on its surrounding context (e.g previous words, or window of words)
 <br><br>
-* Monte-Carlo are algorithms that rely on repeated sampling(draws from a probability distribution) to obtain numerical estimates.
+* Noise Contrastive Estimation is a general parameter estimation technique for locally normalized language models.
 <br><br>
-* Markov-Chain refers to the sequence of variables that the sampling process moves through, that has the "Markov property", which is dependence only on the previous state.
+* The "Noise" is a distribution that generates samples, for which a probabilistic binary classifier learns to distinguish from the real distribution. 
 
 ### Model Preliminaries
 
