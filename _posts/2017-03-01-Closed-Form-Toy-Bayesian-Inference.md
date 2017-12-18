@@ -47,9 +47,10 @@ That is, the likelihood $p(D_n\|\theta)$ follows a Binomial distribution with pa
 Thus, the probability of getting exactly $k$ successes in $n$ trials is given by the probability mass function ${n \choose k} \theta^k (1-\theta)^{n-k}$
 
 {%highlight python%}
+import scipy
 def calc_likelihood(thetas, n, k):
   pK = scipy.stats.binom(n, thetas).pmf(k)
-  #binom.pmf(k) = choose(n, k) * theta^k * (1-theta)^(n-k)
+  #From scipy API, binom.pmf(k) = choose(n, k) * theta^k * (1-theta)^(n-k)
   likelihood = n*pK
   return likelihood
 {%endhighlight%}
@@ -118,6 +119,7 @@ def calc_posterior(thetas, a_old, b_old, n, k):
 2. Next, we observe 20 data points, 10 of which are successes.
 
 {%highlight python%}
+import matplotlib.pyplot as plt
 def display_plot(plt):
   plt.xlabel(r'$\theta$', fontsize=14)
   plt.ylabel('Density', fontsize=14)
@@ -169,3 +171,10 @@ Note that
 * the likelihood estimate is greater than the posterior, because it does not take into account our prior belief $p(\theta)$.
 * In general, the stronger the prior $p(\theta)$, the less the posterior will change subsequently.
 * The reason why we had an easy-ish time estimating the posterior, was due to assuming a beta distribution over \$\theta$, which is a conjugate prior to the binomial distribution. More on that next time.
+
+#### References
+[Beta distribution; Wikipedia](https://en.wikipedia.org/wiki/Beta_distribution)
+<br>
+[CS598JHM; UIUC/Advanced NLP Spring 10](https://courses.engr.illinois.edu/cs598jhm/sp2010/Slides/Lecture02HO.pdf)
+<br>
+[Computational Statistics; Duke University](https://people.duke.edu/~ccc14/sta-663/MCMC.html)
