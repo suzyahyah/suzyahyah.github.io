@@ -3,7 +3,7 @@ layout: post
 title:  "EM Algorithm for Gaussian mixtures"
 date:   2017-11-16 21:09:09 +0800
 mathjax: true
-categories: jekyll update
+categories: [Bayesian Inference]
 ---
 ### Key Concepts
 * Gaussian Mixture Model is a probabilistic model that assumes all the data points are generated from a mixture of a finite number of Gaussian distributions, with unknown parameters

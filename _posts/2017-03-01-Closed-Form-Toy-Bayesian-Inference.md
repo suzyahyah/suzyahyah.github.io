@@ -3,7 +3,7 @@ layout: post
 title:  "Closed form Bayesian Inference for Binomial distributions"
 date:   2017-03-01 21:09:09 +0800
 mathjax: true
-categories: jekyll update
+categories: [Bayesian Inference]
 ---
 ### Key Concepts
 

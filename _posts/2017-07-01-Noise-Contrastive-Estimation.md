@@ -3,7 +3,7 @@ layout: post
 title:  "Noise Contrastive Estimation"
 date:   2017-07-01 21:09:09 +0800
 mathjax: true
-categories: jekyll update
+categories: NLP
 ---
 ### Key Concepts
 * A language model is a probability distribution over sequence of words. It is a generative model that can be used to generate words based on its surrounding context (e.g previous words, or window of words)
