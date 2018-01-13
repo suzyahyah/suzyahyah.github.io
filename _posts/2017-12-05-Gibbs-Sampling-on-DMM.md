@@ -112,11 +112,13 @@ P(\theta_{L_m}\|\gamma_\theta) =  c.\prod_{i=1}^{V}\theta_{L_m(i)}^{\gamma_{\the
 P(\pi) = \pi^{C_1}(1-\pi)^{C_0}
 \end{equation}
 
-* $P(\pi\|\gamma_\pi)$ is the probability of drawing $L$ given the prior Beta distribution with hyperparameters $\gamma_\pi=[\alpha,\beta]$. By definition of the Beta distribution,
+* $P(\pi\|\gamma_\pi)$ is the probability of drawing $L$ given the prior Beta distribution with hyperparameters $\gamma_\pi=[\alpha,\beta]$. By definition of the Beta distribution, where c is a normalization constant:
 
-\begin{equation}
-P(\pi\|\gamma_\pi) = c.\pi^{\alpha-1}(1-\pi)^{\beta-1}
-\end{equation}
+\begin{align}
+P(\pi\|\gamma_\pi) = c.\pi^{\alpha-1}(1-\pi)^{\beta-1} \nonumber  
+\\\
+P(\pi\|\gamma_\pi) = \frac{\Gamma(\alpha+ \beta)}{\Gamma(\alpha)\Gamma(\beta)}.\pi^{\alpha-1}(1-\pi)^{\beta-1}
+\end{align}
 
 The factorised joint distribution is thus,
 
@@ -124,9 +126,84 @@ The factorised joint distribution is thus,
 c.\prod_{i=1}^{V}\theta_{1(w_i)}^{count(w_i\in C_1)+\gamma_{\theta_i}-1}\prod_{i=1}^{V}\theta_{0(w_i)}^{count(w_i\in C_0)+\gamma_{\theta_i}-1}.\pi^{C_1+\alpha-1}(1-\pi)^{C_0+\beta-1}
 \end{equation}
 
+**2.1 Integrating out $\pi$**
 
-#### <span style="color:blue">**3. Sample variables by running the Gibbs Sampling algorithm**</span>
+We would like to simplify the problem by reducing the number of variables to
+sample. To do this, we can integrate out $\pi$ from the joint distribution,
+which has the effect of taking all possible values of $\pi$ into account
+without representing it explicitly at every iteration. That is, 
 
+\begin{eqnarray}
+P(C, L, \theta_0, \theta_1, \gamma_\theta, \gamma_\pi) = \int_{\pi}P(C, L,
+\pi,\theta_0, \theta_1, \gamma_\theta, \gamma_\pi)d\pi \nonumber 
+\\\
+= \int_{\pi}P(L, \theta_0)P(L,
+\theta_1)P(\theta_0\|\gamma_\theta)P(\theta_1\|\gamma_\theta)P(L\|\pi)P(\pi\|\gamma_\pi)d\pi \nonumber 
+\\\
+=P(L, \theta_0)P(L, \theta_1)P(\theta_0
+\|\gamma_\theta)P(\theta_1\|\gamma_\theta)\int_{\pi}P(\pi)P(\pi\|\gamma_\pi)d\pi
+\end{eqnarray}
 
+We can get rid of the integral by substituting the true distributions for
+$P(\pi)$ from eqn(12) and $P(\pi\|\gamma_\pi)$ from eqn(13).
 
+\begin{eqnarray}
+\int_{\pi}P(\pi).P(\gamma_\pi)d\pi
+= \int_{\pi}\pi^{C_1}(1-\pi)^{C_0}.\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\pi^{\alpha-1}(1-\pi)^{\beta-1}d\pi \nonumber
+\\\
+= \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}.\int_{\pi}\pi^{C_1+\alpha-1}(1-\pi)^{C_0+\beta-1}d\pi 
+\end{eqnarray}
+Observe that the second part of this eqn is the beta distribution.
+
+\begin{equation}
+= \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}.\int_{\pi}Beta(C_1+\alpha,C_0+\beta)d\pi 
+\end{equation}
+
+The value of the integral of the Beta distribution is given by the normalizing
+constant. Hence, 
+
+\begin{equation}
+=  \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}.\frac{\Gamma(C_1+\alpha)\Gamma(C_0+\beta)}{\Gamma(C_0+C_1+\alpha+\beta)}
+\end{equation}
+
+Substituting eqn (18) back into the joint distribution gives us,
+
+\begin{equation}
+c.\prod_{i=1}^{V}\theta_{1(w_i)}^{count(w_i\in C_1)+\gamma_{\theta_i}-1}\theta_{0(w_i)}^{count(w_i\in C_0)+\gamma_{\theta_i}-1}.\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}.\frac{\Gamma(C_1+\alpha)\Gamma(C_0+\beta)}{\Gamma(C_0+C_1+\alpha+\beta)}
+\end{equation}
+
+#### <span style="color:blue">**3. Obtain equations for conditional update of variables**</span>
+
+In this model (see plate diagram) - the document words, $W_{jk}$ are
+observed, and $\gamma_\pi, \gamma_\theta$ are hyperparameters of the model. $\pi, L, \theta_0, \theta_1$ are parameters of the model that need to be sampled. Having integrated out $\pi$, we are left with:
+* $L$ is the binary label variable which must be sampled for each document
+* $\theta_0, \theta_1$ is the probability of drawing a word from
+  a multinomial distribution if the label of the document is 0 or
+1 respectively. It is a vector with length $\|V\|$, where $V$ is the
+vocabulary.
+
+To assign the value of $L_2^{(t+1)}$, we need to sample from the conditional
+distribution of 
+\begin{equation}
+P(L_2\|L_1^{(t+1)},L_3^{(t)},..,L_N^{(t)}, C, \theta_0^{(t)}, \theta_1^{(t)}; \gamma_\theta, \gamma_\pi)
+\end{equation}
+
+To assign the value of $\theta_0^{(t+1)}$, we need to sample from the
+conditional distribution of
+\begin{equation}
+P(\theta_0\|L_1^{(t+1)}, .., L_N^{(t+1)}, C, \theta_1^{(t)}, \gamma_\theta,
+\gamma_\pi)
+\end{equation}
+
+**3.1 Conditional update of $L_j$**
+
+eqn (49) from Gibbs Sampling paper
+
+**3.1 Conditional update of $\theta_0$ and $\theta_1$**
+
+eqn (51_ from Gibbs Sampling paper
+
+#### <span style="color:blue">**4. Sample variables by running the Gibbs Sampling algorithm**</span>
+
+Initialization
 
