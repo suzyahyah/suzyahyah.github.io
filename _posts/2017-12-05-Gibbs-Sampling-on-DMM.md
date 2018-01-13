@@ -197,7 +197,15 @@ P(\theta_0\|L_1^{(t+1)}, .., L_N^{(t+1)}, C, \theta_1^{(t)}, \gamma_\theta,
 
 **3.1 Conditional update of $L_j$**
 
-eqn (49) from Gibbs Sampling paper
+For each document in the corpus, we need to draw the update from a single
+Bernoulli trial. In order to do that, we need $P(L_j=x \|..)$ for $x \in \lbrace 0,1 \rbrace$
+
+\begin{equation}
+
+\P(L_j=0\|L_{(-j)}, C_{(-j)}, \theta_0, \theta_1, \gamma_\pi,  \gamma_\theta) =  \frac{C_0 + \beta -1}{C_0 + C_1 + \alpha + \beta-1}.\prod_{i=1}^{V}\theta_{0, i}^{W_{ji}}
+
+end{equation}
+
 
 **3.1 Conditional update of $\theta_0$ and $\theta_1$**
 
@@ -205,5 +213,13 @@ eqn (51_ from Gibbs Sampling paper
 
 #### <span style="color:blue">**4. Sample variables by running the Gibbs Sampling algorithm**</span>
 
-Initialization
+**Initialization**
+**Algorithm**
+
+
+Convergence (with graphs)
+
+#### <span style="color:blue">**Calculating Sample Statistics**</span>
+
+
 
