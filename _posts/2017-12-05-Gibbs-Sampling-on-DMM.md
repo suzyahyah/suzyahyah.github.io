@@ -51,9 +51,9 @@ The rest of this document follows the Dirichlet Multinomial Model from "Gibbs Sa
 L_j = argmax_LP(L\|W_j) = argmax_L\frac{P(W_j\|L)P(L)}{P(W_j)}
 \end{equation}
 
-#### <span style="color:blue">**1. Assume a generative model of text**</span>
+Then, $L_j = argmax_LP(L\|W_j, \pi, \gamma_\pi, \theta, \gamma_\theta)$.
 
-Then, $L_j = argmax_LP(L\|W_j, \pi, \gamma_\pi, \theta, \gamma_\theta)$
+#### <span style="color:blue">**1. Assume a generative model of text**</span>
 
 * L is a 2-class label, which can be sampled from a Bernoulli distribution with parameter $\pi$ where $P(L_j=1)$. For more than 2 classes, L can be sampled from a multinomial distribution.
 
@@ -61,7 +61,7 @@ Then, $L_j = argmax_LP(L\|W_j, \pi, \gamma_\pi, \theta, \gamma_\theta)$
 L_j \sim Bernoulli(\pi) 
 \end{equation}
 
-* $\pi$, the parameter of the Bernoulli distribution, is sampled from a prior probability - the Beta distribution which has hyperparameter $\gamma_\pi = [\alpha, \beta]$. Without any previous information, we use an *uninformative prior*,  $\gamma_\pi = [1, 1]$, which returns a uniform distribution where any value of $\pi$ is equally likely.
+* $\pi$, the parameter of the Bernoulli distribution, is sampled from a [conjugate prior]({{ site.baseurl }}{% post_url 2017-11-18-MCMC %}) probability - the Beta distribution which has hyperparameter $\gamma_\pi = [\alpha, \beta]$. Without any previous information, we use an *uninformative prior*,  $\gamma_\pi = [1, 1]$, which returns a uniform distribution where any value of $\pi$ is equally likely.
 
 \begin{equation}
 \pi \sim Beta(\gamma_\pi)
@@ -109,7 +109,7 @@ P(\theta_{L_m}\|\gamma_\theta) =  c.\prod_{i=1}^{V}\theta_{L_m(i)}^{\gamma_{\the
 * $P(L\|\pi)$ is the probability of obtaining a specific sequence L of N binary labels, given that the probability of choosing label=1 is $\pi$. 
 
 \begin{equation}
-P(\pi) = \pi^{C_1}(1-\pi)^{C_0}
+P(L\|\pi) = \pi^{C_1}(1-\pi)^{C_0}
 \end{equation}
 
 * $P(\pi\|\gamma_\pi)$ is the probability of drawing $L$ given the prior Beta distribution with hyperparameters $\gamma_\pi=[\alpha,\beta]$. By definition of the Beta distribution, where c is a normalization constant:
@@ -198,24 +198,51 @@ P(\theta_0\|L_1^{(t+1)}, .., L_N^{(t+1)}, C, \theta_1^{(t)}, \gamma_\theta,
 **3.1 Conditional update of $L_j$**
 
 For each document in the corpus, we need to draw the update from a single
-Bernoulli trial. In order to do that, we need $P(L_j=x \|..)$ for $x \in \lbrace 0,1 \rbrace$
+Bernoulli trial. In order to do that, we need to get the relative probabilities of $P(L_j=x \|..)$ for $x \in \lbrace 0,1 \rbrace$, as the parameter for the Binomial distribution.
 
 \begin{equation}
+val0 = P(L_j=0\|L_{(-j)}, C_{(-j)}, \theta_0, \theta_1, \gamma_\pi, \gamma_\theta) = \frac{C_0+\beta-1}{C_0 + C_1 + \alpha + \beta -1}.\prod_{i=1}^{V}\theta_{0}^{W_{ji}}
+\end{equation}
 
-\P(L_j=0\|L_{(-j)}, C_{(-j)}, \theta_0, \theta_1, \gamma_\pi,  \gamma_\theta) =  \frac{C_0 + \beta -1}{C_0 + C_1 + \alpha + \beta-1}.\prod_{i=1}^{V}\theta_{0, i}^{W_{ji}}
+\begin{equation}
+val1 = P(L_j=1\|L_{(-j)}, C_{(-j)}, \theta_0, \theta_1, \gamma_\pi, \gamma_\theta) = \frac{C_1+\alpha-1}{C_0 + C_1 + \alpha + \beta -1}.\prod_{i=1}^{V}\theta_{1}^{W_{ji}}
+\end{equation}
 
-end{equation}
+\begin{equation}
+L_j \sim Binomial(\frac{val0}{val0+val1})
+\end{equation}
 
 
-**3.1 Conditional update of $\theta_0$ and $\theta_1$**
+**3.2 Conditional update of $\theta_0$ and $\theta_1$**
 
-eqn (51_ from Gibbs Sampling paper
+For $\theta_0$ and $\theta_1$, which represent the multinomial word distribution if the Label=1 and 0 respectively, we also need to sample new distributions condition on all other variables. However since we used conjugate priors, the posterior, like the prior, is a dirichlet distribution.  The use of conjugate priors simplifies the update as we can draw a new $\theta_x$, where $x \in \lbrace 0, 1\rbrace$ by adding pseudocounts to the hyperparameter of the dirichlet prior:
+
+\begin{equation}
+\theta_x \sim Dirichlet([(count(w_i\in C_x) + \gamma_{\theta_x(i)}), ... , (count(w_v\in C_x)+\gamma_{\theta_x(v)})])
+\end{equation}
 
 #### <span style="color:blue">**4. Sample variables by running the Gibbs Sampling algorithm**</span>
 
 **Initialization**
+
+section 2.2
+priors
+initialize
+
+
 **Algorithm**
 
+There are two for loops for the variable update. 
+
+For the inner loop, Within each iteration, for documents $j=1..N$, we 
+* remove counts associated with document j,
+* assign a new label to it
+* add counts associated with the new label. 
+
+For the outer loop, iterations $t=1...T$, 
+* we draw a new distribution for $\theta_0$ and $\theta_1$. 
+
+Note that: once a new label is assigned, it changes the counts that affect the labeling of the subsequent documents. 
 
 Convergence (with graphs)
 
