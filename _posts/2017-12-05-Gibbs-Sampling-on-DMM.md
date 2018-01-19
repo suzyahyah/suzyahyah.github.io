@@ -225,19 +225,46 @@ For $\theta_0$ and $\theta_1$, which represent the multinomial word distribution
 
 **Initialization**
 
-section 2.2
-priors
-initialize
+The state space of which we need to sample includes 
+* $\pi$, sampled once from a beta distribution and re-used for each draw of $L$.
+* $L$, binary label variables, one for each document,
+* $\theta_0, \theta_1$, sampled once from a dirichlet distribution
 
+{% highlight python%}
+from scipy.stats import binom
+from numpy.random import beta, dirichlet
+
+def initialise(self):
+
+  self.pi = beta(self.beta_hp)
+  self.labels = binom(1, pi).rvs(len(self.corpus.docs))
+  self.theta_0 = dirichlet(self.dirich_hp)
+  self.theta_1 = dirichlet(self.dirich_hp)
+
+{% endhighlight %}
 
 **Algorithm**
 
-There are two for loops for the variable update. 
+There are two for-loops for the variable update. 
 
-For the inner loop, Within each iteration, for documents $j=1..N$, we 
+The inner loop predicts a new label for each document $j=1..N$, we
 * remove counts associated with document j,
-* assign a new label to it
-* add counts associated with the new label. 
+* assign a new label to it from *Section 3.2*
+* add counts associated with the new label.
+
+{% highlight python%}
+from numpy.random import binom
+
+def update_label(doc):
+    decr_counts()
+
+    pL0 = 
+    pL1 = 
+
+    L = binom(pL1/(pL0+pL1))
+    incr_counts()
+
+{% endhighlight %}
 
 For the outer loop, iterations $t=1...T$, 
 * we draw a new distribution for $\theta_0$ and $\theta_1$. 
@@ -249,4 +276,9 @@ Convergence (with graphs)
 #### <span style="color:blue">**Calculating Sample Statistics**</span>
 
 
-
+According to MCMC theory, an estimate of the desired variable can be obtained by averaging across all samples obtained so far. Optionally, there is also
+* Running independent Gibbs sequences and averaging the final value of each sequence.
+* Discarding burn-in samples
+* Autocorrelation and lag
+  * Variations on Gibbs sampling aim to reduce autocorrelation
+* Sampling the last value - Under reasonably general conditions, the distribution of the samples drawn converges to the through distribution. Thus for a large enough number of iterations, the final observation is effectively a sample point from the true distribution.
