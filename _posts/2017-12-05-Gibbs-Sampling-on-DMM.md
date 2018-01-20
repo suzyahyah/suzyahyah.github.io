@@ -1,18 +1,19 @@
 ---
 layout: post
-title: "Gibbs Sampling on Dirichlet Multinomial Mixture Models"
+title: "Gibbs Sampling on Dirichlet Multinomial Naive Bayes (Text)"
 date: 2017-12-05
 mathjax: true
-categories: [Bayesian Inference]
+categories: [Bayesian Inference, NLP]
 ---
 
 ### Key Concepts
-* Gibbs Sampling is a type of MCMC method, which allows us to obtain samples from probability distributions, without having to explicitly calculate the values for their marginalizing integrals. The key idea (amongst the other MCMC methods) is to sample each unknown variable in turn, condition on the value of all other variables in the model.
+* Gibbs Sampling is a type of MCMC method, which allows us to obtained in samples from probability distributions, without having to explicitly calculate the values for their marginalizing integrals. The key idea (amongst the other MCMC methods) is to sample each unknown variable in turn, condition on the value of all other variables in the model.
 
-* The Dirichlet Multinomial Mixture model is a frequently encountered model in Bayesian Statistics. Here a prior $\theta$ is drawn from a dirichlet distribution, with parameters $\gamma_\theta$, $\theta \sim Dir(\gamma_\theta)$, and the observed values are drawn from a Multinomial distribution with parameters $\theta$ and trials $n$, $V \sim Multinomial(\theta, n)$.
+* The Dirichlet Multinomial model is a frequently encountered model in Bayesian Statistics. Here a prior $\theta$ is drawn from a dirichlet distribution, with parameters $\gamma_\theta$, $\theta \sim Dir(\gamma_\theta)$, and the observed values are drawn from a Multinomial distribution with parameters $\theta$ and trials $n$, $V \sim Multinomial(\theta, n)$.
 
 * The Dirichlet distribution is a conjugate distribution to the Multinomial distribution, which has useful properties in the context of Gibbs Sampling.
 
+<br><br>
 ### Model Preliminaries
 In Bayesian Inference, the aim is to infer the posterior probability distribution over a set of random variables. However this involves computing integrals which are mostly intractable.
 
@@ -43,7 +44,7 @@ In Probabilistic Graphical models, we seek to infer(through Bayesian inference) 
 <br><br>
 4. **Obtain approximate values** of the variables via sample statistics.
 
-
+<br><br>
 ### Implementing Gibbs Sampling on Dirichlet Multinomial Mixture Model
 The rest of this document follows the Dirichlet Multinomial Model from "Gibbs Sampling for the Uninitiated". The model described in the paper has documents as the item of interest. Each document, $doc_j$, can be represented as a bag of words, $W_j$. The observed features are the words in the document, with the k-th word in the j-th document represented as $W_{jk}$. The goal is to predict a sentiment label $L_j$ for each of the documents, after observing $W_j$. By Bayes Rule,
 
@@ -53,7 +54,13 @@ L_j = argmax_LP(L\|W_j) = argmax_L\frac{P(W_j\|L)P(L)}{P(W_j)}
 
 Then, $L_j = argmax_LP(L\|W_j, \pi, \gamma_\pi, \theta, \gamma_\theta)$.
 
-#### <span style="color:blue">**1. Assume a generative model of text**</span>
+<br>
+#### <span style="color:#6666ff">**1. Assume a generative model of text**</span>
+
+According to the generative model:
+
+![Fig1](/assets/DMM-Fig1.png){: .center-image }
+
 
 * L is a 2-class label, which can be sampled from a Bernoulli distribution with parameter $\pi$ where $P(L_j=1)$. For more than 2 classes, L can be sampled from a multinomial distribution.
 
@@ -61,7 +68,7 @@ Then, $L_j = argmax_LP(L\|W_j, \pi, \gamma_\pi, \theta, \gamma_\theta)$.
 L_j \sim Bernoulli(\pi) 
 \end{equation}
 
-* $\pi$, the parameter of the Bernoulli distribution, is sampled from a [conjugate prior]({{ site.baseurl }}{% post_url 2017-11-18-MCMC %}) probability - the Beta distribution which has hyperparameter $\gamma_\pi = [\alpha, \beta]$. Without any previous information, we use an *uninformative prior*,  $\gamma_\pi = [1, 1]$, which returns a uniform distribution where any value of $\pi$ is equally likely.
+* $\pi$, the parameter of the Bernoulli distribution, is sampled from a [conjugate prior]({{ site.baseurl }}{% post_url  2017-05-06-Conjugate-Prior %}) probability - the Beta distribution which has hyperparameter $\gamma_\pi = [\alpha, \beta]$. Without any previous information, we use an *uninformative prior*,  $\gamma_\pi = [1, 1]$, which returns a uniform distribution where any value of $\pi$ is equally likely.
 
 \begin{equation}
 \pi \sim Beta(\gamma_\pi)
@@ -78,10 +85,27 @@ w_j \sim Multinomial(\theta_{L_j})
 \begin{equation}
 \theta \sim Dirichlet(\gamma_\theta)
 \end{equation}
-![Fig1](/assets/DMM-Fig1.png)
 
+{% highlight python %}
+class DMNB(hyp_theta, hyp_pi):
+    self.hyp_pi = hyp_pi
+    self.hyp_theta = hyp_theta
+    self.pi = 0
+    self.theta_0 = []
+    self.theta_1 = []  
 
-#### <span style="color:blue">**2. Factorise the joint distribution**</span>
+    #def update_label(self, doc, corpus):
+    
+    #def update_theta(self):
+
+    #def initialise(self):
+
+    #def inference(self, train_corpus, iterations):
+
+{% endhighlight %}
+
+<br>
+#### <span style="color:#6666ff">**2. Factorise the joint distribution**</span>
 
 The joint distribution of the model above is $P(C, L, \pi, \theta_0, \theta_1, \gamma_\pi, \gamma_\theta)$ where $C$ represents the entire document collection. $C_0$ and $C_1$ are the set of documents with label 0 and 1 respectively. The independence assumptions based on the graphical model shown in Fig1. give the following conditional distribution:
 
@@ -94,7 +118,7 @@ We need to convert this into it's mathematical form so that we can perform updat
 * $P(C_x\|L, \theta_x)$ is the probability of observing documents(and its contents) with label $x\in \lbrace0, 1\rbrace$, given label sequence $L$ and $\theta_x$. Since the documents are generated independently of each other, we can multiply the probability of each document, $D_m$, condition on the document's label$L_m$ and the multinomial-word distribution, $\theta_{L_m}$ specific to the value of the document's label. <br><br>Assuming a Naive Bayes model, the probability of observing the document's bag-of-words, $w_1,..w_V$, can be obtained from multiplying each word's probability (document specific), $\theta_{L_m(w_i)}$.
 
 \begin{equation}
-P(C_x\|L, \theta_x) = \prod_{m\in C_x}{}P(D_m\|L, \theta_{L_m}) 
+P(C_x\|L, \theta_x) = \prod_{m\/in C_x}{}P(D_m\|L, \theta_{L_m}) 
 \end{equation}
 \begin{equation}
 = \prod_{m\in C_x}.\prod_{i=1}^{V_m}\theta_{L_m(wi)}^{count(wi)} = \prod_{i=1}^{V}\theta_{L_m(w_i)}^{count(w_i \in C_x)}
@@ -172,7 +196,8 @@ Substituting eqn (18) back into the joint distribution gives us,
 c.\prod_{i=1}^{V}\theta_{1(w_i)}^{count(w_i\in C_1)+\gamma_{\theta_i}-1}\theta_{0(w_i)}^{count(w_i\in C_0)+\gamma_{\theta_i}-1}.\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}.\frac{\Gamma(C_1+\alpha)\Gamma(C_0+\beta)}{\Gamma(C_0+C_1+\alpha+\beta)}
 \end{equation}
 
-#### <span style="color:blue">**3. Obtain equations for conditional update of variables**</span>
+<br>
+#### <span style="color:#6666ff">**3. Obtain equations for conditional update of variables**</span>
 
 In this model (see plate diagram) - the document words, $W_{jk}$ are
 observed, and $\gamma_\pi, \gamma_\theta$ are hyperparameters of the model. $\pi, L, \theta_0, \theta_1$ are parameters of the model that need to be sampled. Having integrated out $\pi$, we are left with:
@@ -195,35 +220,86 @@ P(\theta_0\|L_1^{(t+1)}, .., L_N^{(t+1)}, C, \theta_1^{(t)}, \gamma_\theta,
 \gamma_\pi)
 \end{equation}
 
+<span style="color:#ff6666">**To help us with all the counts, we create document and corpus [classes](https://github.com/suzyahyah/llda/blob/master/struct_utils.py) that can be easily re-used for texxt models related to probabilistic MCMC updates.**</span>
+
 **3.1 Conditional update of $L_j$**
 
 For each document in the corpus, we need to draw the update from a single
 Bernoulli trial. In order to do that, we need to get the relative probabilities of $P(L_j=x \|..)$ for $x \in \lbrace 0,1 \rbrace$, as the parameter for the Binomial distribution.
 
 \begin{equation}
-val0 = P(L_j=0\|L_{(-j)}, C_{(-j)}, \theta_0, \theta_1, \gamma_\pi, \gamma_\theta) = \frac{C_0+\beta-1}{C_0 + C_1 + \alpha + \beta -1}.\prod_{i=1}^{V}\theta_{0}^{W_{ji}}
+val0 = P(L_j=0\|L_{(-j)}, C_{(-j)}, \theta_0, \theta_1, \gamma_\pi, \gamma_\theta) = \frac{C_0+\gamma_{\pi_0}-1}{C_0 + C_1 + \gamma_{\pi_1}+ \gamma_{\pi_0} -1}.\prod_{i=1}^{V}\theta_{0}^{W_{ji}}
 \end{equation}
 
 \begin{equation}
-val1 = P(L_j=1\|L_{(-j)}, C_{(-j)}, \theta_0, \theta_1, \gamma_\pi, \gamma_\theta) = \frac{C_1+\alpha-1}{C_0 + C_1 + \alpha + \beta -1}.\prod_{i=1}^{V}\theta_{1}^{W_{ji}}
+val1 = P(L_j=1\|L_{(-j)}, C_{(-j)}, \theta_0, \theta_1, \gamma_\pi, \gamma_\theta) = \frac{C_1+\gamma_{\pi_1}-1}{C_0 + C_1 + \gamma_{\pi_1} + \gamma_{\pi_0} -1}.\prod_{i=1}^{V}\theta_{1}^{W_{ji}}
 \end{equation}
 
 \begin{equation}
 L_j \sim Binomial(\frac{val0}{val0+val1})
 \end{equation}
 
+{% highlight python%}
+
+from numpy.random import binom
+
+class DMNB(hyp_theta, hyp_pi):
+... 
+
+  def update_label(self, corpus, doc):
+
+    pL0 = np.log(corpus.doc_label_m.sum(axis=0)[0] + self.hyp_pi[0] - 1)
+    pL1 = np.log(corpus.doc_label_m.sum(axis=0)[1] + self.hyp_pi[1] - 1)
+
+    for word in doc.word_label:
+      pL0 += np.log(self.theta_0[word_ix])
+      pL1 += np.log(self.theta_1[word_ix])
+
+    pL0 = np.exp(pL0)
+    pL1 = np.exp(pL1)
+
+    L = binom(pL1/(pL0+pL1))
+
+    return  L
+
+{% endhighlight %}
+
+
 
 **3.2 Conditional update of $\theta_0$ and $\theta_1$**
 
-For $\theta_0$ and $\theta_1$, which represent the multinomial word distribution if the Label=1 and 0 respectively, we also need to sample new distributions condition on all other variables. However since we used conjugate priors, the posterior, like the prior, is a dirichlet distribution.  The use of conjugate priors simplifies the update as we can draw a new $\theta_x$, where $x \in \lbrace 0, 1\rbrace$ by adding pseudocounts to the hyperparameter of the dirichlet prior:
+For $\theta_0$ and $\theta_1$, we also need to sample new distributions condition on all other variables. However since we used conjugate priors, the posterior, like the prior, is a dirichlet distribution.  The use of conjugate priors simplifies the update as we can draw a new $\theta_x$, where $x \in \lbrace 0, 1\rbrace$ by adding pseudocounts to the hyperparameter of the dirichlet prior:
 
 \begin{equation}
 \theta_x \sim Dirichlet([(count(w_i\in C_x) + \gamma_{\theta_x(i)}), ... , (count(w_v\in C_x)+\gamma_{\theta_x(v)})])
 \end{equation}
 
-#### <span style="color:blue">**4. Sample variables by running the Gibbs Sampling algorithm**</span>
+{% highlight python %}
 
-**Initialization**
+from numpy.random import dirichlet
+
+class DMNB(hyp_theta, hyp_pi):
+... 
+  def update_theta(self, corpus):
+    
+    new_hyp_theta_0 = []
+    new_hyp_theta_1 = []
+
+    for word in self.vocab_ix:
+      w = self.vocab_ix[w]
+      new_hyp_theta_0.append(corpus.word_label_m[w][0] + self.hyp_theta)
+      new_hyp_theta_1.append(corpus.word_label_m[w][1] + self.hyp_theta)
+
+    self.theta_0 = dirichlet(new_hyp_theta_0)
+    self.theta_1 = dirichlet(new_hyp_theta_1)
+
+
+{% endhighlight %}
+
+<br>
+#### <span style="color:#6666ff">**4. Sample variables by running the Gibbs Sampling algorithm**</span>
+
+**4.1 Initialization**
 
 The state space of which we need to sample includes 
 * $\pi$, sampled once from a beta distribution and re-used for each draw of $L$.
@@ -234,16 +310,18 @@ The state space of which we need to sample includes
 from scipy.stats import binom
 from numpy.random import beta, dirichlet
 
-def initialise(self):
+class DMNB(hyp_theta, hyp_pi):
+...
+  def initialise(self, corpus):
 
-  self.pi = beta(self.beta_hp)
-  self.labels = binom(1, pi).rvs(len(self.corpus.docs))
-  self.theta_0 = dirichlet(self.dirich_hp)
-  self.theta_1 = dirichlet(self.dirich_hp)
+    pi = beta(self.hyp_pi)
+    self.labels = binom(1, pi).rvs(len(corpus.docs))
+    self.theta_0 = dirichlet(self.hyp_theta)
+    self.theta_1 = dirichlet(self.hyp_theta)
 
 {% endhighlight %}
 
-**Algorithm**
+**4.2 Algorithm**
 
 There are two for-loops for the variable update. 
 
@@ -252,28 +330,29 @@ The inner loop predicts a new label for each document $j=1..N$, we
 * assign a new label to it from *Section 3.2*
 * add counts associated with the new label.
 
-{% highlight python%}
-from numpy.random import binom
-
-def update_label(doc):
-    decr_counts()
-
-    pL0 = 
-    pL1 = 
-
-    L = binom(pL1/(pL0+pL1))
-    incr_counts()
-
-{% endhighlight %}
-
 For the outer loop, iterations $t=1...T$, 
 * we draw a new distribution for $\theta_0$ and $\theta_1$. 
 
+{% highlight python%}
+class DMNB(hyp_theta, hyp_pi):
+...
+
+  def gibbs_inference(self, train_corpus, iterations):
+    for t in range(iterations):
+      for doc in train_corpus.docs:
+        corpus.doc_label_m[doc][0]=0
+        corpus.doc_label_m[doc][1]=0
+        self.update_label(train_corpus, doc)
+        corpus.doc_label_m[doc][L]=1
+        
+      self.update_theta()
+
+{% endhighlight %}
+
 Note that: once a new label is assigned, it changes the counts that affect the labeling of the subsequent documents. 
 
-Convergence (with graphs)
-
-#### <span style="color:blue">**Calculating Sample Statistics**</span>
+<br>
+#### <span style="color:#6666ff">**Calculating Sample Statistics**</span>
 
 
 According to MCMC theory, an estimate of the desired variable can be obtained by averaging across all samples obtained so far. Optionally, there is also
@@ -282,3 +361,9 @@ According to MCMC theory, an estimate of the desired variable can be obtained by
 * Autocorrelation and lag
   * Variations on Gibbs sampling aim to reduce autocorrelation
 * Sampling the last value - Under reasonably general conditions, the distribution of the samples drawn converges to the through distribution. Thus for a large enough number of iterations, the final observation is effectively a sample point from the true distribution.
+
+
+<br>
+#### References ####
+[Gibbs Sampling for the Unitiated](https://drum.lib.umd.edu/bitstream/handle/1903/10058/gsfu.pdf?sequence=3)
+[]
