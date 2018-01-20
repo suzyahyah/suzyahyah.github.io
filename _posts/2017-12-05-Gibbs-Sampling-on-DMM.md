@@ -365,5 +365,4 @@ According to MCMC theory, an estimate of the desired variable can be obtained by
 
 <br>
 #### References ####
-[Gibbs Sampling for the Unitiated](https://drum.lib.umd.edu/bitstream/handle/1903/10058/gsfu.pdf?sequence=3)
-[]
+[Resnik, P., & Hardisty, E. (2010). Gibbs sampling for the uninitiated](https://drum.lib.umd.edu/bitstream/handle/1903/10058/gsfu.pdf?sequence=3)
