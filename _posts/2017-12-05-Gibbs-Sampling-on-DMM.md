@@ -45,8 +45,8 @@ In Probabilistic Graphical models, we seek to infer(through Bayesian inference) 
 4. **Obtain approximate values** of the variables via sample statistics.
 
 <br><br>
-### Implementing Gibbs Sampling on Dirichlet Multinomial Mixture Model
-The rest of this document follows the Dirichlet Multinomial Model from "Gibbs Sampling for the Uninitiated". The model described in the paper has documents as the item of interest. Each document, $doc_j$, can be represented as a bag of words, $W_j$. The observed features are the words in the document, with the k-th word in the j-th document represented as $W_{jk}$. The goal is to predict a sentiment label $L_j$ for each of the documents, after observing $W_j$. By Bayes Rule,
+### Implementing Gibbs Sampling on Dirichlet Multinomial Naive Bayes Model
+The rest of this document follows the Dirichlet Multinomial Naive Bayes (DMNB) Model from "Gibbs Sampling for the Uninitiated". The model described in the paper has documents as the item of interest. Each document, $doc_j$, can be represented as a bag of words, $W_j$. The observed features are the words in the document, with the k-th word in the j-th document represented as $W_{jk}$. The goal is to predict a sentiment label $L_j$ for each of the documents, after observing $W_j$. By Bayes Rule,
 
 \begin{equation}
 L_j = argmax_LP(L\|W_j) = argmax_L\frac{P(W_j\|L)P(L)}{P(W_j)}
@@ -57,7 +57,7 @@ Then, $L_j = argmax_LP(L\|W_j, \pi, \gamma_\pi, \theta, \gamma_\theta)$.
 <br>
 #### <span style="color:#6666ff">**1. Assume a generative model of text**</span>
 
-According to the generative model:
+Assume a generative model expressed by the following directed graphical model. Sampling from a directed graphical model involves sampling from each node condition on its parents. For top level varibles, this involves sampling from its marginal or providing estimates directly.
 
 ![Fig1](/assets/DMM-Fig1.png){: .center-image }
 
@@ -157,7 +157,7 @@ sample. To do this, we can integrate out $\pi$ from the joint distribution,
 which has the effect of taking all possible values of $\pi$ into account
 without representing it explicitly at every iteration. That is, 
 
-\begin{eqnarray}
+\begin{align}
 P(C, L, \theta_0, \theta_1, \gamma_\theta, \gamma_\pi) = \int_{\pi}P(C, L,
 \pi,\theta_0, \theta_1, \gamma_\theta, \gamma_\pi)d\pi \nonumber 
 \\\
@@ -166,17 +166,17 @@ P(C, L, \theta_0, \theta_1, \gamma_\theta, \gamma_\pi) = \int_{\pi}P(C, L,
 \\\
 =P(L, \theta_0)P(L, \theta_1)P(\theta_0
 \|\gamma_\theta)P(\theta_1\|\gamma_\theta)\int_{\pi}P(\pi)P(\pi\|\gamma_\pi)d\pi
-\end{eqnarray}
+\end{align}
 
 We can get rid of the integral by substituting the true distributions for
 $P(\pi)$ from eqn(12) and $P(\pi\|\gamma_\pi)$ from eqn(13).
 
-\begin{eqnarray}
+\begin{align}
 \int_{\pi}P(\pi).P(\gamma_\pi)d\pi
 = \int_{\pi}\pi^{C_1}(1-\pi)^{C_0}.\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\pi^{\alpha-1}(1-\pi)^{\beta-1}d\pi \nonumber
 \\\
 = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}.\int_{\pi}\pi^{C_1+\alpha-1}(1-\pi)^{C_0+\beta-1}d\pi 
-\end{eqnarray}
+\end{align}
 Observe that the second part of this eqn is the beta distribution.
 
 \begin{equation}
