@@ -18,6 +18,7 @@ We often want to find the shortest path from A to B, where A and B are expressed
 * A graph is an abstract representation that models connections between objects. These can be social networks, websites, cities, or even currency exchange paths. We need efficient graph algorithms to compute on graphs, in particular, we are interested in computing shortest paths.
 * Formally, a graph $G=(V, E)$ where $V$ are the nodes and $E$ represents the edges.
 * We assume adjacency list representation, where each node has a list of its neighboring graphs and the weight or distance of the edge from itself to its neighbors.
+
 ---
 ### Algorithm 1: Breadth-first Search + Shortest Path Tree
 #### **Graph properties:** 
