@@ -253,14 +253,18 @@ class BellmanFordDemo():
 {% endhighlight %}
 
 #### **Runtime Analysis**
-The Bellman-Ford runs in $O(V + VE) = https://w.coursera.org/learn/algorithms-on-graphs/home/week/1 O(VE)$ time:
+The Bellman-Ford runs in $O(V + VE) = O(VE)$ time:
 - Initialisation takes $O(V)$.
 - The nested for-loop takes $O(VE)$. Iterating over all the edges over the graph takes $O(E)$, and we do this $O(V-1)$ times. 
 
+#### To come..
+- A-star
+- Bidirectional Djikstra
+- Floyd warshall
 
 #### References ####
 [Introduction to Algorithms (CLRS) 24.1-24.3](https://mitpress.mit.edu/books/introduction-algorithms)
-<br>:
+<br>
 [UCLA and School of Economics(Coursera)](https://w.coursera.org/learn/algorithms-on-graphs/home/week/4)
 
 
