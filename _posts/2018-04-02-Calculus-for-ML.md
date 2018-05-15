@@ -72,6 +72,8 @@ There are several ways to think about calculus
 x_{new} = x_{old} - \alpha \nabla f(x)
 \end{equation}
 
+* Todo: Derivation of the Gradient update step.
+
 **The Jacobian matrix and backpropogation**
 <br>
 
@@ -146,7 +148,7 @@ q = x^2+2x
 y = q+c
 \end{equation}
 
-**Hessian matrix, Newton's method and saddle points**
+**Hessian matrix: Second derivatives and Curvature of function**
 * The Hessian is a square matrix of second-order partial derivatives of a scalar-valued function, $f:\mathbb{R}^n \rightarrow \mathbb{R}$. Let the second-order partial derivative $f\'\'(x)$, be the partial derivative of the gradient $f'(x)$. Then the Hessian, $H = f\'\'(x) \in \mathbb{R}^{n\times n}$. 
 * Recall that the gradient of $f:\mathbb{R}^n \rightarrow \mathbb{R}$ can be written as 
 \begin{equation}
@@ -167,49 +169,142 @@ H =
 
 * The Hessian matrix of a function is the rate at which different input dimensions accelerate with respect to each other. If $H_{1,1}$ is high, it means there is a high acceleration in dimension 1. If $H_{1,2}$ is high, then we accelerate simultaneously in both dimensions. If $H_{1,2}$ is negative, then as we accelerate in the first dimension, we decelerate in the second dimension. 
 
-* In the context of gradient descent in Machine Learning:
-  * suppose we have a function $f$, where the gradient $f'(x)$ is negative and a constant $c$, and the second derivative $f''(x)$ is 0. The function is a straight line with no curvature because acceleration/decceleration is 0. Then a step-size of $\alpha$ along the negative gradient will decrease the $f(x)$ by $c.\alpha$. 
-  * if the second derivative is negative, then the function is accelerating downwards, and the cost function will end up decreasing more than the gradient multiplied by step-size.
-  * if the second derivative is positive, then the function is deccelerating and eventually accelerates upward. Thus if the $\alpha$ too large, gradient descent might end up with coordinates that result in greater cost. If we are able to calculate the second derivative, then we can control the $\alpha$ to reduce oscillation around the local minima.
+* In the context of gradient descent in Machine Learning, the second derivative measures curvature of the loss function, as opposed to the slope(gradient) at a single coordinate. Information about the Hessian can therefore help us take appropriate gradient steps towards the minima.
+
+  * Suppose we have a function $f$, where the gradient $f'(x)$ is negative. We know that the function is sloping downwards, however we dont know whether it is (1)sloping downwards more steeply, (2)sloping downwards at the same rate, or (3) sloping downwards less and potentially going upwards. These can be informed by the second derivative, which is the gradient of the gradient. 
+
+  * In scenario (1), if the second derivative is negative, then the function is accelerating downwards, and the cost function will end up decreasing more than the gradient multiplied by step-size.
+
+  * In scenario (2), if the second derivative $f''(x)$ is 0. The function is a straight line with no curvature because acceleration/decceleration is 0. Then a step-size of $\alpha$ along the negative gradient will decrease the $f(x)$ by $c.\alpha$. 
+
+  * In scenario (3), if the second derivative is positive, then the function is deccelerating and eventually accelerates upward. Thus if the $\alpha$ too large, gradient descent might end up with coordinates that result in greater cost. If we are able to calculate the second derivative, then we can control the $\alpha$ to reduce oscillation around the local minima.
 
 ![Fig1](/assets/Calculus-curvature.png)
 *Image taken from [Deep Learning Book Chapt 4](https://w.deeplearningbook.org/contents/numerical.html) on Numerical Computation*
 
 
-* The Hessian is used in optimization algorithms such as Newton's method.
-
-**Hessian, Convexity and Saddle Points**
-
-* Intuitively, the local geometry of curvature is measured by the Hessian. The properties of the Hessian tell us something about the convexity of the function. For all $x\in \mathbb{R}^n$,
-    
-  * If H is positive definite $H \succ 0$ (all elements in $H$ are $>0$), the quadratic problem takes the shape of a "bowl" in higher dimensions and is strictly convex (has only one global minimum). If the gradient at coordinates $x$ is 0, $x$ is at the global minimum.
-
-  * If H is positive semi-definite $H\succeq 0$ (all elements in H are $>=0$) then the function is convex. If the gradient at coordinate $x$ is 0, $x$ is at a local minimum.
-
-  * If H is negative definite $H\prec 0$ (all elements in H are $<0$), the quadratic problem takes the shape of an inverted bowl in higher dimensions, and is strictly concave (has only one global maximum). If our gradient at coordinates $x$ is 0, $x$ is at the global maximum.
-
-  * If H is negative semi-definite $H\preceq 0$(all elements in H are $<=0$) then the function is concave. If the gradient at coordinate $x$ is 0, $x$ is at a local maximum.
- 
-*Note that the opposite doesn't hold. E.g, strict convexity does not imply that the Hessian everywhere is positive definite.*
-
-* If the partial derivatives are continuous, the order of differentiation can be interchanged (Clairaut's theorem) so the Hessian matrix will be symmetric. In the context of deep learning, this is often the case because we force our functions to be continuous and differentiable. The Hessian can then be decomposed into a set of real eigenvalues and an orthogonal basis of eigenvectors.
+<br>
+**Hessian Matrix: Eigenvalues, Convexity and Saddle Points**
 
 * Eigenvectors/eigenvalues of the Hessian describe the directions of principal curvature and the amount of curvature in each direction.
 
-* If the Hessian has both positive and negative eigenvalues at $x$, this implies that $x$ is both a local minimum and a local maximum. Thus $x$ is a saddle point for $f$.
+* If the partial derivatives are continuous, the order of differentiation can be interchanged (Clairaut's theorem) so the Hessian matrix will be symmetric. In the context of deep learning, this is often the case because we force our functions to be continuous and differentiable. The Hessian can then be decomposed into a set of real eigenvalues and an orthogonal basis of eigenvectors.
+
+* Intuitively, the local geometry of curvature is measured by the Hessian. Taking it further, the properties of theaeigenvalue, tell us something about the convexity of the function. For all $x\in \mathbb{R}^n$,
+    
+  * If H is positive definite $H \succ 0$ (all eigenvalues are $>0$), the quadratic problem takes the shape of a "bowl" in higher dimensions and is strictly convex (has only one global minimum). If the gradient at coordinates $x$ is 0, $x$ is at the global minimum.
+
+  * If H is positive semi-definite $H\succeq 0$ (all eignenvalues are $>=0$) then the function is convex. If the gradient at coordinate $x$ is 0, $x$ is at a local minimum.
+
+  * If H is negative definite $H\prec 0$ (all all eigenvalues are $<0$), the quadratic problem takes the shape of an inverted bowl in higher dimensions, and is strictly concave (has only one global maximum). If our gradient at coordinates $x$ is 0, $x$ is at the global maximum.
+
+  * If H is negative semi-definite $H\preceq 0$(all eigenvalues are $<=0$) then the function is concave. If the gradient at coordinate $x$ is 0, $x$ is at a local maximum.
+ 
+  *Note that the opposite doesn't hold in the above conditions. E.g, strict convexity does not imply that the Hessian everywhere is positive definite.*
+
+  * If H is indefinite, (has both positive and negative eigenvalues at $x$), this implies that $x$ is both a local minimum and a local maximum. Thus $x$ is a saddle point for $f$.
+
+  * The proof is given by Taylor series expansion. If $x_c$ is a stationary point, then $\nabla f(x_c)=0$. 
+
+\begin{equation}
+f(x) = f(x_c)+ \nabla f(x_c).(x-x_c)+ \frac{1}{2}(x-x_c)^TH(x-x_c) = f(x_c) + \frac{1}{2}(x-x_c)^TH(x-x_c)
+\end{equation}
+  
+  * If $H$ is positive definite, then this expression evaluates to $f(x)>f(x_c)$ near $x_c$, thus $x_c$ is a local minimum. 
+
+
+* The Hessian of an error function is often used in second-order optimization such as Newton's methods, as an alternative to vanilla gradient descent. 
+
+<br>
+
+**Taylor Series approximation and non-differentiability**
+* Taylor series approximates a complicated function using a series of simpler polynomial functions that are often easier to evaluate. The key idea is to use a series of increasing powers to express complicated yet well-behaved (infinitely differentiable and continuous) functions.
+
+* For univariate functions, the first-order polynomial approximates $f$ at point $P$ as a straight line tangent to $f$ at point $P$. The second-order polynomial approximates $f$ as a quadratic equation whose line passes through point $P$. Increasing powers of polynomial result in better approximations to complicated functions. 
+
+![Fig1](/assets/Calculus-taylor.png)
+*Image taken from Applied Calculus for the Managerial, Life and Social Sciences 8th ed*
+
+* At any arbitary point $p$, we use our knowledge of what $f(p), f'(p), f'\'(p)$ etc looks like in order to approximate $f(x)$. The Taylor series approximation can be written as:
+
+\begin{align}
+f(x) = f(p) + f'(p)(x-p) + \frac{1}{2}f''(p)(x-p)^2 + ... + \frac{1}{n!}f^n(p)(x-p)^n + ...
+\\\
+f(x) = \sum_{n=0}^{\infty} \frac{1}{n!}f^n(p)(x-p)^n
+\end{align}
+
+* This can be equivalently expressed as $f(x_p+\Delta x)$, where $x_p$ is the point where the derivatives are evaluated, and $(x_p+\Delta x)$ is the new point which we wish to approximate. Then, 
+
+\begin{equation}
+f(x_p+\Delta x) = \sum_{n=0}^{\infty} \frac{1}{n!}f^n(x_p)(\Delta x)^n
+\end{equation}
+
+* Expected error of Taylor Series
+
+* For multivariate functions, the Taylor series can be expressed in terms of the Jacobian and Hessian, which reflect the interaction of the first-order derivatives of $J$ and second-order derivatives of $H$ with the $\Delta X = \[\Delta x_1, \Delta x_2, ... \Delta x_n\]$
+
+\begin{equation}
+f(X_p+\Delta X) = f(X_p) + J_f\Delta X + \frac{1}{2}\Delta X.H_f\Delta X + ...
+\end{equation}
+* For multivariate functions, the truncated first-order taylor series approximation of a multivariate function $f$ at point $P$ is a *hyperplane* tangent to $f$ at point P. 
+
+* Taylor series are used to minimise non-differentiable functions. We find a posiiton where we can differentiate the function, and use it to find an approximation of where the function will be at the minimum.  This often involves truncating Taylor series polynomials and can be thought of as a 'linearisation' (first-order) or quadratic approximation (second-order) of a function. 
+
+<br>
+
+**Newton's method, root finding, and optimization**
+
+* Newton's method is an iterative method for approximating solutions (finding roots) to equations. Given a function $f$, and an initial guess $x_0$, Newton's method makes use of the derivative at $x_0$, $f'(x_0)$ to approximate a better guess $x_1$. 
+
+![Fig1](/assets/Calculus-newton.png)
+*Image taken from Applied Calculus for the Managerial, Life and Social Sciences 8th ed*
+
+
+* Recall that the Taylor Series approximates $f(x)$ by polynomials of increasing powers, $f(x_p+\Delta x) = f(x_p)+f'(x_p)\Delta x + \frac{1}{2}f'\'(x_p)\Delta x^2 + ... $ To get an estimate of $x$ when $f(x)=0$, we can truncate and solve for the first-order Taylor polynomial, $f(x_p) + f'(x_p)\Delta x=0$.
+
+
+* Let our initial estimate and the point where we evaluate the derivatives of $f$ be $x_0$, and $\Delta x = x_1-x_0$. Then, 
+
+\begin{align}
+f(x_0) + f'(x_0)\Delta x = 0
+\\\
+\Delta x = -\frac{f(x_0)}{f'(x_0)}
+\\\
+x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}
+\end{align}
+
+* $x_1$ becomes our new estimate, and we can find the next update by $x_2 = x_1 - \frac{f(x_1)}{f'(x_1)}$. 
+
+
+<br>
+**Optimization: Newton's method, Taylor series, and Hessian Matrix**
+
+* In optimization problems, we wish to solve for derivative $f'(x)=0$ to find stationary/critical points. Newton's method is applied to the derivative of a twice-differentiable function. The new estimate $x_1$ is now based on minimising a quadratic function approximated around $x_0$, instead of a linear function.
+
+* For the single variable case, 
+
+\begin{equation}
+x_1 = x_0 - \frac{f'(x_0)}{f'\'(x_0)} 
+\end{equation}
+
+* For the multivariate case,
+
+\begin{equation}
+x_1 = x_0 - \[Hf(x_0)\]^{-1} \nabla f(x_0)
+\end{equation}
+
+![Fig1](/assets/Calculus-newton-optimization.png)
+*Image taken from: http://netlab.unist.ac.kr/wp-content/uploads/sites/183/2014/03/newton_method.png*
 
 
 * Second-order methods often converge much more quickly but it can be very expensive to calculate and store the Hessian matrix. In general, most people prefer quasi-newton methods to approximate the Hessian. These are first order methods which need only the value of the error function and its gradient with respect to the parameters. This can even be better than the true Hessian, because we can constrain the approximation to always be positive definite.
 
 
 <br>
-**Taylor Series and non-differentiability**
- The taylor approximation of a function $f$ at point $P$ is the equation of the *hyperplane* tangent to $f$ at point P. 
-Taylor series are used to minimise non-differentiable functions. We find a posiiton where we can differentiate the function, and use it to find an approximation of where the function will be at the minimum. 
-* Hessian matrices are used in large-scale optimization problems within Newton-type methods because they are the coefficient of the quadratic term of a local Taylor expansion of a function.
-<br>
 
 **Conjugate Gradients**
+
+**Lagrange Multipliers**
 
 <br><br>
 
