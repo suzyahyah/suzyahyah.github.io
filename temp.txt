@@ -1,0 +1,7 @@
+**Natural base e and Softmax Function**
+Why base e? "We prefer natural logs (logarithms with base e) because coefficients on the natural-log scale are directly interpretable as approximately proportional differences. With a coefficient of 0.06, a difference of 1 in x corresponds to an approximate 6% difference in y and so forth"
+
+*[1] Andrew Gelman and Jennifer Hill (2007). Data Analysis using Regression and Multilevel/Hierarchical Models. Cambridge University Press: Cambridge; New York, pp. 60-61.*
+
+*Exponentials are also used in Probabilistic ML for the exponential family but we will not go into that here*.
+
