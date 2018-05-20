@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Migrating from python 2.7 to python 3 (and maintaining compatibility)"
-date: 2018-04-04
+date: 2018-05-10
 mathjax: true
 categories: [Projects, Work Experiences]
 ---
