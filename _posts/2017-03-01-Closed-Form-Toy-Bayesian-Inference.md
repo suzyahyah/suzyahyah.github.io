@@ -7,7 +7,7 @@ categories: [Bayesian Inference]
 ---
 ### Key Concepts
 
-* Bayesian Inference is the use of Bayes theorem to estimate parameters of an unknown probability distribution.
+* Bayesian Inference is the use of Bayes theorem to estimate parameters of an unknown probability distribution. The framework uses data to update model beliefs, i.e., the distribution over the parameters of the model.
 
 * A Bernoulli distribution is the discrete probability distribution of a random variable \$ X \in \\{0, 1\\}\$ for a single trial. Because there are only two possible outcomes, $P(X=1) = 1-P(X=0)$. 
 
@@ -54,8 +54,18 @@ def calc_likelihood(thetas, n, k):
   likelihood = n*pK
   return likelihood
 {%endhighlight%}
+
+Without the concept of priors, we can get an estimate of $\theta$ by the Maximum Likelihood Estimate (MLE), which is the model parameters that best explains the data observed. $\theta$ that maximises the log-likelihood of the data can be found by setting the derivative to zero.
+
+\begin{align}
+\theta_{MLE}&= argmax_\theta P(D|\theta)\\\
+&= \frac{d}{d\theta}P(D|\theta)=0
+\end{align}
+
+This is a good idea if we have enough data and the correct model, but if there is insufficient data, MLE can place too much trust in the data observed.
 <br>
 <br>
+
 #### <span style="color:blue"> 2. Estimating the prior (from a conjugate distribution)</span>
 
 The prior $p(\theta)$ is assumed to come from a beta distribution, with parameters $\alpha$ and $\beta$ can be written as $\theta \sim Beta(\alpha, \beta)$. 
@@ -112,8 +122,15 @@ def calc_posterior(thetas, a_old, b_old, n, k):
   posterior = scipy.stats.beta(a_new, b_new).pdf(thetas)
   return posterior, a_new, b_new
 {%endhighlight%}
+
+We can get multiple estimates from the posterior, including the posterior mean, posterior variance of the parameters, and single parameter estimate from the posterior, the Maximum a Posterior (MAP) estimate: 
+\begin{equation}
+\theta_{MAP} = argmax_\theta P(\theta|D_n) 
+\end{equation}
+
 <br>
 <br>
+
 #### **Example**
 1. Without any observations, we start out with the uniform distribution $\theta \sim Beta(\alpha=1, \beta=1)$.
 2. Next, we observe 20 data points, 10 of which are successes.
