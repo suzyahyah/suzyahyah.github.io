@@ -43,26 +43,32 @@ f(X_p+\Delta X) = f(X_p) + J_f\Delta X + \frac{1}{2}\Delta X.H_f\Delta X + ...
 
 **Newton's method, root finding, and optimization**
 
-* Newton's method is an iterative method for approximating solutions (finding roots) to equations. Given a function $f$, and an initial guess $x_0$, Newton's method makes use of the derivative at $x_0$, $f'(x_0)$ to approximate a better guess $x_1$. 
+* Newton's method is an iterative method for approximating solutions (finding roots) to equations. If $f$ is a positive definite quadratic function, Newton's method can find the minimum of the function directly but this almost never happens in practice. 
+* Instead, Newton's method can be applied when the function $f$ is not truly quadratic but can be locally approximated as a positive definite quadratic. Given an initial guess $x_0$, Newton's method makes use of the derivative at $x_0$, $f'(x_0)$ to approximate a better guess $x_1$.  Through iteratively applying better guesses, the method constructs a sequence of steps that converges towards some $x$ satisfying $f'(x)=0$. 
 
 ![Fig1](/assets/Calculus-newton.png)
 *Image taken from Applied Calculus for the Managerial, Life and Social Sciences 8th ed*
 
 
-* Recall that the Taylor Series approximates $f(x)$ by polynomials of increasing powers, $f(x_p+\Delta x) = f(x_p)+f'(x_p)\Delta x + \frac{1}{2}f'\'(x_p)\Delta x^2 + ... $ To get an estimate of $x$ when $f(x)=0$, we can truncate and solve for the first-order Taylor polynomial, $f(x_p) + f'(x_p)\Delta x=0$.
+* Recall that the Taylor Series approximates $f(x)$ by polynomials of increasing powers, $f(x_p+\Delta x) = f(x_p)+f'(x_p)\Delta x + \frac{1}{2}f'\'(x_p)\Delta x^2 + ... $ 
 
-
-* Let our initial estimate and the point where we evaluate the derivatives of $f$ be $x_0$, and $\Delta x = x_1-x_0$. Then, 
+* We want to find $\Delta x$ such that $(x_p + \Delta x)$ is the solution to minimizing the equation, i.e. $(x_p+\Delta x)$ is the stationary point. To get an estimate of $x$ when $f'(x)=0$, we can truncate the second-order Taylor polynomial, and solve by setting the derivative to $0$.
 
 \begin{align}
-f(x_0) + f'(x_0)\Delta x = 0
-\\\
-\Delta x = -\frac{f(x_0)}{f'(x_0)}
-\\\
-x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}
+\frac{d}{d\Delta x}(f(x_p) + f'(x_p)\Delta x + \frac{1}{2}f'\'\(x_p)\Delta x^2) &= 0 \\\
+f'(x_p) + f\'\'(x_p)\Delta x &=0 \\\
+\Delta x &= - \frac{f'(x_p)}{f\'\'(x_p)}
 \end{align}
 
-* $x_1$ becomes our new estimate, and we can find the next update by $x_2 = x_1 - \frac{f(x_1)}{f'(x_1)}$. 
+
+* Let our initial estimate and the point where we evaluate the derivatives of $f$ be $x_0$. Then the new estimate becomes 
+
+\begin{align}
+x_1 &= x_0+\Delta x \\\
+x_1 &= x_0-\frac{f'(x_0)}{f\'\'(x_0)}
+\end{align}
+
+* $x_1$ becomes our new estimate, and we can find the next update by $x_2 = x_1 - \frac{f(x_1)}{f'(x_1)}$. This eventually converges to a point $x_n$ which satisfies $f'(x_n)=0$.
 
 
 <br>
@@ -70,13 +76,7 @@ x_1 = x_0 - \frac{f(x_0)}{f'(x_0)}
 
 * In optimization problems, we wish to solve for derivative $f'(x)=0$ to find stationary/critical points. Newton's method is applied to the derivative of a twice-differentiable function. The new estimate $x_1$ is now based on minimising a quadratic function approximated around $x_0$, instead of a linear function.
 
-* For the single variable case, 
-
-\begin{equation}
-x_1 = x_0 - \frac{f'(x_0)}{f'\'(x_0)} 
-\end{equation}
-
-* For the multivariate case,
+* For the single variable case, we saw that $x_1 = x_0 - \frac{f'(x_0)}{f'\'(x_0)}$. We can generalize this to the multivariate case by replacing the derivative $f'(x_0)$ with the gradient, $\nabla f(x)$, and the reciprocal of the second derivative $\frac{1}{f\'\'(x_0)}$ with the inverse of the Hessian matrix, $Hf(x_0)^{-1}$.
 
 \begin{equation}
 x_1 = x_0 - \[Hf(x_0)\]^{-1} \nabla f(x_0)
@@ -86,5 +86,5 @@ x_1 = x_0 - \[Hf(x_0)\]^{-1} \nabla f(x_0)
 *Image taken from: http://netlab.unist.ac.kr/wp-content/uploads/sites/183/2014/03/newton_method.png*
 
 
-* Second-order methods often converge much more quickly but it can be very expensive to calculate and store the Hessian matrix. In general, most people prefer quasi-newton methods to approximate the Hessian. These are first order methods which need only the value of the error function and its gradient with respect to the parameters. This can even be better than the true Hessian, because we can constrain the approximation to always be positive definite.
+* Second-order methods often converge much more quickly but it can be very expensive to calculate and store the inverse of the Hessian matrix. In general, most people prefer quasi-newton methods to approximate the Hessian. These are first order methods which need only the value of the error function and its gradient with respect to the parameters. This can even be better than the true Hessian, because we can constrain the approximation to always be positive definite.
 
