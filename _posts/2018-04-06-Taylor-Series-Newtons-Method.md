@@ -68,7 +68,7 @@ x_1 &= x_0+\Delta x \\\
 x_1 &= x_0-\frac{f'(x_0)}{f\'\'(x_0)}
 \end{align}
 
-* $x_1$ becomes our new estimate, and we can find the next update by $x_2 = x_1 - \frac{f(x_1)}{f'(x_1)}$. This eventually converges to a point $x_n$ which satisfies $f'(x_n)=0$.
+* $x_1$ becomes our new estimate, and we can find the next update by $x_2 = x_1 - \frac{f'(x_1)}{f'\'(x_1)}$. This eventually converges to a point $x_n$ which satisfies $f'(x_n)=0$.
 
 
 <br>
