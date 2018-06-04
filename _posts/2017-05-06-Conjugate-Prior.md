@@ -3,6 +3,7 @@ layout: post
 title: 'Conjugate Priors'
 date: 2017-05-06
 mathjax: true
+status: Instructional
 categories: [Bayesian Inference]
 ---
 

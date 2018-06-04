@@ -206,6 +206,17 @@
   @include relative-font-size(1.3);
 }
 
+a.post-link:visited {
+  color: #002107;
+}
+a.post-link {
+  color: #002107;
+}
+
+.post-status {
+  text-decoration: underline;
+  text-decoration-style: double;
+}
 
 
 /**

@@ -3,6 +3,7 @@ layout: post
 title: "Hessian, second order derivatives, convexity, and saddle points"
 date: 2018-04-05
 mathjax: true
+status: Instructional
 categories: [Calculus]
 ---
 **Hessian matrix: Second derivatives and Curvature of function**

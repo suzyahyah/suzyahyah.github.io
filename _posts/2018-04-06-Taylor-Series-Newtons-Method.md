@@ -3,6 +3,7 @@ layout: post
 title: "Taylor Series approximation, newton's method and optimization"
 date: 2018-04-06
 mathjax: true
+status: Instructional
 categories: [Calculus, Optimization]
 ---
 **Taylor Series approximation and non-differentiability**

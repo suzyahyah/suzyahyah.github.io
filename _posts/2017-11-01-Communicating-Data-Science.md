@@ -3,6 +3,7 @@ layout: post
 title: "Communicating Data Science"
 date: 2017-11-01
 mathjax: true
+status: Personal experience
 categories: [Work Experiences]
 ---
 #### Preamble
