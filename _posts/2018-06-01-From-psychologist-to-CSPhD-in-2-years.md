@@ -3,7 +3,7 @@ layout: post
 title: "From psychologist to CS PhD Admission in 2 years"
 date: "2018-05-30"
 mathjax: true
-status: Personal experience
+status: [Personal experience]
 categories: [Work Experiences]
 ---
 

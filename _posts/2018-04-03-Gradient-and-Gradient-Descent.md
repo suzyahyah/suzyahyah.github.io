@@ -3,7 +3,7 @@ layout: post
 title: "Gradients, partial derivatives, directional derivatives, and gradient descent"
 date:  2018-04-03
 mathjax: true
-status: Ongoing, Instructional
+status: [Ongoing, Instructional]
 categories: [Calculus, Machine Learning, Optimization]
 ---
 

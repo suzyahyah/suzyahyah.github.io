@@ -3,7 +3,7 @@ layout: post
 title:  "Noise Contrastive Estimation"
 date:   2017-07-01 21:09:09 +0800
 mathjax: true
-status: Under construction
+status: [Under construction]
 categories: NLP
 ---
 ### Key Concepts

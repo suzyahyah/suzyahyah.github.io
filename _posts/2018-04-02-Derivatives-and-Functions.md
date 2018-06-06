@@ -3,7 +3,7 @@ layout: post
 title: "Derivatives, differentiability and loss functions"
 date: 2018-04-02
 mathjax: true
-status: Instructional
+status: [Instructional]
 categories: [Calculus]
 ---
 

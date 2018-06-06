@@ -3,7 +3,7 @@ layout: post
 title: "Lagrange Multipliers and Constrained Optimization"
 date: 2018-04-7
 mathjax: true
-status: Ongoing 
+status: [Ongoing, Instructional] 
 categories: [Calculus, Optimization]
 ---
 **Lagrange Multipliers and constrained optimization**

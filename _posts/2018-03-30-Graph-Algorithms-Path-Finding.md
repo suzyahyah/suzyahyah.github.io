@@ -3,7 +3,7 @@ layout: post
 title: "Algorithms on Graphs: Fastest Route"
 date: 2018-03-30
 mathjax: true
-status: Code samples, Instructional
+status: [Code samples, Instructional]
 categories: [Algorithms & Data Structures]
 ---
 ### Key Concepts

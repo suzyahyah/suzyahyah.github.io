@@ -27,8 +27,9 @@
       {% for category in post.categories %}
         categories.push("{{category}}");
       {% endfor %}
-    
-      nodes.push({id: i, label:i, title: "{{post.title}}", url: '{{ site.baseurl }}{{ post.url}}' , category: categories, size:200});
+      
+      
+      nodes.push({id: i, label:i, title: "{{post.title}}", url: '{{ site.baseurl }}{{ post.url}}' , category: categories, size:"{{ post.content |size }}"});
       i = i+1;
     {% endfor %}
 

@@ -3,27 +3,42 @@ layout: default
 ---
 
 
-<div class="home">
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ site.styles }}boot.css"/>
+</head>
+<body>
+  <div class="home">
+    <h1 class="page-heading">Posts</h1>
 
-  <h1 class="page-heading">Posts</h1>
-  
-  {{ content }}
+    <ul class="post-list">
+      {% for post in site.posts %}
+        <li>
+          {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+          <span class="post-meta">{{ post.date | date: date_format }}</span>
+          <h2>
+            <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          </h2> 
+          {% assign statuses = post.status %}
+          
+          {% for status in statuses %}
+            {% if status == "Ongoing" %}
+              <span class="label label-warning">{{status}}</span>
+              {% elsif status == "Under construction" %}
+                <span class="label label-warning">{{status}}</span>
+              {% elsif status == "Instructional" %}
+                <span class="label label-info">{{status}}</span>
+              {% elsif status == "Code samples" %}
+                <span class="label label-success">{{status}}</span>
+            {% else %}
+                <span class="label label-primary">{{status}}</span>
+            {% endif %}
+          {% endfor %}
+        </li>
+      {% endfor %}
 
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
+    </ul>
 
-        <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </h2> 
-        <span class="post-status">{{post.status}}</span>  
-      </li>
-    {% endfor %}
-  </ul>
+    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-
-</div>
-w
+  </div>
+</body>

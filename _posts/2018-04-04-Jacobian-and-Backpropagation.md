@@ -3,7 +3,7 @@ layout: post
 title: "Jacobian, Chain rule and backpropagation"
 date: 2018-04-04
 mathjax: true
-status: Instructional
+status: [Instructional]
 categories: [Calculus, Machine Learning]
 ---
 

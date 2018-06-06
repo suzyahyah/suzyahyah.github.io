@@ -3,7 +3,7 @@ layout: post
 title: "Cross disciplinary projects"
 date: 2017-09-20
 mathjax: true
-status: Personal experience
+status: [Personal experience]
 categories: [Work Experiences]
 ---
 

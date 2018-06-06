@@ -3,7 +3,7 @@ layout: post
 title:  "EM Algorithm for Gaussian mixtures"
 date:   2017-11-16 21:09:09 +0800
 mathjax: true
-status: Code samples, Instructional
+status: [Code samples, Instructional]
 categories: [Bayesian Inference]
 ---
 ### Key Concepts
