@@ -8,8 +8,9 @@ categories: [Math, Machine Learning, Linear Algebra]
 ---
 
 ### Key Concepts
-In Machine Learning and statistics, we are interested in modelling the relationships between our data. It is often useful to think about data points as being points in high dimensional space. In ML, we are interested in fitting a decision surface which best separates the datapoints by optimizing some loss function. This can either be done iteratively through [Calculus]({{ site.baseurl}}{% link _posts/2018-04-01-Calculus-for-ML.md %}), or through Linear Algebra techniques. Linear algebra is a set of tools for describing and manipulating these objects. 
-
+In Machine Learning and statistics, we are interested in modelling the relationships between our data. It is often useful to think about data points as being points in high dimensional space. In ML, we are interested in fitting a decision surface which best separates the datapoints by optimizing some loss function. This can either be done iteratively through [Calculus]({{ site.baseurl}}{% link _posts/2018-04-01-Calculus-for-ML.md %}), or through Linear Algebra techniques. Linear algebra is 
+* a set of tools for describing and manipulating these high-dimensional objects, for the purpose of solving general systems of linear equations.
+* a mathematical abstraction which studies the linear maps between vector spaces.
 
 **Data Representation, Scalars, Vectors, Matrices, Tensors**
 Data are typically represented in the form of scalars, vectors, matrices and Tensors. A single datapoint $x$, can be represented by a vector of $D$ scalar numbers, where each scalar represents a particular feature of the data point. The datapoint, $x \in \mathbb{R}^D$ can be written as $x=<x_1, x_2, ... x_D>$ represents an element that lives in our $D$-dimensional vector space.
@@ -24,6 +25,7 @@ Matrices are a 2-D array of numbers, which has many different use cases and is h
 * A 2-D greyscale image of $n$ height and $m$ width, where each element in the matrix is a pixel in the image.
 * Weights and derivatives (the Jacobian matrix) for the activation layer of a neural network.
 * $n$ Authors and $m$ objects in recommender systems.
+* An undirected graph of $n$ verticies, which can be modelled as a matrix with the $i, j$ entry containing the number of edges from vertex $i$ to vertex $j$.
 
 
 The matrix multiplication, or matrix product of two matrices $A^{n\times m}$ and $B^{m\times p}$ gives a third matrix $C^{n\times p}$. For each element in $C=AB$, we compute for $C_{i,j}$, the dot product between row $i$ of $A$ and column $j$ of $B$. This is graphically depicted below: ![Fig1](/assets/Matrix_multiplication_svg.png)*Image taken from Wikipedia-Matrix Multiplication*
@@ -56,20 +58,24 @@ x &= A^{-1}b
 
 In practice, $A^{-1}$ may not exist and the conditions for this is Linear Independence between the constraint vectors. When it does exist, several different algorithms can be used to find $A^{-1}$. 
 
+**Matrices and Linear Transformations**
+When dealing with data, we phrase things in terms of matrices and their associated linear transformations.
+
 **Span, Linear Independence of a set of vectors, and the existence of a Closed-Form Analytical Solution**
 
-The span of a set of vectors, $V = [v^1,  v^2, ..., v^i]$, where $i \in {1 .. \|V\|}$, is the space (or set of all points) that can be reached by some linear combination of these vectors. A linear combination of vectors means multiplying each vector $v^{i}$ by a scalar coefficient and summing over all vectors in $V$. 
+The span of a set of vectors, $V = [v^1,  v^2, ..., v^i]$, where $i \in {1 .. \|V\|}$, is the space (or set of all points) that can be reached all linear combinations of these vectors. A linear combination of vectors means multiplying each vector $v^{i}$ by a scalar coefficient and summing over all vectors in $V$. 
+
 
 \begin{equation}
 Span(V) = \sum_i c_i v^i, for \ all \ c_i
 \end{equation}
 
-Linear dependence of the set means that one of the vectors can be expressed as some combination of the other vectors in the set. For example, the set of {[2, 3], [4, 6]} is linearly dependent. This is easy to see as [4, 6] is 2 * [2, 3]. Linearly independent vectors means that every vector must add some new 'directionality' which cannot be expressed by the other vectors. 
+Linear dependence of the set means that one of the vectors can be expressed as some combination of the other vectors in the set. For example, the set of {[2, 3], [4, 6]} is linearly dependent. This is easy to see as [4, 6] is 2 * [2, 3]. Linearly independent vectors means that every vector must add some new 'directionality' which cannot be expressed by the other vectors. For example, [1,0, 0], [0, 1, 0], [0, 0, 1] are linearly independent in $\mathbb{R}$.
 
 Linear dependence helps us understand how many dimensions our vector space actually has. A basis is a set of $n$ vectors, that are not linear combinations of each other (linearly independent). They thus span an $n$-dimensional space.
 
 
-**Dot product and projections**
+**Dot Product(Inner Product) and Decision Rules**
 
 The dot product of two vectors, $v_1$ and $v_2$, is denoted by 
 
@@ -77,7 +83,20 @@ The dot product of two vectors, $v_1$ and $v_2$, is denoted by
 v_1 . v_2 = \|v_1\| \|v_2\| cos(\theta)
 \end{equation}
 
-The dot product captures something about the direction of the two vectors with reference to each other via $\theta$, the angle between the two vectors. If the vectors are orthogonal to each other, then $\theta$ is 90 deg, and $cos(\theta)=0$ and $v_1 . v_2 = 0$. If the vectors are pointing in the same direction, then $\theta$ is 0, and $cos(\theta)=1$ and $v_1 . v_2 = \|v_1\|\|v_2\|$.
+The dot product captures something about the direction of the two vectors with reference to each other via $\theta$, the angle between the two vectors. 
+1. If the vectors are pointing in the same direction, then $\theta$ is 0, and $cos(\theta)=1$ and $v_1 . v_2 = \|v_1\|\|v_2\|$.
+2. If the vectors are on the same side as straight line boundary, then $v_1 . v_2 > 0$.
+3. If the vectors are on opposite sides as a lined boundary, then $v_1 . v_2 <0$.
+2. If the vectors are orthogonal to each other, then $\theta$ is 90 deg, and $cos(\theta)=0$ and $v_1 . v_2 = 0$. 
+3. If the vectors are pointing in exact opposite directions, then $\theta$ is 180, and $cos(\theta)=-1$, and $v_1 . v_2 = - \|v_1\| \|v_2\|$.
+
+The scalar projection can be derived directly by manipulating the dot product equation. 
+
+\begin{equation}
+\frac{v_1.v_2}{\|v_1\|} = \|v_2\|cos(\theta)
+\end{equation}
+
+This is equivalent to the projection of $v_1$ onto $v_2$, because $\|v_2\|cos(\theta)$ is equivalent to the length of the 'adjacent side'. 
 
 **Vector Projections, Basis vectors, Change of basis**
 
@@ -95,6 +114,8 @@ Applications
 **Change of Basis and Non-linearity*
 Non-linear bases and change of basis allows us to fit non-linear models. The trick is to transform the coordinate system into a higher dimensional space, where the regression or classification is linear. We can have a linear function of W but quadratic function of X. 
 
+* Determinant
+* Subspaces and Multi-label classification
 * Scalars, Vectors, Matrices, Tensors and Data Representation
 * Matrix Inversion, Pseudo Inverse and the Analytical Solution
 * Linear Independence, Span and existence of a Closed-Form Analytical Solution

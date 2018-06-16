@@ -29,7 +29,7 @@
       {% endfor %}
       
       
-      nodes.push({id: i, label:i, title: "{{post.title}}", url: '{{ site.baseurl }}{{ post.url}}' , category: categories, size:"{{ post.content |size }}"});
+      nodes.push({id: i, label:i, title: "{{post.title}}", url: '{{ site.baseurl }}{{ post.url}}' , category: categories});
       i = i+1;
     {% endfor %}
 
