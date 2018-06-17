@@ -21,16 +21,22 @@ layout: default
           {% assign statuses = post.status %}
           
           {% for status in statuses %}
+
             {% if status == "Ongoing" %}
               <span class="label label-warning">{{status}}</span>
+          
               {% elsif status == "Under construction" %}
                 <span class="label label-warning">{{status}}</span>
+          
               {% elsif status == "Instructional" %}
                 <span class="label label-info">{{status}}</span>
+            
               {% elsif status == "Code samples" %}
                 <span class="label label-success">{{status}}</span>
-            {% else %}
+            
+              {% else %}
                 <span class="label label-primary">{{status}}</span>
+            
             {% endif %}
           {% endfor %}
         </li>
