@@ -43,7 +43,7 @@ avg_loss = losses.sum()/2
 avg_loss.backward()
 {% endhighlight %}
 
-After backpropagation from average loss, the values of **W.grad** are $(1.00000e-02 * [[-2.6718, -3.2673, -3.8628]])$ and the values of **b.grad** are $ [[0.1481, -0.1038]]$.
+After backpropagation from `avg_loss`, the values of `W.grad` are $(1.00000e-02 * [[-2.6718, -3.2673, -3.8628]])$ and the values of `b.grad` are $ [[0.1481, -0.1038]]$.
 
 We can then use these gradients to update the new value of $W$ and $b$ manually, or with in-built PyTorch modules like `torch.nn.optimize`.
 
@@ -51,7 +51,7 @@ Note that the gradient arguments here are implicit, it is simply torch.Tensor([1
 
 <u>Vector variables: specifying a gradient argument</u>
 
-In the above examples, average loss is a scalar variable. If we attempted to backpropogate from `losses.backward()` this would throw the following: *<span style="color:red">RuntimeError:</span> grad can be implicitly created only for scalar outputs.*
+In the above examples, `avg_loss` is a scalar variable. If we attempted to backpropogate from `losses.backward()` this would throw the following: *<span style="color:red">RuntimeError:</span> grad can be implicitly created only for scalar outputs.*
 
 **losses** is a vector which contains the squared-error loss for each of the $\hat{y}$'s. That is, $losses = [loss^1, loss^2]$. If we wanted to call `losses.backward()` to the same effect as `avg_loss.backward()`, we would need to provide the gradient of `losses` with respect to `avg_loss`, $\frac{\delta(avgLoss)}{\delta(losses)}$ as an argument in backward. By chain rule,
 
@@ -68,7 +68,7 @@ avgLoss &= \frac{1}{2} [loss^1, loss^2] \\\
 \frac{\delta(avgLoss)}{\delta(losses)} &= [\frac{1}{2}, \frac{1}{2}] 
 \end{align}
 
-Running the code block with the gradient input gives the same W.grad and b.grad as the commented out code. The values of **W.grad** are $(1.00000e-02 * [[-2.6718, -3.2673, -3.8628]])$ and the values of **b.grad** are $ [[0.1481, -0.1038]]$.
+Running the code block with the gradient input gives the same `W.grad` and `b.grad` as the commented out code. The values of `W.grad` are $(1.00000e-02 * [[-2.6718, -3.2673, -3.8628]])$ and the values of `b.grad` are $ [[0.1481, -0.1038]]$.
 
 {% highlight python %}
 ...
@@ -93,7 +93,7 @@ Sometimes we may wish to obtain the Jacobian matrix of partial derivatives to ca
 \end{bmatrix}
 \end{equation}
 
-Because `.backward()` requires gradient arguments as inputs and performs a matrix multiplication internally to give the output (see eq 4), the recommmended way to obtain the Jacobian is by feeding in a gradient input which accounts for that specific row of the Jacobian. This is done by providing a mask for the specific column of the Jacobian matrix, i.e. the gradient vector has a non-zero value on that dimension, and 0 everywhere else. 
+Because `.backward()` requires gradient arguments as inputs and performs a matrix multiplication internally to give the output (see eq 4), the recommmended way to obtain the Jacobian is by feeding in a gradient input which accounts for that specific row of the Jacobian. This is done by providing a mask for the specific dimension in the gradient vector, i.e. the gradient vector has a non-zero value on that dimension, and 0 everywhere else. 
 
 {% highlight python %}
 ...
@@ -116,5 +116,5 @@ The `jacobian` $\frac{\delta(losses)}{\delta W}$ is now $(1.00000e-02 * [[-4.152
 Summing the two rows element-wise of the Jacobian would simply result in `W.grad`. The masked gradient that we input to `losses.backward(..)` allows us to generate individual rows of the Jacobian matrix instead of summing all the rows in the matrix multiplication operation of eq 4.
 
 #### References ####
-[WikipediaReference](https://wikipedia.org)
+[PyTorch Forums](https://discuss.pytorch.org/t/clarification-using-backward-on-non-scalars/1059/5)
 

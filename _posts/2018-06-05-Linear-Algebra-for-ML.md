@@ -4,6 +4,7 @@ title: "Linear Algebra for Machine Learning"
 date: "2017-06-05"
 status: [Under construction]
 mathjax: true
+published: false
 categories: [Math, Machine Learning, Linear Algebra]
 ---
 

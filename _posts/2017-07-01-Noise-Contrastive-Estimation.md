@@ -4,6 +4,7 @@ title:  "Noise Contrastive Estimation"
 date:   2017-07-01 21:09:09 +0800
 mathjax: true
 status: [Under construction]
+published: false
 categories: NLP
 ---
 ### Key Concepts
