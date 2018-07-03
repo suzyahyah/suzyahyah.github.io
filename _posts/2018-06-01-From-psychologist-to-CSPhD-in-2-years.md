@@ -9,32 +9,50 @@ categories: [Work Experiences]
 
 This is a non-technical post. 
 
-Last December I applied to and was accepted by John Hopkins University to do a PhD in Computer Science, specialising in Natural Language Processing. JHU may not be a Stanford or CMU, but it is still one of the top 3 schools in Computational Linguistics/NLP. 2.5 years ago, my career trajectory looked incredibly different. My job as a psychologist didn't require a single line of code and I daresay, any math equations. This post serves as a reminder to myself of the work that I had put in for this opportunity, and to not fear the effort required to change careers. If anyone should wish to follow a similar route, I hope this helps to illuminate some way forward.
+Last December I applied to and was accepted by John Hopkins University to do a PhD in Computer Science, specialising in Natural Language Processing. JHU may not be a Stanford or CMU, but it is still one of the top 3 schools in Computational Linguistics/NLP. 
 
-TLDR: Keep looking out for humbling experiences.
+2.5 years ago, my career trajectory looked incredibly different. My job as a psychologist didn't require a single line of code and I daresay, any math equations. This post serves as a reminder to myself of the work that I had put in for this opportunity, and to not fear the effort required to change careers. 
+
 
 <h3>1. Changing job scope</h3>
 
 The first thing I did was to change into a division that would require me to spend more time programming, so that personal interests and work were aligned. I was fortunate to be given the opportunity to join the Machine Learning and NLP group. I wouldn't say that I was super into Machine Learning or data science, but I was most captivated by the NLP dream. At that time I understood the promise of NLP to be building technologies which could harness the great wisdom of human knowledge residing in written or spoken form. It sounded absolutely magical.
 
-Nearly all of my technical projects centered around Machine Learning and NLP. I touched on Stance Analysis, Information Retrieval, Anomalous Text identification, Collaborative Filtering and enjoyed learning about these topics immensely. It was hard in the beginning and I was clueless most of the time, but eventually some of these things started to stick, and more things started to make sense when placed in relation to everything else. Its difficult to try and operate at a researcher level, when one doesnt even have the University pre-requisites to the pre-requisites. Gaps present themselves everywhere, all the time. Programming ability is a gap, IDE fluency is a gap, Math is a gap, Kullback Liebler is a gap, git is a gap. Before you manage to catch up on one, another appears within the same sentence. Tools, Foundational Knowledge, Applied Knowledge, Programming ability, everything hits you at the same time.
+Nearly all of my technical projects centered around Machine Learning and NLP. There was much to do in this area, after 3 years I feel like I've barely touched the tip of the iceberg. I touched on Stance Analysis, Information Retrieval, Anomalous Text identification, Collaborative Filtering and enjoyed learning about these topics immensely. 
+
+Its difficult to try and operate at a researcher level, when one doesnt even have the University pre-requisites to the pre-requisites. Gaps present themselves everywhere, all the time. Programming ability is a gap, IDE fluency is a gap, Math is a gap, Kullback Liebler is a gap, git is a gap. Before you manage to catch up on one, another appears within the same sentence. Tools, Foundational Knowledge, Applied Knowledge, Programming ability, everything hits you at the same time.
+
+I was clueless most of the time, and (I must have read about eigenvectors and eigenvalues, probabilistic graphical models more than 3 times and I still can’t confidently tell you what they are). But eventually some of these things started to stick, after the 5th time of reading them or so.
 
 <h3>2. Part-time Masters in Knowledge Engineering</h3>
 
-I started looking into part-time Masters programs in the first 3 months of my first job to try and empower myself with more skills to do my job better. The Msc gave good breadth into the technology space and gave me the confidence to start non-trivial conversations about commerial technologies like cloud computing, continuous integration, agile development, data warehousing etc which served as a foundation for increasing knowledge in this area even if I did not necessarily practice it at work.
+I started looking into part-time Masters programs in the first 3 months of my first job to try and empower myself with more skills to do my job better. The Msc gave good breadth into the technology space and gave me the confidence to start non-trivial conversations about commerial technologies like cloud computing, continuous integration, agile development, data warehousing etc. 
+
+This gave me awareness about technologies and served as a foundation for increasing knowledge in this area even if I did not necessarily practice it at work.
 
 The best time of my Msc was theoretical foundations in Multimedia offered by School of Computing which I got a C for. I struggled a lot but learnt important lessons from the Professor. The one that struck me most was that anyone can get state-of-art performance by downloading the latest algorithm from github and running the model. But how many people are able to study the problem well enough, understand the characteristics of the problem and come up with an algorithm that addresses the characteristics of the problem?
 
 <h3>3. Competitions </h3>
 
-Competitions have been mighty effective for me, especially those with leaderboards that effectively gamify the learning experience. My first competition was Semeval in 2016 less than half a year after changing jobs. I did not get far enough to make a competition submission but I submitted a short paper to ACL which was narrowly rejected (3-3-2). (On a side note, I guess this counts as an example of how conference acceptance is pretty much a lottery seeing how close I was to acceptance. I would have given the paper a much wider margin of rejection.) My first competition experience led to my first attempt at writing at paper. The greatest lessons came in the form of comments and inputs from my Principal researcher impressed upon me the rigor required in preparing a submission for a technical paper. I would later benefit from these lessons when writing the paper for CIKM 1.5 years later.
+Competitions have been mighty effective for me, especially those with leaderboards that effectively gamify the learning experience. My first competition was Semeval in 2016 less than half a year after changing jobs. I did not get far enough to make a competition submission but I submitted a short paper to ACL which was narrowly rejected (3-3-2). (On a side note, I guess this counts as an example of how conference acceptance is pretty much a lottery seeing how close I was to acceptance. I would have given the paper a much wider margin of rejection.) 
+
+Thus my first competition experience led to my first attempt at writing at paper. The greatest lessons came in the form of comments and inputs from my Principal researcher impressed upon me the rigor required in preparing a submission for a technical paper. I would later benefit from these lessons when writing the paper for CIKM 1.5 years later.
 
 Competitions highlighted that simple familiarity was a major bottleneck in how well one could do. I'm going to assume that semi-serious participants would have read up on strategies of how to move up rankings. Given that the competition period is usually short, it can be reasoned that the winner should have a combination of knowing what exists, what to try from open literature, how to iterate (what to try next), and having sufficient competency to tweak someone else's solution slightly. 
+
 I took part in two of the CIKM Analyticup competitions in November 2017. The first one Lazada was on predicting whether item titles were clear and concise. This was a 'kaggle type' competition. By that I mean that the difference between 1st and 10th were only a few decimal places in accuracy away from each other. Despite feeling confident of being quite decent in a Text Classification task, I finished only slightly above average in rankings and spent time trying alot of stuff that didnt really help at all, reflecting my inexperience.
 
-  * DHL
+The show-and-tell nature of hackathons also exposed me to [web programming and open-source visualisation tools. See here]({{ site.baseurl }}{% link _posts/2018-05-28-palmoil.md %})
+ for the most recent exploit. I am happy to develop some basic skills as its hard to run from show-and-tell. 
    
 <h3>4. Side projects</h3>
+This section was inspired by three key conversations. 
+
+The first one was with the organisation's HR Director who had just announced that she was leaving. She shared many things, in particular, that she would encourage her staff to aim to have something to update their CV every year. The second conversation was with a manager, who told me that I need to specialise to differentiate myself. The last is a conversation with myself. I was keenly interested in NLP and side projects just seemed like a great way to keep myself constantly learning and experimenting with new technologies. 
+
+Chatbots were a very natural option for side projects. I had a strong affinity for this area given my previous psychology and HCI background. Also for dialogue systems, the applications are endless because essentially we are automating a traditionally human conversation-based service. Dialogue is also one of the most challenging areas in NLP, and would allow me to explore a host of techniques and subtasks in building chatbots.
+
+
   * Wedding Engine
   * The first chatbot for NUS School of Computing.
   * Learning github

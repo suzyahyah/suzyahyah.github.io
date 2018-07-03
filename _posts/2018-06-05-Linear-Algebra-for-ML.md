@@ -13,26 +13,31 @@ In Machine Learning and statistics, we are interested in modelling the relations
 * a mathematical abstraction which studies the linear maps between vector spaces.
 
 **Data Representation, Scalars, Vectors, Matrices, Tensors**
+
+<u>Data Representation</u>
 Data are typically represented in the form of scalars, vectors, matrices and Tensors. A single datapoint $x$, can be represented by a vector of $D$ scalar numbers, where each scalar represents a particular feature of the data point. The datapoint, $x \in \mathbb{R}^D$ can be written as $x=<x_1, x_2, ... x_D>$ represents an element that lives in our $D$-dimensional vector space.
 
+<u>Vectors</u>
 Geometrically, vectors describe the magnitude and direction of a point away from the origin in the $D$-dimensional Euclidean space. Each index in the vector gives the coordinate positions along that axis. Algebraic operations such as addition, subtraction, multiplication, division can thus be seen as changing the point in space by changing the magnitude and direction of the original vector.
 
+<u>Matrices</u>
 
 Matrices are a 2-D array of numbers, which has many different use cases and is highly versatile for representing data in Machine Learning. A matrix with $m$ rows and $n$ columns, could be
  
 * Datapoints arranged in $m$ rows, and $n$ columns, where $m$ is the number of datapoints and $n$ is the number of features. 
-* Multiple equations and constraints, with $m$ equations and $n$ variables.
 * A 2-D greyscale image of $n$ height and $m$ width, where each element in the matrix is a pixel in the image.
 * Weights and derivatives (the Jacobian matrix) for the activation layer of a neural network.
 * $n$ Authors and $m$ objects in recommender systems.
 * An undirected graph of $n$ verticies, which can be modelled as a matrix with the $i, j$ entry containing the number of edges from vertex $i$ to vertex $j$.
 
+<u>Matrix Multiplication</u>
 
 The matrix multiplication, or matrix product of two matrices $A^{n\times m}$ and $B^{m\times p}$ gives a third matrix $C^{n\times p}$. For each element in $C=AB$, we compute for $C_{i,j}$, the dot product between row $i$ of $A$ and column $j$ of $B$. This is graphically depicted below: ![Fig1](/assets/Matrix_multiplication_svg.png)*Image taken from Wikipedia-Matrix Multiplication*
 
+
+<u>Matrix vector multiplication</u>
 * Linear Maps
-* System of Linear Equations
-The general form of a system of linear equations is: 
+* System of Linear Equations, i.e. Linear Program with multiple linear constraints, represented by $m$ equations and $n$ variables. The general form of a system of linear equations is: 
 
 \begin{align}
 a_{11}x_1 + a_{12}x_2 + ... a_{1n}x_n &= b_1 \\\
@@ -41,11 +46,16 @@ a_{21}x_1 + a_{22}x_2 + ... a_{2n}x_n &= b_2 \\\
 a_{m1}x_1 + a_{m2}x_2 + ... a_{2m}x_n &= b_m \\\
 \end{align}
 
-This is equivalent to a Matrix product, $Ax=b$ where $A \in \mathbb{R}^{m\times n}$ has known values,  $x \in \mathbb{R}^{n\times 1}$ represent unknown variables. Each row of $A$ and value in $b \in \mathbb{R}^{m \times 1}$ represents a constraint.
+This is equivalent to a Matrix product, $Ax=b$ where $A \in \mathbb{R}^{m\times n}$ represents the coefficients on the unknown, and itself has known values,  $x \in \mathbb{R}^{n\times 1}$ representing unknown variables that we are trying to solve for. $b \in \mathbb{R}^{m \times 1}$ and the $i$-th row of $Ax=b$ represents the $i$-th constraint. The goal is to solve for $x$.
+
+
+<u>Tensors</u>
 
 Tensors are a X-D array of numbers. They are often used for datapoints which need to be represented in multiple dimensions, for example, a single image can be represented as a 3-dimensional Tensor', as it has height, width, and color channels.
 
-**Matrix Inversion and the Analytical Solution**
+**Solving $A^{-1}b$**
+
+<u>Matrix Inversion and the Analytical Solution of $x=A^{-1}b$</u>
 
 Matrix inversion allows us to solve equations of the form $Ax=b$ for many values of $A$. The inverse of $A$, denoted as $A^{-1}$ is defined as the matrix such that $A^{-1}A = I_n$. $I_n$ is an identity matrix that does not change any vector when we multiply the vector by it. An identity matrix that preserves $n$-dimensional vectors is $I_n$. Formally, $I_n \in \mathbb{R}^{n\times n}$ with diagonal entries equal to 1 and 0 everywhere else. We can now solve for $x$:
 
@@ -113,6 +123,31 @@ Applications
 
 **Change of Basis and Non-linearity*
 Non-linear bases and change of basis allows us to fit non-linear models. The trick is to transform the coordinate system into a higher dimensional space, where the regression or classification is linear. We can have a linear function of W but quadratic function of X. 
+
+**Eigenvectors and Dimensionality Reduction - LDA and PCA**
+
+<u>Why dimensionality reduction?</u>
+- Dimensionality reduction is a common preprocessing technique in pattern classification and machine learning. 
+- avoid the curse of dimensionality and overfitting
+- reduce computational costs.
+
+<u>How to achieve lower dimensionality without losing information?</u>
+
+<u>What does this mean mathematically?</u>
+
+The goal is to project a dataset from a high dimensional feature space to a lower-dimensional space. In the unsupervised setting when labels are unknown, this means finding the directions that maximise the variance in the data, a procedure known as PCA. In the supervised setting, when labels are known, this means finding the directions that maximises the separation between classes, a method known as LDA.
+
+A good feature representation is found when the eigenvalues have a similar magnitude.
+
+<u>PCA</u>
+
+<u>LDA</u>
+LDA has two parts, dimensionality reduction and classifier. In this section we will focus only on the dimensionality reduction aspect. To find directions that maximise the separation between classes, we wish to find the subspace which maximises the variance of class means after projection.
+
+<u>Eigenvectors and Eigenvalues</u>
+
+<u>Advantages of LDA as a classifier</u>
+LDA has a closed-form solution that can be easily computed, and has no hyperparamters to tune.
 
 * Determinant
 * Subspaces and Multi-label classification
