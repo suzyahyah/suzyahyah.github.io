@@ -46,8 +46,8 @@ img {
   vertical-align: middle;
   display: block;
   margin: 0 auto;
-  max-height: 50%;
-  max-width: 50%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 
@@ -215,5 +215,15 @@ pre {
 
   li + li {
     padding-top: 5px;
+  }
+}
+
+
+.tablestyle {
+  border-collapse: collapse;
+   table, td, th {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
   }
 }
