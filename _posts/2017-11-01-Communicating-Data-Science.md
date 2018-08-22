@@ -3,7 +3,7 @@ layout: post
 title: "Communicating Data Science"
 date: 2017-11-01
 mathjax: true
-status: [Personal experience]
+status: [Work experience]
 categories: [Work Experiences]
 ---
 #### Preamble
@@ -14,10 +14,12 @@ One of the teams that placed ahead of us in the CIKM-DHL Hackathon did basically
 There's no point in comparing which is more meaningful as priorities change depending on the operational context. But the bottom line is when decision-makers are the key stakeholders (or paying your salary) - a simple algorithm and advanced visualisation more often than not trumps an advanced algorithm and simple visualisation. What matters? Actionablility matters - "what is one recommendation that you can make to me that I can do tomorrow?" 
 
 #### Engineer's Perspective
+<pre>
 Of cos the guys-in-suits don't get it. Tch. They dont get anything.
+</pre>
 
 #### Stakeholder's Perspective
-And you tell me this for?
+<pre>And you tell me this for?</pre>
 
 
 #### Conclusion

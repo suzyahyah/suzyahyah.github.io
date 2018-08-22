@@ -3,7 +3,7 @@ layout: post
 title: "PyTorch Automatic differentiation for non-scalar variables"
 date: 2018-07-01
 mathjax: true
-status: [Under construction, Code samples]
+status: [Code samples, Instructional]
 categories: [Calculus, PyTorch]
 ---
 
