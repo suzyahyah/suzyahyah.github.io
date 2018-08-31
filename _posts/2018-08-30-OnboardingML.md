@@ -3,8 +3,8 @@ layout: post
 title:  "Onboarding for Practical Machine Learning Research"
 date:  2018-08-30
 mathjax: true
-status: [Code Samples]
-categories: [Machine Learning]
+status: [Code samples]
+categories: [Linux, Machine Learning]
 ---
 
 Contributors: Suzanna Sia, Pan Xinghao, Chieu Hai Leong
