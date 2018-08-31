@@ -22,11 +22,11 @@ layout: default
           
           {% for status in statuses %}
 
-            {% if status == "Ongoing" %}
+            {% if status == "Hackathon" %}
               <span class="label label-warning">{{status}}</span>
           
               {% elsif status == "Under construction" %}
-                <span class="label label-warning">{{status}}</span>
+                <span class="label label-default">{{status}}</span>
           
               {% elsif status == "Instructional" %}
                 <span class="label label-info">{{status}}</span>
