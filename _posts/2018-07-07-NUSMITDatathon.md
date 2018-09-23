@@ -7,7 +7,7 @@ status: [Hackathon]
 categories: [Projects, Healthcare]
 ---
 
-Contributors: Suzanna Sia, Anthony Li(co-author), Charumathi Sabanayagam, Bryce Tan, Yang Qianyu, Lee Chen Fei, Wang Zhi, Gabriel Chew
+Contributors: Suzanna Sia(co-author), Anthony Li(co-author), Bryce Tan, Yang Qianyu, Lee Chen Fei, Wang Zhi, Gabriel Chew, Charumathi Sabanayagam
 
 #### <u>Introduction</u>
 
@@ -84,8 +84,6 @@ These results coincide with our understanding that ML techniques are superior to
 * **Fluencies with database query languages.** - Weakness in self-taught or academia based data scientists, where datasets are small and shipped around in csv files.
 
 * **Instability of Ipython notebooks** - Fair bit of time wasted interrupting unwanted jobs yet and puzzling over why that darn [\*] is still there, or puzzling over whether the cell was taking *that* long to run or had simply crashed. Reason why I dont like jupyter notebooks. No good workarounds yet.
-
-#### <u>Acknowledgements</u>
 
 
 #### References ####
