@@ -7,9 +7,11 @@ status: [Hackathon]
 categories: [Projects, Healthcare]
 ---
 
+Contributors: Suzanna Sia, Anthony Li(co-author), Charumathi Sabanayagam, Bryce Tan, Yang Qianyu, Lee Chen Fei, Wang Zhi, Gabriel Chew
+
 #### <u>Introduction</u>
 
-The NUS-MIT-Datathon brought together teams of clinicians and data scientists to address clinical problems with data. The objective was to utilise healthcare records to answer some of the existing clinical challenges and for these to be translated to actionable insights for patient outcomes. [Team 18](#acknowledgements) participated in the General Clinical Track (one of three tracks) which utilised 10 year hospital Electronic medical records (EMR) data from the Department of Surgery, hosted on the NUHS Discovery platform. The event was jointly organised by National University of Singapore(NUS), National University Health System(NUHS), and MIT.
+The NUS-MIT-Datathon brought together teams of clinicians and data scientists to address clinical problems with data. The objective was to utilise healthcare records to answer some of the existing clinical challenges and for these to be translated to actionable insights for patient outcomes. we participated in the General Clinical Track (one of three tracks) which utilised 10 year hospital Electronic medical records (EMR) data from the Department of Surgery, hosted on the NUHS Discovery platform. The event was jointly organised by National University of Singapore(NUS), National University Health System(NUHS), and MIT.
 
 The clinical objective that we tackled was, 'how to examine the impact of biomarkers/drug-drug interactions on adverse cardiovascular outcomes (IHD, PVD, HF, Stroke, CKD) in a cohort of diabetes-mellitus patients with up to 10 years of follow-up data.
 
@@ -84,7 +86,6 @@ These results coincide with our understanding that ML techniques are superior to
 * **Instability of Ipython notebooks** - Fair bit of time wasted interrupting unwanted jobs yet and puzzling over why that darn [\*] is still there, or puzzling over whether the cell was taking *that* long to run or had simply crashed. Reason why I dont like jupyter notebooks. No good workarounds yet.
 
 #### <u>Acknowledgements</u>
-Anthony Li, Charumathi Sabanayagam, Bryce Tan, Yang Qianyu, Lee Chen Fei, Wang Zhi, Gabriel Chew
 
 
 #### References ####
