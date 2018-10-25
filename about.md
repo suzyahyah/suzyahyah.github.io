@@ -5,7 +5,7 @@ permalink: /about/
 ---
 
 
-I am a first year CS PhD student focusing on NLP at Johns Hopkins advised by Professor Kevin Duh (Johns Hopkins). Previously I was advised by Dr Chieu Hai Leong (DSO National Labs) and Professor Steve Renals (University of Edinburgh). 
+I am a first year CS PhD student focusing on NLP at Johns Hopkins advised by Professor Kevin Duh. Previously I was advised by Dr Chieu Hai Leong (DSO National Labs) and Professor Steve Renals (University of Edinburgh). 
 
 If you are applying for PhD programmes and
 
