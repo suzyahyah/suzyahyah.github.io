@@ -3,7 +3,7 @@ layout: post
 title: "Gotchas in Cython"
 date: 2018-12-01
 mathjax: true
-status: [Under construction]
+status: [Under construction, Code samples]
 categories: [Cython]
 ---
 
@@ -28,11 +28,11 @@ The cython tutorial gives a basic way of how to do this, however as one who like
 def init():
 
   cdef np.ndarray[np.float64_t, ndim=1] arr1
-  array = np.zeros(10, dtype=np.float64)
+  arr1 = np.zeros(10, dtype=np.float64)
 
 {% endhighlight %}
 <br>
-* **When not to use `np.ndarray[np.float64_t, ndim=1]`i.** Our intuitive `np.ndarray` initialisation will fail when used as an attribute of a class. The following will throw an error: `Buffer types only allowed as function local variables`. 
+* **When not to use `np.ndarray[np.float64_t, ndim=1]`.** Our intuitive `np.ndarray` initialisation will fail when used as an attribute of a class. The following will throw an error: `Buffer types only allowed as function local variables`. 
 
 {% highlight python %}
 cdef class FailCase():
@@ -49,7 +49,7 @@ The reason for this is that attributes of our `cdef class` are members of `struc
 cdef class BetterCase():
 
   cdef np.float64_t[:] arr1
-  cdef object myObject
+  cdef object my_object
 
   def __init__(self, my_object):
     self.arr1 = np.zeros(10, dtype=np.float64)
@@ -69,7 +69,7 @@ cdef class arrayOps():
   cdef __init__(self):
     self.arrays = np.zeros((10, 10), dtype=np.float64)
 
-  cdef add(self, np.ndarray[dtype=np.float64 , ndim=2] x):
+  cdef add_to(self, Py_ssize_t k, np.ndarray[dtype=np.float64 , ndim=2] x):
     # need to convert to array before vector multiplication
     arr1 = np.asarray(self.arrays[k], dtype=np.float64)
     arr1 += x
