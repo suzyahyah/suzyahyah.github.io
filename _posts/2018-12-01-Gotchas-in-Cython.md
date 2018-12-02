@@ -69,7 +69,7 @@ cdef class arrayOps():
   cdef __init__(self):
     self.arrays = np.zeros((10, 10), dtype=np.float64)
 
-  cdef add_to(self, Py_ssize_t k, np.ndarray[dtype=np.float64 , ndim=2] x):
+  cdef add_to(self, Py_ssize_t k, np.ndarray[dtype=np.float64 , ndim=1] x):
     # need to convert to array before vector multiplication
     arr1 = np.asarray(self.arrays[k], dtype=np.float64)
     arr1 += x
