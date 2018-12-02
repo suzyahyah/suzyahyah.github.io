@@ -30,6 +30,22 @@ $\alpha_k$ are mixture weights, representing the underlying probability of compo
 
 Given a new datapoint, we want to compute the "membership weight", $w_{ik}$ of the datapoint $x_i$ in cluster $k$, given the parameters $\theta$. Membership weights for a single datapoint should sum to 1.
 
+
+### Algorithm Preliminaries
+
+* The Expectation Maximization (EM) algorithm is used for parameter estimation in cases where labels are missing from training examples (partially observed). It proceeds iteratively, where each iteration has 2 steps. The first step is use initialised parameter values to predict labels. The next step is to use predicted labels from step 1 to estimate parameter values.
+
+* One of the key insights to why semi-supervised or unsupervised learning works, is that we can calculate $p(x)$ by marginalizing out the labels! i.e, given our estimates, we can check how good they are based on just the original data without labels.
+
+\begin{equation}
+p(x) = \sum_{y=1}^{k} p(x, y) = \sum_{y=1}^k \; q(x\|y).q(y)
+\end{equation}
+
+*  Here $q(y)$ is the probability of seeing $y$, and $q(x\|y)$ is the probability of the $x$ taking on the value $y$. Under a basic Naive Bayes model we can estimate(if there is some small supervised training set) or guess an initial distribution over the labels $q(y)$ (often by counts).
+
+* As a result, we can construct a likelihood function as a measure of how well our estimated parameter values fit the training examples. 
+
+
 ### Implementing the EM algorithm for Gaussian Mixture Models
 The algorithm cycles between an E and M step, and iteratively updates $\theta$ until convergence is detected. Initially, either the membership weights can be initialised randomly (leading with M step) or model parameters initialised randomly (leading with E step).
 
@@ -118,7 +134,7 @@ def compute_covariances(data, member_weights, means):
   * The Log likelihood is the probability of observing a given set of data, under the current parameters of the model.
   * Log likelihood is given by:
 
-$$ \sum_{i=1}^{N}logp(x_i|\theta) = \sum_{i=1}^{N}(log\sum_{k=1}^{K}\alpha_{k}p_k(x_i|z_k, \theta_k)) $$
+$$ \sum_{i=1}^{N}log\;p(x_i|\theta) = \sum_{i=1}^{N}\;log\sum_{k=1}^{K}\alpha_{k}.p_k(x_i|z_k, \theta_k) $$
 
   * In a Gaussian mixture model, this becomes (2)
 
