@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PyTorch Automatic differentiation for non-scalar variables"
+title: "PyTorch Automatic differentiation for non-scalar variables; Reconstructing the Jacobian"
 date: 2018-07-01
 mathjax: true
 status: [Code samples, Instructional]
