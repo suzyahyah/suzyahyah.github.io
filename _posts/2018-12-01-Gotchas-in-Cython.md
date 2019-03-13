@@ -147,7 +147,8 @@ cdef class arrayOps():
 {% endhighlight %}
 <br><br>
 
-#### **Numpy Array OR memory view?!**
+#### **Numpy Array or memory view?!**
+
 This is one of the more confusing things about converting python code to cython. Sometimes
 python operations written in numpy are faster than the cythonic version. The cython yellow html
 is not going to help here because numpy is obviously python and will glare at you bright yellow. 
