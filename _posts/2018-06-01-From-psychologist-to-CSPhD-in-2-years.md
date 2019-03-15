@@ -4,6 +4,7 @@ title: "From psychologist to CS PhD Student"
 date: "2018-05-30"
 mathjax: true
 status: [Under construction, Work experience]
+shape: dot
 categories: [Work Experiences]
 ---
 

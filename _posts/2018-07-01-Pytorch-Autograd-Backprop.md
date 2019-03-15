@@ -4,6 +4,7 @@ title: "PyTorch Automatic differentiation for non-scalar variables; Reconstructi
 date: 2018-07-01
 mathjax: true
 status: [Code samples, Instructional]
+shape: dot
 categories: [Calculus, PyTorch]
 ---
 

@@ -2,6 +2,7 @@ function generateGraph(nodes){
 
   for (i=0; i<nodes.length; i++){
     console.log(nodes[i].title);
+    
   }
 
 }
@@ -13,6 +14,7 @@ function generateEdges(nodes){
 
   for (i=0; i<nodes.length; i++){
     var node = nodes[i];
+    node.size=50;
     for (c=0; c<node.category.length; c++){
       try {
         categories[node.category[c]].push(node.id);

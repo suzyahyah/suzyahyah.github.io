@@ -9,6 +9,7 @@ Possible Actions:
 * Click on the link to see the category.
 * Mouseover the post to see the post title.
 * Click on the node to navigate to the post.
+* Bigger nodes are more popular posts. (Rich get richer?)
 
 
 {% include nav_graph.html %}

@@ -4,7 +4,7 @@ title: "Migrating from python 2.7 to python 3 (and maintaining compatibility)"
 date: 2018-05-10
 mathjax: true
 status: [Work experience]
-categories: [Projects, Work Experiences]
+categories: [Projects, Work Experiences, Programming]
 ---
 
 We wish to maintain a single-source codebase that is Python 2/3 compatible. Modules such as [futurize](http://python-future.org/automatic_conversion.html) and [modernize](https://python-modernize.readthedocs.org/en/latest/) are helpful but moving forward, we want to write futurized and compatible code.

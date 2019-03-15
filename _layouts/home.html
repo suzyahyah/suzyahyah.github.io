@@ -9,6 +9,20 @@ layout: default
 <body>
   <div class="home">
     <h1 class="page-heading">Posts</h1>
+      The interactive display below provides a graphical overview and navigation for the
+      content in this blog. Each node(circle) represents a post and links are drawn between
+      posts if they belong to the same category.
+      <br><br>
+      Actions:
+      <li> Click on the link to see the category. </li>
+      <li> Mouseover the post to see the post title. </li>
+      <li> Click on the node to navigate to the post. </li>
+      
+      
+
+      <br><br>
+
+    {% include nav_graph.html %}
 
     <ul class="post-list">
       {% for post in site.posts %}

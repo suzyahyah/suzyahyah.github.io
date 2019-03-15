@@ -9,7 +9,7 @@
         #mynetwork {
             width: 600px;
             height: 400px;
-            border: 1px solid lightgray;
+            border: hidden;
         }
     </style>
 
@@ -29,7 +29,7 @@
       {% endfor %}
       
       
-      nodes.push({id: i, label:i, title: "{{post.title}}", url: '{{ site.baseurl }}{{ post.url}}' , category: categories});
+      nodes.push({id: i, shape: "{{post.shape}}", label:i, title: "{{post.title}}", url: '{{ site.baseurl }}{{ post.url}}' , category: categories});
       i = i+1;
     {% endfor %}
 
@@ -47,10 +47,18 @@
         edges: edges
     };
 
-    var options={}; 
+    var options={
+      interaction:{
+        zoomView: false,
+        hoverConnectedEdges: true
+      }
+    }
+    
 
     // initialize your network!
     var network = new vis.Network(container, data, options);
+    network.setOptions(options);
+    
 
     network.on("selectNode", function (params) {
       if (params.nodes.length === 1) {
