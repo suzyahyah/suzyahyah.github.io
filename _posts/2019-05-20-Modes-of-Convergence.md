@@ -16,7 +16,7 @@ the other but not vice versa.
 
 **Why we care?**
 In statistics we often want to estimate some population parameter with estimators. Because our
-random variables are functions of sample data, they are random variables. We never actually get
+random variables are functions of sample data, we never actually get
 to observe the population parameter, we only have an estimate. To get our statistical
 guarantees, we need to know the convergence properties of our estimator for large sample statistics.
 
