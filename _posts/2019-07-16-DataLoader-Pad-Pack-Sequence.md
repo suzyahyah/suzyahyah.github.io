@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pad pack embed unpack pad sequences xyzabc %@#% for Pytorch batch processing"
+title: "Pad pack embed unpack pad sequences for Pytorch batch processing"
 date: 2019-07-01
 mathjax: true
 status: [Code samples, Instructional]
@@ -62,19 +62,29 @@ requires input sorted by decreasing length, just make sure the target $y$ are al
 
 #### **4. `pad_packed_sequence` on our packed RNN output**
 
-This returns our familiar padded output format, with $(N, H, M_{out})$ where $M_{out}$ is the
+This returns our familiar padded output format, with $(N, M_{out}, H)$ where $M_{out}$ is the
 length of the longest sequence, and the length of each sentence is given by `output_lengths`.
-$H$ is the RNN hidden dimension. Push it through the final output layer to get scores over the
-vocabulary space.
-
-We can recover the output either by taking the argmax and slicing with `output_lengths`, or directly calculate loss with `cross_entropy` by ignoring index.
+$H$ is the RNN hidden dimension. 
 
 {% highlight python %}
 from torch.nn.utils.rnn import pad_packed_sequence
-from torch.nn import functional as F
-
-fc_out = nn.Linear(h_dim, vocab_size)
 output_padded, output_lengths = pad_packed_sequence(outputs, batch_first=True)
+{% endhighlight %}
+
+
+
+
+<br><br>
+
+#### **5. Eval/reconstruct actual output**
+
+Push the padded output through the final output layer to get (unormalise) scores over the vocabulary space.
+
+Finally we can (1) recover the actual output by taking the argmax and slicing with `output_lengths` and converting to words using our index-to-word dictionary, or (2) directly calculate loss with `cross_entropy` by ignoring index.
+
+{% highlight python %}
+from torch.nn import functional as F
+fc_out = nn.Linear(h_dim, vocab_size)
 output_padded = fc_out(output_padded)
 
 batch_ce_loss = 0.0
@@ -82,7 +92,4 @@ for i in range(output_padded.size(0)):
   ce_loss = F.cross_entropy(output_padded[i], y[i], reduction="sum", ignore_index=0)
   batch_ce_loss += ce_loss
 {% endhighlight %}
-
-
-
 
