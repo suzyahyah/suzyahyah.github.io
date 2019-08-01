@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Pad pack embed unpack pad sequences for Pytorch batch processing"
+title: "Pad pack sequences for Pytorch batch processing with DataLoader"
 date: 2019-07-01
 mathjax: true
 status: [Code samples, Instructional]
@@ -28,6 +28,29 @@ from torch.nn.utils.rnn import pad_sequence
 x_padded = pad_sequence(x_seq, batch_first=True, padding_value=0)
 # x_padded = [[5, 18, 29, 0], [32, 100, 0, 0], [699, 6, 9, 17]]
 {% endhighlight %}
+
+For batch processing, a typical pattern is to use this with Pytorch's DataLoader and Dataset:
+{% highlight python %}
+from torch.utils.data import Dataset, DataLoader
+## refer to pytorch tutorials on how to inherit from Dataset class
+dataset = Dataset(...)
+data_loader = DataLoader(dataset=dataset, batch_size=32, shuffle=True, collate_fn=pad_collate)
+
+def pad_collate(batch):
+  (xx, yy) = zip(*batch)
+  x_lens = [len(x) for x in xx]
+  y_lens = [len(y) for y in yy]
+
+  xx_pad = pad_sequence(xx, batch_first=True, padding_value=0)
+  yy_pad = pad_sequence(yy, batch_first=True, padding_value=0)
+
+  return xx_pad, yy_pad, x_lens, y_lens
+{% endhighlight %}
+
+One instance from the traindataset returns $(xx, yy)$, such that when used together with our custom
+collate function, we get tuples of xx and yys and can pad them by batch. Enumerate over the
+dataloader to get the padded sequences and lengths (before padding).
+
 
 <br><br>
  
