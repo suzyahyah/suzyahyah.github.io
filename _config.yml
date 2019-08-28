@@ -30,7 +30,6 @@ plugins:
 header_pages:
   - about.md
   - category.md
-  - landing.md
 
 sass:
   sass_dir: _sass
