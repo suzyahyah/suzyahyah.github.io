@@ -1,5 +1,7 @@
-<head>
+<!--<head>-->
 
+
+<body>
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/vis.js"></script>
 <script type="text/javascript" src="{{ site.baseurl }}/assets/js/my_concepts.js"></script>
 
@@ -7,15 +9,43 @@
 
     <style type="text/css">
         #mynetwork {
-            width: 600px;
-            height: 400px;
+            height: 300px;
             border: double;
+						pad:0.5px;
+            margin-right: 20px;
+            margin-left: 20px;
         }
     </style>
 
-</head>
-<body>
-<div id="mynetwork"></div>
+
+<script type="text/javascript">
+function hideshow(){
+  var x = document.getElementById("nav-descript");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+<h1 class="page-heading">Posts</h1>
+
+<button type="button" class="btn btn-primary" onclick="hideshow()">Toggle Navigation</button>
+
+<div id="nav-descript" class="container">
+      The interactive display below provides a graphical overview and navigation for the
+      content in this blog. Each node(circle) represents a post and links are drawn between
+      posts if they belong to the same category.
+      <br><br>
+      Actions:
+      <li> Click on the link to see the category. </li>
+      <li> Mouseover the post to see the post title. </li>
+      <li> Click on the node to navigate to the post. </li>
+
+      <br><br>
+
+<div id="mynetwork" class="container"></div>
+</div>
 
 <script type="text/javascript">
     
@@ -68,5 +98,6 @@
     });
 
 </script>
+
 </body>
 
