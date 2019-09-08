@@ -19,9 +19,11 @@ If you are from DSO National Labs and just joined
 
 
 If you are a random surfer 
+
  * perhaps some code-from-textbook posts [EM-for-Gaussian-mixtures]({{ site.baseurl }}{% link _posts/2017-11-16-EM-for-Gaussian-mixtures.md %}) 
  * or investigate-further-than-necessary [PyTorch idiosyncracy]({{ site.baseurl }}{% link _posts/2018-07-01-Pytorch-Autograd-Backprop.md %}). 
  * or something a little more original [Capturing transactions of Palm Oil Farmers]({{ site.baseurl }}{% link _posts/2018-05-28-palmoil.md %})
+
 
 
 I write for selfish reasons - to crystallise ideas. But if another human should benefit from this, that would be quite fantastic!
