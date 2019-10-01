@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Clean TreeLSTMs implementation in PyTorch using NLTK treepositions and StackLSTMs"
+title: "Clean TreeLSTMs implementation in PyTorch using NLTK treepositions and Easy-First Parsing"
 date: 2019-08-11
 mathjax: true
 status: [Code samples, Instructional]
@@ -22,8 +22,8 @@ Tree LSTMs are conceptually straightforward extension of RNN-LSTMs but need a fa
 2. Given the parse tree structure which implicitly contains how the word units should be progressively combined, convert this into a *series of instructions* which explicitly describes how the words should be combined.
 
 3. Write a RNN that takes in a series of instructions on how to combine a list of inputs. This
-   strategy is inspired by stack LSTMs (Dyer et al., 2015) with a key difference, that we can
-access any element of the 'stack'.
+   strategy is inspired by stack LSTMs (Dyer et al., 2015) and Easy-first parsing(Kipperwasser and Goldberg, 2016). The key advantage of the latter
+approach is that we can access any element of the 'stack' (therefore it is no longer a stack).
 
 #### **1. Parser**
 1. Download Stanford CoreNLP (2018 onwards) into your working directory. 
@@ -229,5 +229,9 @@ tree-structured long short-term memory networks. [arXiv preprint arXiv:1503.0007
 
 Dyer, C., Ballesteros, M., Ling, W., Matthews, A., & Smith, N. A. (2015). Transition-based dependency
 parsing with stack long short-term memory. [arXiv preprint arXiv:1505.08075](https://arxiv.org/abs/1505.08075).
+<br>
+
+Kiperwasser, E., & Goldberg, Y. (2016). Easy-first dependency parsing with hierarchical tree
+LSTMs. Transactions of the Association for Computational Linguistics, 4, 445-461. [arXiv preprint](https://arxiv.org/pdf/1603.00375.pdf).
 
 

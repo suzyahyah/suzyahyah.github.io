@@ -4,7 +4,7 @@ title: "Modes of Convergence"
 date: 2019-05-20
 mathjax: true
 status: [Instructional]
-categories: [Statistics]
+categories: [Statistics, Information Theory]
 ---
 
 **What do we mean by convergence?**
@@ -45,7 +45,26 @@ P( \\{s \in S: lim_{n\rightarrow \infty} X_n(s) = X(s) \\}) = 1
 
 **Why we care?** Convergence with Probability 1 reflects "strong consistency" and is seen in the strong law of large numbers.
 This states that if random variables $X_1, X_2,...$ are iid with $\mathbb{E}\[X_1\]$, then the sample mean, $\frac{1}{n}\sum^n_{i=1} X_i$ will converge to a finite expected value $\mathbb{E}\[X\]=\mu$. This result is used in 
-* Asymptotic equipartition property in Information Theory
+
+<u>Asymptotic equipartition property in Information Theory</u>
+
+Directly analogous to the Law of Large Numbers, the AEP states that
+$\frac{1}{n}log\frac{1}{p(X_1, X_2, \cdots, X_n)} \rightarrow H(X)$ as $n\rightarrow \infty$,
+where $P(X_1, X_2, \cdots, X_n)$ is the probability of observing the sequence  $X_1, X_2, \cdots X_n$. The proof follows directly from the above expectation:
+
+\begin{align}
+-\frac{1}{n}logp(X_1, X_2, \cdots, X_n) &= \frac{1}{n}log\prod_{i}p(X_i) \\\
+&= -\frac{1}{n}\sum_i logp(X_i) \\\
+&= -\mathbb{E}(logp(X_i)), n \rightarrow \infty \\\
+&= H(X)
+\end{align}
+
+This gives us a way to bound the probability of a "typical set" of sequences, because then
+$p(X_1, X_2, \cdots, X_n)$ will be close to $2^{-nH(X)}$.
+
+
+
+
 * Convergence in discrete Markov Chains
 * Convergence with stochastic gradient descent
 
@@ -65,6 +84,11 @@ $\bar{X}_1, \bar{X}_2, \cdots$ converges in probability to $\mu$. The average of
 The difference between the strong and weak law, is that since the weak law is based on convergence *in* probability, there
 is still a possibility that $|X_n-X|\geq \delta$ can happen, just that it becomes vanishingly
 small as $n \rightarrow \infty$.
+
+<u>A note about the Asymptotic Equipartition Property</u>
+
+Sometimes we see the AEP appearing as a Convergence *in* probability. It all depends on where
+the $lim_{n\rightarrow \infty}$ is, "inside" the Probability i.e., $P(lim_{n\rightarrow \infty} \cdots)$ or "outside" i.e, $\lim_{n\rightarrow \infty}P(\cdots)$. 
 
 
 #### **Convergence in Distribution**
