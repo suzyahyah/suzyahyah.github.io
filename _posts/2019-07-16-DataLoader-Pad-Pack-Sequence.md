@@ -7,19 +7,29 @@ status: [Code samples, Instructional]
 categories: [PyTorch]
 ---
 
-Pytorch setup for NLP for batch-processing - minimal working example.
+Pytorch setup for batch sentence/sequence processing - minimal working example. The pipeline
+consists of the following:
+
+
+0. Convert sentences to ix
+1. `pad_sequence` to convert variable length sequence to same size (using dataloader)
+2. Convert padded sequences to embeddings
+3. `pack_padded_sequence` before feeding into RNN
+4. `pad_packed_sequence` on our packed RNN output
+5. Eval/reconstruct actual output
+
 <br><br>
  
-#### **0. Convert sentences to ix**
+#### **1. Convert sentences to ix**
 
-Construct word-to-index and index-to-word dictionaries, tokenize words and convert words to indexes. Note the special indexes that we need to reserve for `<pad>`, `EOS`, `<unk>`, `N` (digits). 
+Construct word-to-index and index-to-word dictionaries, tokenize words and convert words to indexes. Note the special indexes that we need to reserve for `<pad>`, `EOS`, `<unk>`, `N` (digits). The indexes should correspond to the position of the word-embedding matrix.
 
 <br><br>
  
-#### **1. `pad_sequence` to convert variable length sequences to same size**
+#### **2. `pad_sequence` to convert variable length sequences to same size**
 
-For the network to take in a batch of variable length sequences, we need to first pad it with
-empty values (0). This makes every training sentence the same length, and the input to the model is now $(N, M)$, where $N$ is the batch size and $M$ is the longest training instance.
+For the network to take in a batch of variable length sequences, we need to first pad each
+sequence with empty values (0). This makes every training sentence the same length, and the input to the model is now $(N, M)$, where $N$ is the batch size and $M$ is the longest training instance.
 
 {% highlight python %}
 from torch import nn
@@ -47,26 +57,30 @@ def pad_collate(batch):
   return xx_pad, yy_pad, x_lens, y_lens
 {% endhighlight %}
 
-One instance from the traindataset returns $(xx, yy)$, such that when used together with our custom
-collate function, we get tuples of xx and yys and can pad them by batch. Enumerate over the
+One instance from the traindataset returns $(xx, yy)$ (unpadded), such that when used together with our custom
+collate function, we get tuples of xxs and yys, and can pad them by batch. Next, enumerate over the
 dataloader to get the padded sequences and lengths (before padding).
+
+*Note: Here we are assuming yy is a target sequence. If yy is just a categorical variable then
+they are already fixed length for all data instances and there is no need to pad.*
 
 
 <br><br>
  
-#### **2. Convert padded sequences to embeddings**
+#### **3. Convert padded sequences to embeddings**
 
 `x_padded` is a $(N, M)$ matrix, and subsequently becomes $(N, E, M)$ where $E$ is the
 embedding dimension. Note the `vocab_size` should include the special `<pad>`, `<EOS>`, etc characters.
 
 {% highlight python %}
 embedding = nn.Embedding(vocab_size, embedding_dim)
-x_embed = embedding(x_padded)
+for (x_padded, y_padded, x_lens, y_lens) in enumerate(data_loader):
+  x_embed = embedding(x_padded)
 {% endhighlight %}
 
 <br><br>
  
-#### **3. `pack_padded_sequence` before feeding into RNN**
+#### **4. `pack_padded_sequence` before feeding into RNN**
 
 Actually, pack the padded, *embedded* sequences. For pytorch to know how to pack and unpack
 properly, we feed in the length of the original sentence (before padding). Note we wont be able to pack before embedding. `rnn` can be GRU, LSTM etc.
@@ -74,7 +88,7 @@ properly, we feed in the length of the original sentence (before padding). Note 
 {% highlight python %}
 from torch.nn.utils.rnn import pack_padded_sequence
 rnn = nn.GRU(embedding_dim, h_dim, n_layers, batch_first=True)
-x_packed = pack_padded_sequence(x_embed, x_lengths, batch_first=True, enforce_sorted=False)
+x_packed = pack_padded_sequence(x_embed, x_lens, batch_first=True, enforce_sorted=False)
 output_packed, hidden = rnn(x_packed, hidden)
 {% endhighlight %}
 
@@ -83,7 +97,11 @@ padded inputs when calculating gradients for backprop. We can also `enforce_sort
 requires input sorted by decreasing length, just make sure the target $y$ are also sorted accordingly. 
 <br><br>
 
-#### **4. `pad_packed_sequence` on our packed RNN output**
+*Note: It is standard to initialise hidden states of the LSTM/GRU cell to 0 for each new
+sequence. There are of course other ways like random initialisation or learning the initial
+hidden state which is an active area of research*
+
+#### **5. `pad_packed_sequence` on our packed RNN output**
 
 This returns our familiar padded output format, with $(N, M_{out}, H)$ where $M_{out}$ is the
 length of the longest sequence, and the length of each sentence is given by `output_lengths`.
@@ -91,7 +109,7 @@ $H$ is the RNN hidden dimension.
 
 {% highlight python %}
 from torch.nn.utils.rnn import pad_packed_sequence
-output_padded, output_lengths = pad_packed_sequence(outputs, batch_first=True)
+output_padded, output_lengths = pad_packed_sequence(output_packed, batch_first=True)
 {% endhighlight %}
 
 
@@ -99,7 +117,7 @@ output_padded, output_lengths = pad_packed_sequence(outputs, batch_first=True)
 
 <br><br>
 
-#### **5. Eval/reconstruct actual output**
+#### **6. Eval/reconstruct actual output**
 
 Push the padded output through the final output layer to get (unormalise) scores over the vocabulary space.
 
