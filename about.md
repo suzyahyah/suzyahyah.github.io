@@ -9,7 +9,7 @@ I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins advised by [Profe
 
 If you are applying for PhD programmes and
 
- * are surveying profiles, [see CV(2018)](https://drive.google.com/file/d/1j6sra1MTzZTeETPesiT0Em5hIs69Ir0p/view?usp=sharing) or [linkedin](https://w.linkedin.com/in/suzanna-sia-83b032bb)
+ * are surveying profiles, [see CV(2019)](https://drive.google.com/file/d/1D5Y9ce1bpVZ0IjRZP8tLsXOIg4ATbLLg/view?usp=sharing) or [linkedin](https://www.linkedin.com/in/suzanna-sia-83b032bb)
  * think you're not quite ready yet, [see Psychologist-to-PhD]({{ site.baseurl }}{% link _posts/2018-06-01-From-psychologist-to-CSPhD-in-2-years.md %})
 
 If you are from DSO National Labs and just joined, you might like to read the following. 
