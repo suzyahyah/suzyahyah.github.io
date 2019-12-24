@@ -10,12 +10,13 @@ I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins advised by [Profe
 If you are applying for PhD programmes and
 
  * are surveying profiles, [it might help to see CV(2019)](https://drive.google.com/file/d/1D5Y9ce1bpVZ0IjRZP8tLsXOIg4ATbLLg/view?usp=sharing) or [linkedin](https://www.linkedin.com/in/suzanna-sia-83b032bb)
- * think you're not quite ready yet, [see Psychologist-to-PhD]({{ site.baseurl }}{% link _posts/2018-06-01-From-psychologist-to-CSPhD-in-2-years.md %})
+ * think you're not quite ready yet, [see Psychologist-to-PhD]({{ site.baseurl }}{% link _posts/2018-06-01-From-psychologist-to-CSPhD-in-2-years.md %}) (I was probably in a state of euphoria when I wrote this, I'm ashamed for overly pompous sounding bits but I've decided to leave this unedited)
 
 If you are from DSO National Labs and just joined, you might like to read the following. 
  
  * see [Onboarding Machine Learning]({{ site.baseurl }}{% link _posts/2018-08-30-OnboardingML.md %}). 
  * or [Cross-disciplinary projects]({{ site.baseurl }}{% link _posts/2017-09-20-Cross-disciplinary-projects.md %})
 
-
 I write for selfish reasons - to crystallise ideas. But if another human should benefit from this, that would be quite fantastic!
+
+[myothercv](https://docs.google.com/presentation/d/1njXDBrC0RKMo-6ZLA7HRVmi48fYzL8QQaaymbGonhto/edit?usp=sharing)
