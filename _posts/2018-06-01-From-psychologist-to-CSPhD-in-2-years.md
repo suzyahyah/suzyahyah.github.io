@@ -8,6 +8,9 @@ shape: dot
 categories: [Work Experiences]
 ---
 
+2019-12-23: I was probably in a state of euphoria when this was written in 2018, and while I'm ashamed for overly pompous sounding bits but I've decided to leave this unedited.
+
+---
 Last December I applied to and was accepted by John Hopkins University to do a PhD in Computer Science, specialising in Natural Language Processing. 
 
 2 years ago, my career trajectory looked incredibly different. My job as a psychologist didn't require a single line of code. This post serves as a reminder to not fear the effort required to change career trajectory, and also to review the relative effectiveness of the various steps taken on hindsight.

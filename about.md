@@ -5,12 +5,14 @@ permalink: /about/
 ---
 
 
-I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins advised by [Professor Kevin Duh](http://cs.jhu.edu/~kevinduh/). Previously I was advised by [Dr Chieu Hai Leong](https://www.linkedin.com/in/hai-leong-chieu-29a95a30/) (DSO National Labs) and [Professor Steve Renals](http://homepages.inf.ed.ac.uk/srenals/) (University of Edinburgh). In my previous career I learnt some Human Factors and Social psychology from [Dr. Angela Tan](https://www.linkedin.com/in/angela-tan-aa67487/) and [Dr. Bernice Khoo](https://www.linkedin.com/in/bernicekhoo/?originalSubdomain=sg). I owe much to Dr. How Khee Yin, Chua Kuan Seah, Sng Mui Tiang, and too much to Natalia Edzgveradze.
+I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins advised by [Professor Kevin Duh](http://cs.jhu.edu/~kevinduh/). Previously I was advised by [Dr Chieu Hai Leong](https://www.linkedin.com/in/hai-leong-chieu-29a95a30/) (DSO National Labs) and [Professor Steve Renals](http://homepages.inf.ed.ac.uk/srenals/) (University of Edinburgh). 
+
+In my previous career I learnt some Human Factors and Social psychology from [Dr. Angela Tan](https://www.linkedin.com/in/angela-tan-aa67487/) and [Dr. Bernice Khoo](https://www.linkedin.com/in/bernicekhoo/?originalSubdomain=sg). I owe much to Dr. How Khee Yin, Chua Kuan Seah, Sng Mui Tiang, and too much to Natalia Edzgveradze.
 
 If you are applying for PhD programmes and
 
  * are surveying profiles, [it might help to see CV(2019)](https://drive.google.com/file/d/1D5Y9ce1bpVZ0IjRZP8tLsXOIg4ATbLLg/view?usp=sharing) or [linkedin](https://www.linkedin.com/in/suzanna-sia-83b032bb)
- * think you're not quite ready yet, [see Psychologist-to-PhD]({{ site.baseurl }}{% link _posts/2018-06-01-From-psychologist-to-CSPhD-in-2-years.md %}) (I was probably in a state of euphoria when I wrote this, I'm ashamed for overly pompous sounding bits but I've decided to leave this unedited)
+ * think you're not quite ready yet, [see Psychologist-to-PhD]({{ site.baseurl }}{% link _posts/2018-06-01-From-psychologist-to-CSPhD-in-2-years.md %})
 
 If you are from DSO National Labs and just joined, you might like to read the following. 
  
