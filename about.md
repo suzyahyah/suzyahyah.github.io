@@ -18,6 +18,7 @@ If you are from DSO National Labs and just joined, you might like to read the fo
  
  * see [Onboarding Machine Learning]({{ site.baseurl }}{% link _posts/2018-08-30-OnboardingML.md %}). 
  * or [Cross-disciplinary projects]({{ site.baseurl }}{% link _posts/2017-09-20-Cross-disciplinary-projects.md %})
+ * [Roles]({{ site.baseurl }}{% link _posts/2014-08-13-Roles.md %})
 
 I write for selfish reasons - to crystallise ideas. But if another human should benefit from this, that would be quite fantastic!
 
