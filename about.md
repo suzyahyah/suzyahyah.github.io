@@ -22,4 +22,4 @@ If you are from DSO National Labs and just joined, you might like to read the fo
 
 I write for selfish reasons - to crystallise ideas. But if another human should benefit from this, that would be quite fantastic!
 
-[myothercv](https://docs.google.com/presentation/d/1njXDBrC0RKMo-6ZLA7HRVmi48fYzL8QQaaymbGonhto/edit?usp=sharing) outside the lab.
+[myothercv]({{ site.baseurl }}{% link othercv.md %}) outside the lab
