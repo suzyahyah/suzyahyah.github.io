@@ -105,9 +105,8 @@ leaves = parse.treepositions('leaves')
 # [(0,0,0), (0, 1, 0, 0, 0), (0, 1, 0, 1, 0, 0), (0, 1, 0, 1, 1, 0), (0, 1, 1, 0, 0), (0, 1, 1, 1, 0, 0), (0, 1, 1, 1, 1, 0)]
 {% endhighlight %}
 
-`treepositions` has parameters `postorder` and `preorder`, which corresponds to depth-first and
-breadth-first search respectively. We use the breadth-first search order, so that we can be
-guaranteed to see the leaves from left-to-right.
+`treepositions` has parameters `postorder` and `preorder`, which corresponds to different types
+of depth-first search. We use the pre-order search order for this implementation. 
 
 The buffer is given by `tree.treepositions('postorder')`. For each element in the buffer, if it
 is a leaf, add it to the stack to process. If not, get the stack-positions of all its children, and replace the children on the stack with the parent element. After processing each non-leaf buffer element, increment a sequence of actions. The action sequence can either be unary(single element) or binary(tuple), which informs us which stack positions should be progressively fed as input to the neural network starting from the leaves(words).  
