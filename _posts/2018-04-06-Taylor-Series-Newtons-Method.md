@@ -17,7 +17,7 @@ categories: [Calculus, Optimization]
 * At any arbitary point $p$, we use our knowledge of what $f(p), f'(p), f'\'(p)$ etc looks like in order to approximate $f(x)$. The Taylor series approximation can be written as:
 
 \begin{align}
-f(x) = f(p) + f'(p)(x-p) + \frac{1}{2}f''(p)(x-p)^2 + ... + \frac{1}{n!}f^n(p)(x-p)^n + ...
+f(x) = f(p) + f'(p)(x-p) + \frac{1}{2}f'\'(p)(x-p)^2 + ... + \frac{1}{n!}f^n(p)(x-p)^n + ...
 \\\
 f(x) = \sum_{n=0}^{\infty} \frac{1}{n!}f^n(p)(x-p)^n
 \end{align}
@@ -28,14 +28,19 @@ f(x) = \sum_{n=0}^{\infty} \frac{1}{n!}f^n(p)(x-p)^n
 f(x_p+\Delta x) = \sum_{n=0}^{\infty} \frac{1}{n!}f^n(x_p)(\Delta x)^n
 \end{equation}
 
-* Expected error of Taylor Series
+* Expected error of Taylor Series [Under construction]
 
 * For multivariate functions, the Taylor series can be expressed in terms of the Jacobian and Hessian, which reflect the interaction of the first-order derivatives of $J$ and second-order derivatives of $H$ with the $\Delta X = \[\Delta x_1, \Delta x_2, ... \Delta x_n\]$
 
 \begin{equation}
 f(X_p+\Delta X) = f(X_p) + J_f\Delta X + \frac{1}{2}\Delta X.H_f\Delta X + ...
 \end{equation}
-* For multivariate functions, the truncated first-order taylor series approximation of a multivariate function $f$ at point $P$ is a *hyperplane* tangent to $f$ at point P. 
+
+* **Tangent Hyperplane**: For multivariate functions, the truncated first-order taylor series approximation of a multivariate function $f$ at point $P$ is a *hyperplane* tangent to $f$ at point P. That is, for $x, \bar{x} \in \mathbb{R}^n$, the tangent hyperplane is given by: 
+
+\begin{equation}
+f(\bar{x}) + \nabla f(\bar{x})^T(x-\bar{x})
+\end{equation}
 
 * Taylor series are used to minimise non-differentiable functions. We find a posiiton where we can differentiate the function, and use it to find an approximation of where the function will be at the minimum.  This often involves truncating Taylor series polynomials and can be thought of as a 'linearisation' (first-order) or quadratic approximation (second-order) of a function. 
 

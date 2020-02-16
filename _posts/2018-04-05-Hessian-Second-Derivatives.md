@@ -62,11 +62,17 @@ H =
 
   * If H is indefinite, (has both positive and negative eigenvalues at $x$), this implies that $x$ is both a local minimum and a local maximum. Thus $x$ is a saddle point for $f$.
 
-  * The proof is given by Taylor series expansion. If $x_c$ is a stationary point, then $\nabla f(x_c)=0$. 
+  * The style of proofs is given by Taylor series expansion and the fact that if all function values lie above the supporting hyperplane, the function is convex. Approximating the function with a second order polynomial:
 
 \begin{equation}
-f(x) = f(x_c)+ \nabla f(x_c).(x-x_c)+ \frac{1}{2}(x-x_c)^TH(x-x_c) = f(x_c) + \frac{1}{2}(x-x_c)^TH(x-x_c)
+f(x) = f(x_c)+ \nabla f(x_c).(x-x_c)+ \frac{1}{2}(x-x_c)^TH(x-x_c) 
 \end{equation}
+
+To show convexity, $H$ is PSD means that $d^THd \geq 0, \forall d \in mathbb{R}^n$. Hence we get $f(x) \geq f(x_c)
++ \nabla f(x_c)(x-x_c)$. Since $f(x_c) + \nabla f(x_c)^T(x-x_c)$ is the tangent hyperplane, if
+  all $f(x)$ is above this hyperplane it indicates that the function is convex.
+
+If $x_c$ is a stationary point, then $\nabla f(x_c)=0$, and the equation becomes $f(x_c) + \frac{1}{2}(x-x_c)^TH(x-x_c)$
   
   * If $H$ is positive definite, then this expression evaluates to $f(x)>f(x_c)$ near $x_c$, thus $x_c$ is a local minimum. 
 
