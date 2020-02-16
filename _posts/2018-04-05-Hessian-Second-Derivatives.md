@@ -68,11 +68,7 @@ H =
 f(x) = f(x_c)+ \nabla f(x_c).(x-x_c)+ \frac{1}{2}(x-x_c)^TH(x-x_c) 
 \end{equation}
 
-To show convexity, $H$ is PSD means that $d^THd \geq 0, \forall d \in mathbb{R}^n$. Hence we get $f(x) \geq f(x_c)
-+ \nabla f(x_c)(x-x_c)$. Since $f(x_c) + \nabla f(x_c)^T(x-x_c)$ is the tangent hyperplane, if
-  all $f(x)$ is above this hyperplane it indicates that the function is convex.
-
-If $x_c$ is a stationary point, then $\nabla f(x_c)=0$, and the equation becomes $f(x_c) + \frac{1}{2}(x-x_c)^TH(x-x_c)$
+  * To show convexity, $H$ is PSD means that $d^THd \geq 0, \forall d \in \mathbb{R}^n$. Hence we get $f(x) \geq f(x_c) + \nabla f(x_c)(x-x_c)$. Since $f(x_c) + \nabla f(x_c)^T(x-x_c)$ is the tangent hyperplane, if all $f(x)$ is above this hyperplane it indicates that the function is convex. If $x_c$ is a stationary point, then $\nabla f(x_c)=0$, and the equation becomes $f(x_c) + \frac{1}{2}(x-x_c)^TH(x-x_c)$
   
   * If $H$ is positive definite, then this expression evaluates to $f(x)>f(x_c)$ near $x_c$, thus $x_c$ is a local minimum. 
 
