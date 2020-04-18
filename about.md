@@ -5,7 +5,9 @@ permalink: /about/
 ---
 
 
-I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins advised by [Professor Kevin Duh](http://cs.jhu.edu/~kevinduh/). Previously I was advised by [Dr Chieu Hai Leong](https://www.linkedin.com/in/hai-leong-chieu-29a95a30/) (DSO National Labs) and [Professor Steve Renals](http://homepages.inf.ed.ac.uk/srenals/) (University of Edinburgh). 
+I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins advised by [Professor Kevin Duh](http://cs.jhu.edu/~kevinduh/). Previously I was advised by [Dr Chieu Hai
+Leong](https://www.linkedin.com/in/hai-leong-chieu-29a95a30/) (DSO National Labs) and [Professor Steve Renals](http://homepages.inf.ed.ac.uk/srenals/) (University of Edinburgh). I'm
+also very lucky to work with [Professor Kokil Jaidka](https://kokiljaidka.wordpress.com/about/) (National University of Singapore).
 
 In my previous career I learnt some Human Factors and Social psychology from [Dr. Angela Tan](https://www.linkedin.com/in/angela-tan-aa67487/) and [Dr. Bernice Khoo](https://www.linkedin.com/in/bernicekhoo/?originalSubdomain=sg). I owe much to Dr. How Khee Yin, Chua Kuan Seah, Sng Mui Tiang, and too much to Natalia Edzgveradze.
 
