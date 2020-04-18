@@ -88,13 +88,14 @@ At this point you have n different ideas to try, and are keen to implement a who
 
 Occassionally there are reasons to prefer running experiments via bash than within the main code itself depending on the level of abstraction for your program. A common pattern I like to use in combination with python's argparse is:
 
-```bat
+{% highlight bash %}
 EXP_CONDITIONS=(a b c d)
 for ((i=1, i< ${#EXP_CONDITIONS[@]}, i++)); do
     echo Running exp $i
     python src/main.py --exp ${EXP_CONDITIONS[$i]}
 done
-```
+{% endhighlight %}
+
 <br>
 
 #### Getting Results
@@ -148,9 +149,10 @@ You may find it useful to write a set of scripts just to manipulate and sort err
 ### Monitoring Resources
 `htop` - this is a DSO cfl favorite. Also, `ps aux`. Lots of information about this on web. A combination I use most frequently is `htop` and <F5> to see parent and child processes together with printing the process ID of the script so that it is easier to monitor:
 
-```bat
+
+{% highlight bash %}
 import os; print(os.getpid())
-```  
+{% endhighlight %}
 
 <br>
 
@@ -200,7 +202,7 @@ This may not seem necessary in small projects, but when you feel sufficiently fr
 
 Separate Data and Configs from Code. Seperate Logs from Data. There should be a clear conceptual separation of code and everything else. Ideally your code should run data from anywhere given the data file path. Seperate Input Data from Working Data, and Output Data. There are many discussions about this and there is no hard and fast rule, but I gravitate towards something like the following:
 
-```bat
+{% highlight bash %}
 /home/staff1
     Data
         raw
@@ -222,7 +224,7 @@ Separate Data and Configs from Code. Seperate Logs from Data. There should be a 
                 working
             logs
             packages
-```
+{% endhighlight %}
 
 <br>
 
@@ -289,9 +291,10 @@ The following are mostly tips to read and search for information via the command
 * cut, sort, uniq: to compute data statistics
 
 * perl regular expressions, e.g.,
-```bat
+{% highlight bash %}
       cat file | egrep "\w Mary \w" | perl -pe "s/^.*?(\w+? Mary \w+).*$/\1/g"  | sort | uniq -c | sort -rg
-```
+{% endhighlight %}
+
 the above should count all the trigrams with Mary in the middle. 
 
 <br>
