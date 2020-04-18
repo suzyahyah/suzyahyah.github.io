@@ -88,7 +88,7 @@ At this point you have n different ideas to try, and are keen to implement a who
 
 Occassionally there are reasons to prefer running experiments via bash than within the main code itself depending on the level of abstraction for your program. A common pattern I like to use in combination with python's argparse is:
 
-```bash
+```bat
 EXP_CONDITIONS=(a b c d)
 for ((i=1, i< ${#EXP_CONDITIONS[@]}, i++)); do
     echo Running exp $i
@@ -146,8 +146,9 @@ You may find it useful to write a set of scripts just to manipulate and sort err
 <br><br>
 
 ### Monitoring Resources
-`htop` - this is a cfl favorite. Also, `ps aux`. Lots of information about this on web. A combination I use most frequently is `htop` and <F5> to see parent and child processes together with printing the process ID of the script so that it is easier to monitor:
-```python
+`htop` - this is a DSO cfl favorite. Also, `ps aux`. Lots of information about this on web. A combination I use most frequently is `htop` and <F5> to see parent and child processes together with printing the process ID of the script so that it is easier to monitor:
+
+```bat
 import os; print(os.getpid())
 ```  
 
@@ -156,26 +157,27 @@ import os; print(os.getpid())
 #### Estimating time/program completion
 Estimate how long a program will run for using printouts. It’s not enough to just do 
     
-```python
+{% highlight python %}
 import time
 def big_process():
     start = time.time()
     for i in range(n_inputs):
         ...
     finish = time.time()-start. 
-```
+{% endhighlight %}
+
 
 What if your code doesn’t run finish over the weekend and you dont know how much longer it will take?
 
 For small functions, a common pattern which prints every 10% completion can look like this  
 
-```python
+{% highlight python %}
 start = time.time()
 if i%(n_inputs/10)==0:
     print("{} complete - time elapsed:{}".format(i/n_inputs, start-time.time()))
-```
+{% endhighlight %}
 
-Alternatively use something like `tqdm` (but dont get overly reliant on this as it slows down your program and is a third party library which you dont always get access to).
+Alternatively use something like `tqdm` (but dont get overly reliant on this as it slows down your program and is a third party library which you dont always get access to when you have to code in an underground bunker).
 
 <br>
 
@@ -198,7 +200,7 @@ This may not seem necessary in small projects, but when you feel sufficiently fr
 
 Separate Data and Configs from Code. Seperate Logs from Data. There should be a clear conceptual separation of code and everything else. Ideally your code should run data from anywhere given the data file path. Seperate Input Data from Working Data, and Output Data. There are many discussions about this and there is no hard and fast rule, but I gravitate towards something like the following:
 
-```python
+```bat
 /home/staff1
     Data
         raw
@@ -230,10 +232,10 @@ Don’t stop learning git at git clone. Version control (with well-written commi
 
 If you move in and out of projects, you may find it useful to log the commit version, time of the experiment and experimental parameters within the log file itself. 
 
-```python
+{% highlight python %}
 import subprocess; subprocess.check_output([‘git’, ‘describe’, ‘--always’])
-Import datetime; datetime.datetime.now().strftime(“%Y-%m-%d %H:%M”)
-```
+import datetime; datetime.datetime.now().strftime(“%Y-%m-%d %H:%M”)
+{% endhighlight %}
 
 <br>
 
@@ -287,9 +289,9 @@ The following are mostly tips to read and search for information via the command
 * cut, sort, uniq: to compute data statistics
 
 * perl regular expressions, e.g.,
-
+```bat
       cat file | egrep "\w Mary \w" | perl -pe "s/^.*?(\w+? Mary \w+).*$/\1/g"  | sort | uniq -c | sort -rg
-
+```
 the above should count all the trigrams with Mary in the middle. 
 
 <br>
@@ -315,3 +317,8 @@ Then you can logout and your jobs will be safely running in the server. The next
 (returns to your previous "screen")
 
 
+#### Keeping a Research Log 
+
+"Keep a research diary. Have a single log for every day you work on the project and section it
+into focus/meeting notes/bug fixes/ bug watch/changes etc. and preliminary results just copying
+and pasting from logs. It helps keep track of things you've tried and how you fixed errors."  -- Alexandra Delucia
