@@ -86,7 +86,21 @@ Linear dependence of the set means that one of the vectors can be expressed as s
 Linear dependence helps us understand how many dimensions our vector space actually has. A basis is a set of $n$ vectors, that are not linear combinations of each other (linearly independent). They thus span an $n$-dimensional space.
 
 
-**Dot Product(Inner Product) and Decision Rules**
+<u>Norms and Cost Functions </u>
+Norms give us some way to quantify the 'size' of a vector or matrix, and these are often seen in cost/loss functions when we want to get some overall loss to minimize.
+
+Two common norms (or loss functions) that we encounter are the L1, L2, squared L2, L$\infty$ (max norm).
+
+Matrix norms that are analogous to vector norms are used when we consider optimising batches of inputs, instead of a single input.
+For example, we want to find the parameters $W$ that minimise $y - Wx$ over all datapoints $X=\{x_1, \cdots x_n\}$. If we apply a squared L2 loss, then the matrix analog is the squared frobenius norm.
+
+\begin{equation}
+  min_W \sum_{i} || y_i - Wx_i ||_2^2 \\
+  = min_W ||Y - WX ||_2^2
+\end{equation}
+
+
+<u>Dot Product(Inner Product) and Decision Rules</u>
 
 The dot product of two vectors, $v_1$ and $v_2$, is denoted by 
 
