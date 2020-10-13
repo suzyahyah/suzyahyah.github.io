@@ -13,7 +13,7 @@ In my previous career I learnt some Human Factors and Social psychology from [Dr
 
 If you are applying for PhD programmes and
 
- * are surveying profiles, [it might help to see CV(2019)]({{ site.baseurl }}{% link assets/suzanna_cv.pdf %}) or [linkedin](https://www.linkedin.com/in/suzanna-sia-83b032bb)
+ * are surveying profiles, [it might help to see CV(2020)]({{ site.baseurl }}{% link assets/suzanna_cv.pdf %}) or [linkedin](https://www.linkedin.com/in/suzanna-sia-83b032bb)
  * think you're not quite ready yet, [see Psychologist-to-PhD]({{ site.baseurl }}{% link _posts/2018-06-01-From-psychologist-to-CSPhD-in-2-years.md %})
 
 If you are from DSO National Labs and just joined, you might like to read the following. 
