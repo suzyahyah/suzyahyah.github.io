@@ -20,7 +20,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   A better way to note keep with latex than google docs.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: @suzyahyah
+twitter_username: 
 github_username:  
 # Build settings
 markdown: kramdown
