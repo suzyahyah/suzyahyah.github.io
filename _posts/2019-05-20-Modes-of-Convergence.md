@@ -52,12 +52,14 @@ Directly analogous to the Law of Large Numbers, the AEP states that
 $\frac{1}{n}log\frac{1}{p(X_1, X_2, \cdots, X_n)} \rightarrow H(X)$ as $n\rightarrow \infty$,
 where $P(X_1, X_2, \cdots, X_n)$ is the probability of observing the sequence  $X_1, X_2, \cdots X_n$. The proof follows directly from the above expectation:
 
+$$
 \begin{align}
 -\frac{1}{n}logp(X_1, X_2, \cdots, X_n) &= \frac{1}{n}log\prod_{i}p(X_i) \\\
 &= -\frac{1}{n}\sum_i logp(X_i) \\\
 &= -\mathbb{E}(logp(X_i)), n \rightarrow \infty \\\
 &= H(X)
 \end{align}
+$$
 
 This gives us a way to bound the probability of a "typical set" of sequences, because then
 $p(X_1, X_2, \cdots, X_n)$ will be close to $2^{-nH(X)}$.

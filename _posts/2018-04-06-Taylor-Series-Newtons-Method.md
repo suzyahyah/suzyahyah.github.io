@@ -16,11 +16,13 @@ categories: [Calculus, Optimization]
 
 * At any arbitary point $p$, we use our knowledge of what $f(p), f'(p), f'\'(p)$ etc looks like in order to approximate $f(x)$. The Taylor series approximation can be written as:
 
+$$
 \begin{align}
 f(x) = f(p) + f'(p)(x-p) + \frac{1}{2}f'\'(p)(x-p)^2 + ... + \frac{1}{n!}f^n(p)(x-p)^n + ...
 \\\
 f(x) = \sum_{n=0}^{\infty} \frac{1}{n!}f^n(p)(x-p)^n
 \end{align}
+$$
 
 * This can be equivalently expressed as $f(x_p+\Delta x)$, where $x_p$ is the point where the derivatives are evaluated, and $(x_p+\Delta x)$ is the new point which we wish to approximate. Then, 
 
@@ -59,19 +61,23 @@ f(\bar{x}) + \nabla f(\bar{x})^T(x-\bar{x})
 
 * We want to find $\Delta x$ such that $(x_p + \Delta x)$ is the solution to minimizing the equation, i.e. $(x_p+\Delta x)$ is the stationary point. To get an estimate of $x$ when $f'(x)=0$, we can truncate the second-order Taylor polynomial, and solve by setting the derivative to $0$.
 
+$$
 \begin{align}
 \frac{d}{d\Delta x}(f(x_p) + f'(x_p)\Delta x + \frac{1}{2}f'\'\(x_p)\Delta x^2) &= 0 \\\
 f'(x_p) + f\'\'(x_p)\Delta x &=0 \\\
 \Delta x &= - \frac{f'(x_p)}{f\'\'(x_p)}
 \end{align}
+$$
 
 
 * Let our initial estimate and the point where we evaluate the derivatives of $f$ be $x_0$. Then the new estimate becomes 
 
+$$
 \begin{align}
 x_1 &= x_0+\Delta x \\\
 x_1 &= x_0-\frac{f'(x_0)}{f\'\'(x_0)}
 \end{align}
+$$
 
 * $x_1$ becomes our new estimate, and we can find the next update by $x_2 = x_1 - \frac{f'(x_1)}{f'\'(x_1)}$. This eventually converges to a point $x_n$ which satisfies $f'(x_n)=0$.
 

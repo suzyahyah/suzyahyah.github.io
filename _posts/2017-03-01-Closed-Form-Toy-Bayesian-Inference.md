@@ -58,10 +58,12 @@ def calc_likelihood(thetas, n, k):
 
 Without the concept of priors, we can get an estimate of $\theta$ by the Maximum Likelihood Estimate (MLE), which is the model parameters that best explains the data observed. $\theta$ that maximises the log-likelihood of the data can be found by setting the derivative to zero.
 
+$$
 \begin{align}
 \theta_{MLE}&= argmax_\theta P(D|\theta)\\\
 &= \frac{d}{d\theta}P(D|\theta)=0
 \end{align}
+$$
 
 This is a good idea if we have enough data and the correct model, but if there is insufficient data, MLE can place too much trust in the data observed.
 <br>

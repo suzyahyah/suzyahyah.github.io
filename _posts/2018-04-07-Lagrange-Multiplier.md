@@ -48,12 +48,14 @@ L(p, \lambda) = f(p) - \lambda g(p)
 
 * Working out an example where $f=2-x_1^2+2x_2^2$, and $g=x_1^2+x_2^2-1$, amounts to solving $n+1$ equations with $n+1$ unknowns. (There are $n$ independent variables and one lagrangian multiplier, $\lambda$.)
 
+$$
 \begin{align}
 L(x, \lambda)  &= 2-x_1^2 + 2x_2^2 - \lambda (x_1^2 + x_2^2 -1) \\\
 \frac{\delta L}{\delta x_1} &= - 2x_1 - 2 \lambda x_1 = 0 \\\
 \frac{\delta L}{\delta x_2} &= 4x_2 - 2 \lambda x_2 =0 \\\
 \frac{\delta L}{\delta \lambda} &= x_1^2 + x_2^2 -1 =0
 \end{align}
+$$
 
 * The solution for the constrained problem is obtained when solving for the points where the partial derivatives of $L$ are zero. Solving for the stationary point of the Lagrangian indicates that the gradient $\nabla f(p)$ does not have to be 0 at the solution, but it should be contained in the subspace spanned by $\nabla g(p)$. 
 

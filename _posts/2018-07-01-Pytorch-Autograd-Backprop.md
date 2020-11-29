@@ -22,11 +22,13 @@ In most cases when training the neural network, `.backward()` is called by some 
 
 In a basic single layer sigmoid network, $\hat{y}$ is the predicted output, $\sigma$ is the sigmoid function, $W$ and $b$ are weight parameters in the neural network to be learned via updating weights through something like gradient descent.
 
+$$
 \begin{align}
 \hat{y} &= \sigma(W.x + b) \\\
 losses &= (y - \hat{y})^2 \\\
 avgLoss &= \frac{1}{n}\sum_{i}^{n}losses
 \end{align}
+$$
 
 In the following example, a single training batch that we are feeding into the network is given by $X \in \mathbb{R}^{n\times m}$, where $n$ is the number of instances, and $m$ is the number of dimensions of one training instance. The target variable can take on either $0$ or $1$, $y \in \\{0,1\\}$, and the output of the neural network is given by $Y \in \mathbb{R}^{n}$
 
@@ -64,10 +66,12 @@ Note that `W.grad` is equivalent to $\frac{\delta(avgLoss)}{\delta(W)}$.
 
 This translates to `losses.backward(torch.Tensor([0.5, 0.5]))`, where the input argument, $\frac{\delta(avgLoss)}{\delta(losses)}$ can be obtained by:
 
+$$
 \begin{align}
 avgLoss &= \frac{1}{2} [loss^1, loss^2] \\\
 \frac{\delta(avgLoss)}{\delta(losses)} &= [\frac{1}{2}, \frac{1}{2}] 
 \end{align}
+$$
 
 Running the code block with the gradient input gives the same `W.grad` and `b.grad` as the commented out code. The values of `W.grad` are $(1.00000e-02 * [[-2.6718, -3.2673, -3.8628]])$ and the values of `b.grad` are $ [[0.1481, -0.1038]]$.
 

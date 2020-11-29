@@ -40,12 +40,14 @@ The matrix multiplication, or matrix product of two matrices $A^{n\times m}$ and
 * Linear Maps
 * System of Linear Equations, i.e. Linear Program with multiple linear constraints, represented by $m$ equations and $n$ variables. The general form of a system of linear equations is: 
 
+$$
 \begin{align}
 a_{11}x_1 + a_{12}x_2 + ... a_{1n}x_n &= b_1 \\\
 a_{21}x_1 + a_{22}x_2 + ... a_{2n}x_n &= b_2 \\\
 ... &= ... \\\
 a_{m1}x_1 + a_{m2}x_2 + ... a_{2m}x_n &= b_m \\\
 \end{align}
+$$
 
 This is equivalent to a Matrix product, $Ax=b$ where $A \in \mathbb{R}^{m\times n}$ represents the coefficients on the unknown, and itself has known values,  $x \in \mathbb{R}^{n\times 1}$ representing unknown variables that we are trying to solve for. $b \in \mathbb{R}^{m \times 1}$ and the $i$-th row of $Ax=b$ represents the $i$-th constraint. The goal is to solve for $x$.
 
@@ -60,12 +62,14 @@ Tensors are a X-D array of numbers. They are often used for datapoints which nee
 
 Matrix inversion allows us to solve equations of the form $Ax=b$ for many values of $A$. The inverse of $A$, denoted as $A^{-1}$ is defined as the matrix such that $A^{-1}A = I_n$. $I_n$ is an identity matrix that does not change any vector when we multiply the vector by it. An identity matrix that preserves $n$-dimensional vectors is $I_n$. Formally, $I_n \in \mathbb{R}^{n\times n}$ with diagonal entries equal to 1 and 0 everywhere else. We can now solve for $x$:
 
+$$
 \begin{align}
 Ax &= b \\\
 A^{-1}Ax &= A^{-1}b \\\
 I_nx &= A^{-1}b \\\
 x &= A^{-1}b
 \end{align}
+$$
 
 In practice, $A^{-1}$ may not exist and the conditions for this is Linear Independence between the constraint vectors. When it does exist, several different algorithms can be used to find $A^{-1}$. 
 

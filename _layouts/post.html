@@ -3,9 +3,7 @@ layout: default
 ---
 
 <!--<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>-->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-<script>
+<script type="text/x-mathjax-config">
         MathJax.Hub.Config({
             config: ["MMLorHTML.js"],
             extensions: ["cancel.js", "tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js"],
@@ -13,7 +11,7 @@ layout: default
             tex2jax: {
                 inlineMath: [ ['$','$'], ["\\(","\\)"] ],
                 displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                processEscapes: false
+                processEscapes: true
             },
             TeX: {
                 TagSide: "right",
@@ -28,6 +26,9 @@ layout: default
             },
             showProcessingMessages: false
         });
+</script>
+<script type="text/javascript" charset="utf-8"
+    src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML">
 </script>
 
 

@@ -139,11 +139,13 @@ P(L\|\pi) = \pi^{C_1}(1-\pi)^{C_0}
 
 * $P(\pi\|\gamma_\pi)$ is the probability of drawing $L$ given the prior Beta distribution with hyperparameters $\gamma_\pi=[\alpha,\beta]$. By definition of the Beta distribution, where c is a normalization constant:
 
+$$
 \begin{align}
 P(\pi\|\gamma_\pi) = c.\pi^{\alpha-1}(1-\pi)^{\beta-1} \nonumber  
 \\\
 P(\pi\|\gamma_\pi) = \frac{\Gamma(\alpha+ \beta)}{\Gamma(\alpha)\Gamma(\beta)}.\pi^{\alpha-1}(1-\pi)^{\beta-1}
 \end{align}
+$$
 
 The factorised joint distribution is thus,
 
@@ -158,6 +160,7 @@ sample. To do this, we can integrate out $\pi$ from the joint distribution,
 which has the effect of taking all possible values of $\pi$ into account
 without representing it explicitly at every iteration. That is, 
 
+$$
 \begin{align}
 P(C, L, \theta_0, \theta_1, \gamma_\theta, \gamma_\pi) = \int_{\pi}P(C, L,
 \pi,\theta_0, \theta_1, \gamma_\theta, \gamma_\pi)d\pi \nonumber 
@@ -168,16 +171,19 @@ P(C, L, \theta_0, \theta_1, \gamma_\theta, \gamma_\pi) = \int_{\pi}P(C, L,
 =P(L, \theta_0)P(L, \theta_1)P(\theta_0
 \|\gamma_\theta)P(\theta_1\|\gamma_\theta)\int_{\pi}P(\pi)P(\pi\|\gamma_\pi)d\pi
 \end{align}
+$$
 
 We can get rid of the integral by substituting the true distributions for
 $P(\pi)$ from eqn(12) and $P(\pi\|\gamma_\pi)$ from eqn(13).
 
+$$
 \begin{align}
 \int_{\pi}P(\pi).P(\gamma_\pi)d\pi
 = \int_{\pi}\pi^{C_1}(1-\pi)^{C_0}.\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}\pi^{\alpha-1}(1-\pi)^{\beta-1}d\pi \nonumber
 \\\
 = \frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}.\int_{\pi}\pi^{C_1+\alpha-1}(1-\pi)^{C_0+\beta-1}d\pi 
 \end{align}
+$$
 Observe that the second part of this eqn is the beta distribution.
 
 \begin{equation}
