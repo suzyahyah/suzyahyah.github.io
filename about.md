@@ -29,6 +29,6 @@ Some real life about:
 
 * [myothercv]({{ site.baseurl }}{% link othercv.md %}) outside the lab. 
 
-* I'm a drummer and will support your amateur-guitarist-friend/sibling's performance at your wedding.
-
 * I was [Singapore Women's Chess Champion in 2005](https://en.wikipedia.org/wiki/Singaporean_Chess_Championship) and am unusually opiniated about whether people should play chess competitively. Easiest non-taboo topic to trigger me at a party.
+
+* Drummer, always down to jam.
