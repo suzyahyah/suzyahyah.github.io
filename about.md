@@ -15,19 +15,20 @@ If you are applying for PhD programmes and
  * are surveying profiles, [it might help to see CV(2020)]({{ site.baseurl }}{% link assets/suzanna_cv.pdf %}) or [linkedin](https://www.linkedin.com/in/suzanna-sia-83b032bb)
  * think you're not quite ready yet, [see Psychologist-to-PhD]({{ site.baseurl }}{% link _posts/2018-06-01-From-psychologist-to-CSPhD-in-2-years.md %})
 
-If you are from DSO National Labs, you might like to read the following. 
+If you are from DSO National Labs and just joined, you might like to read the following. 
  
  * see [Onboarding Machine Learning]({{ site.baseurl }}{% link _posts/2018-08-30-OnboardingML.md %}). 
  * or [Cross-disciplinary projects]({{ site.baseurl }}{% link _posts/2017-09-20-Cross-disciplinary-projects.md %})
- * [Company Roles]({{ site.baseurl }}{% link _posts/2014-08-13-Roles.md %}) and some [advice]({{ site.baseurl }}{% link _posts/2015-01-13-Advice.md %})
+ * [Roles]({{ site.baseurl }}{% link _posts/2014-08-13-Roles.md %}) and some [advice]({{ site.baseurl }}{% link _posts/2015-01-13-Advice.md %})
 
 This blog exists for selfish reasons - to crystallise ideas. But if another human should benefit from this, that would be quite fantastic!
 
 --- 
+<br>
 Some real life about:
 
 * [myothercv]({{ site.baseurl }}{% link othercv.md %}) outside the lab. 
 
-* I'm an amateur drummer, always down to jam
+* I'm a drummer and will support your amateur-guitarist-friend/sibling's performance at your wedding.
 
 * I was [Singapore Women's Chess Champion in 2005](https://en.wikipedia.org/wiki/Singaporean_Chess_Championship) and am unusually opiniated about whether people should play chess competitively. Easiest non-taboo topic to trigger me at a party.
