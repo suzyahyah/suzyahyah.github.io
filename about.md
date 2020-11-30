@@ -4,12 +4,11 @@ title: About
 permalink: /about/
 ---
 
+I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins advised by [Kevin Duh](http://cs.jhu.edu/~kevinduh/). Previously I was advised by [Chieu Hai
+Leong](https://chaileon.github.io) (DSO National Labs) and [Steve Renals](http://homepages.inf.ed.ac.uk/srenals/) (University of Edinburgh). I'm
+also very lucky to work with [Kokil Jaidka](https://kokiljaidka.wordpress.com/about/) (National University of Singapore), and [Jason Eisner](www.cs.jhu.edu/~jason) (JHU).
 
-I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins advised by [Professor Kevin Duh](http://cs.jhu.edu/~kevinduh/). Previously I was advised by [Dr Chieu Hai
-Leong](https://www.linkedin.com/in/hai-leong-chieu-29a95a30/) (DSO National Labs) and [Professor Steve Renals](http://homepages.inf.ed.ac.uk/srenals/) (University of Edinburgh). I'm
-also very lucky to work with [Professor Kokil Jaidka](https://kokiljaidka.wordpress.com/about/) (National University of Singapore).
-
-In my previous career I learnt some Human Factors and Social psychology from [Dr. Angela Tan](https://www.linkedin.com/in/angela-tan-aa67487/) and [Dr. Bernice Khoo](https://www.linkedin.com/in/bernicekhoo/?originalSubdomain=sg). I owe much to Dr. How Khee Yin, Chua Kuan Seah, Sng Mui Tiang, and too much to Natalia Edzgveradze.
+In my previous career I learnt some Human Factors and Social psychology from [Angela Tan](https://www.linkedin.com/in/angela-tan-aa67487/) and [Bernice Khoo](https://www.linkedin.com/in/bernicekhoo/?originalSubdomain=sg). I owe much to Dr. How Khee Yin, Chua Kuan Seah, Sng Mui Tiang, and too much to Natalia Edzgveradze.
 
 If you are applying for PhD programmes and
 
@@ -22,6 +21,13 @@ If you are from DSO National Labs and just joined, you might like to read the fo
  * or [Cross-disciplinary projects]({{ site.baseurl }}{% link _posts/2017-09-20-Cross-disciplinary-projects.md %})
  * [Roles]({{ site.baseurl }}{% link _posts/2014-08-13-Roles.md %}) and some [advice]({{ site.baseurl }}{% link _posts/2015-01-13-Advice.md %})
 
-I write for selfish reasons - to crystallise ideas. But if another human should benefit from this, that would be quite fantastic!
+This blog exists for selfish reasons - to crystallise ideas. But if another human should benefit from this, that would be quite fantastic!
 
-[myothercv]({{ site.baseurl }}{% link othercv.md %}) outside the lab
+--- 
+Some real life about:
+
+* [myothercv]({{ site.baseurl }}{% link othercv.md %}) outside the lab. 
+
+* I'm a drummer and will support your amateur-guitarist-friend/sibling's performance at your wedding.
+
+* I was [Singapore Women's Chess Champion in 2005](https://en.wikipedia.org/wiki/Singaporean_Chess_Championship) and am unusually opiniated about whether people should play chess competitively. Easiest non-taboo topic to trigger me at a party.
