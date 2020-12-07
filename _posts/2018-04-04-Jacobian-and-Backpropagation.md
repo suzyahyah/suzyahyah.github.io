@@ -18,10 +18,8 @@ categories: [Calculus, Machine Learning]
 \begin{equation}
 J = [\frac{\delta(f)}{\delta_(x_1)} ... \frac{\delta(f)}{\delta_(x_n)}] = 
 \begin{bmatrix}
-\frac{\delta f_1}{\delta x_1} & \cdots & \frac{\delta f_1}{\delta x_n}
-\\\
-\vdots & \ddots & \vdots
-\\\
+\frac{\delta f_1}{\delta x_1} & \cdots & \frac{\delta f_1}{\delta x_n} \\\
+\vdots & \ddots & \vdots \\\
 \frac{\delta f_m}{\delta x_1} & \cdots & \frac{\delta f_m}{\delta x_n}
 \end{bmatrix}
 \end{equation}
@@ -62,6 +60,7 @@ J_{\theta_i}(f) = \frac{1}{(1+exp(\theta_i)).(1+exp(-\theta_i))}
 \end{equation}
 
 * The Jacobian also functions like a stacked gradient vector for $n$ input instances. 
+
 **Chain rule and Calculating Derivatives with Computation Graphs (through backpropagation)**
 <br>
 * The chain rule of calculus is a way to calculate the derivatives of composite functions. Formally, if $f(x) = f(g(x))$, then by the chain rule: $\frac{\delta f}{\delta x} = \frac{\delta f}{\delta g} \times \frac{\delta g}{\delta x}$. This can be generalised to multivariate vector-valued functions. The Jacobian J of $f(g(x))$ is given by $J_{f(g)}(x) = J_fg(x).J_g(x)$
@@ -70,15 +69,20 @@ J_{\theta_i}(f) = \frac{1}{(1+exp(\theta_i)).(1+exp(-\theta_i))}
 
 * In the context of Neural networks, the layers define a series of composite mathematical operations. We wish to optimize  weights which transform the input from one layer to the next, and thus are interested in the gradients. These gradients can be several network layers away from the loss. The chain rule thus provides a convenient tool which allows us to correctly find the influence of early layer parameters on the final loss.
 
-* Local gradients .. 
+* Imagine a fully connected neural net with 3 inputs, $x_1, x_2, x_3$, and hidden layer with
+  two neurons $z_1, z_2$, and a single scalar output $y$. Then, the derivative of the lower
+layers can be decomposed and nicely computed with matrix multiplication: 
 
-Suppose we define a toy computational graph with the following
-
-$Y = f^o(U\times f^h(W\times x+b) + b_u)$
-
-\begin{equation}
-q = x^2+2x
-y = q+c
-\end{equation}
-
-
+$$
+\begin{align}
+\frac{\delta y}{\delta x} &= \frac{\delta y}{\delta z} \times \frac{\delta z}{\delta x} \\\
+&= 
+\begin{bmatrix}
+\frac{\delta y}{\delta z_1} & \frac{\delta y}{\delta z_2}
+\end{bmatrix} \times 
+\begin{bmatrix}
+\frac{\delta z_1}{\delta x_1} & \frac{\delta z_1}{\delta x_2} & \frac{\delta z_1}{x_3} \\\
+\frac{\delta z_2}{\delta x_1} & \frac{\delta z_2}{\delta x_2} & \frac{\delta z_2}{x_3} 
+\end{bmatrix}
+\end{align}
+$$
