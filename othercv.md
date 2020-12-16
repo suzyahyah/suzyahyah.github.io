@@ -1,6 +1,6 @@
 ---
 layout: page
-title: othercv-for workaway/wwoof
+title: CV for workaway/wwoof
 permalink: /othercv/
 ---
 
