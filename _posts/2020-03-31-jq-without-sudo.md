@@ -4,7 +4,7 @@ title: "Recipe for building jq from source without admin(sudo) rights"
 date: 2020-03-31
 mathjax: true
 status: []
-categories: []
+categories: [Misc]
 ---
 
 

@@ -4,7 +4,7 @@ title: "Modes of Convergence"
 date: 2019-05-20
 mathjax: true
 status: [Instructional]
-categories: [Statistics, Information Theory]
+categories: [Misc]
 ---
 
 **What do we mean by convergence?**

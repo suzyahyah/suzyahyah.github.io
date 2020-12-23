@@ -4,7 +4,7 @@ title: "Gibbs Sampling on Dirichlet Multinomial Naive Bayes (Text)"
 date: 2017-12-05
 mathjax: true
 status: [Code samples, Instructional]
-categories: [Bayesian Inference, NLP]
+categories: [Bayesian Inference]
 ---
 
 ### Key Concepts

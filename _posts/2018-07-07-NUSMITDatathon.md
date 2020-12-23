@@ -4,7 +4,7 @@ title: "Studying drug-drug interactions and predictors of adverse vascular outco
 date: 2018-07-07
 mathjax: true
 status: [Hackathon]
-categories: [Projects, Healthcare, Hackathon]
+categories: [Projects]
 ---
 
 Contributors: Suzanna Sia(co-author), Anthony Li(co-author), Bryce Tan, Yang Qianyu, Lee Chen Fei, Wang Zhi, Gabriel Chew, Charumathi Sabanayagam

@@ -4,7 +4,7 @@ title: "Gotchas in Cython; Handling numpy arrays in cython class"
 date: 2018-12-01
 mathjax: true
 status: [Code samples]
-categories: [Cython, Programming]
+categories: [Misc]
 ---
 
 Everyone knows you should type your variables in cython and get amazing speedups! If only... The first time I followed this advice I got a 1.3 times speed up and balked. So here are a few things I gathered after

@@ -4,7 +4,7 @@ title: "Clean TreeLSTMs implementation in PyTorch using NLTK treepositions and E
 date: 2019-08-11
 mathjax: true
 status: [Code samples, Instructional]
-categories: [PyTorch, NLTK, Parsing]
+categories: [PyTorch]
 ---
 
 #### Overview

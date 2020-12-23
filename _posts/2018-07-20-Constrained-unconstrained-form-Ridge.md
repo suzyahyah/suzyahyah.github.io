@@ -4,7 +4,7 @@ title: "Equivalence of constrained and unconstrained form for Ridge Regression"
 date: 2018-07-20
 mathjax: true
 status: [Instructional]
-categories: [Math, Optimization]
+categories: [Optimization]
 ---
 
 ### Introduction

@@ -4,6 +4,7 @@ title: "Adversarial NLP examples with Fast Gradient Sign Method"
 date: 2020-12-02
 mathjax: true
 status: [Code samples, Instructional]
+categories: [Misc]
 ---
 
 Can we generate Adversarial Examples for NLP using the textbook Fast Gradient Sign Method

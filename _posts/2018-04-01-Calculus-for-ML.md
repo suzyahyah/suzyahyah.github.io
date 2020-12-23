@@ -4,7 +4,7 @@ title: "Calculus for Machine Learning"
 date: 2018-04-01
 mathjax: true
 status: [Instructional]
-categories: [Math, Machine Learning, Calculus]
+categories: [Machine Learning, Calculus]
 ---
 
 ### Model Preliminaries

@@ -4,7 +4,7 @@ title: "Algorithms on Graphs: Fastest Route"
 date: 2018-03-30
 mathjax: true
 status: [Code samples, Instructional]
-categories: [Algorithms & Data Structures]
+categories: [Misc]
 ---
 ### Key Concepts
 We often want to find the shortest path from A to B, where A and B are expressed as nodes, and linked by edges in some graph structure. This simple problem description is non-trivial because of certain properties of the problem and increasingly relaxed assumptions about the problem.
