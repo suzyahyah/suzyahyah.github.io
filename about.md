@@ -36,4 +36,5 @@ Some real life about:
 
 * I was [Singapore Women's Chess Champion in 2005](https://en.wikipedia.org/wiki/Singaporean_Chess_Championship) and am unusually opiniated about whether people should play chess competitively. Easiest non-taboo topic to trigger me at a party.
 
-* Amateur drummer, *always down to jam.*
+* Amateur drummer, always down to jam. Here's a [small contribution to the drumming
+  world](https://twitter.com/suzyahyah/status/1344525618004676609)
