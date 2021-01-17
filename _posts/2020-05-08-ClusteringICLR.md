@@ -4,7 +4,7 @@ title: "Some Clustering Papers at ICLR20"
 date: "2020-05-08"
 mathjax: true
 status: [Under construction]
-categories: [Machine Learning]
+categories: [Review]
 ---
 
 

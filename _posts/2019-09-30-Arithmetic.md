@@ -4,7 +4,7 @@ title: "Arithmetic(Book)"
 date: "2019-09-30"
 mathjax: true
 status: [Under construction, Book Review]
-categories: [Book Review]
+categories: [Review]
 ---
 
 My labmate Mitchell Gordon recommended (and lent) me a book on Arithmetic. If you don't want
