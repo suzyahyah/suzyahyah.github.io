@@ -30,7 +30,7 @@ plugins:
 header_pages:
   - about.md
   - category.md
-
+  - advisors.md
 sass:
   sass_dir: _sass
   style: compressed
