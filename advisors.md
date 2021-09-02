@@ -9,3 +9,6 @@ I was advised by [Chieu Hai Leong](https://chaileon.github.io) (DSO National Lab
 I'm also very lucky to work with [Kokil Jaidka](https://kokiljaidka.wordpress.com/about/) (National University of Singapore), Lambert Mathias (Facebook AI Integrity), and [Jason Eisner](https://www.cs.jhu.edu/~jason) (JHU).
 
 In my previous life I learnt some Human Factors and Social psychology from [Angela Tan](https://www.linkedin.com/in/angela-tan-aa67487/) and [Bernice Khoo](https://www.linkedin.com/in/bernicekhoo/?originalSubdomain=sg). I owe much to Dr. How Khee Yin, Chua Kuan Seah, Sng Mui Tiang, and too much to Natalia Edzgveradze.
+
+<br>
+My blogging style is **heavily** inspired by [Jeremy Kun](https://jeremykun.com/) and [very recently]({{ site.baseurl }}{% link _posts/2021-02-09-USA4x1.md %}), [Tianna Bartoletta](https://tiannabee.com/).
