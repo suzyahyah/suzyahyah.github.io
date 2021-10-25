@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins advised by [Kevin Duh](http://cs.jhu.edu/~kevinduh/). 
+I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins.
 
 This blog exists for selfish reasons. But if another human were to benefit, that would be quite
 fantastic! 
@@ -31,7 +31,7 @@ Some real life about:
 
 * [My other cv]({{ site.baseurl }}{% link othercv.md %}) outside the lab. 
 
-* I was [Singapore Women's Chess Champion in 2005](https://en.wikipedia.org/wiki/Singaporean_Chess_Championship) and am unusually opiniated about whether people should play chess competitively. Easiest non-taboo topic to trigger me at a party.
+* I played Chess when I was younger [Singapore Women's Chess Champion in 2005](https://en.wikipedia.org/wiki/Singaporean_Chess_Championship) and am unusually opiniated about whether people should play chess competitively. Easiest non-taboo topic to trigger me at a party.
 
 * Amateur drummer, always down to jam. Here's a [small contribution to the drumming
   world](https://twitter.com/suzyahyah/status/1344525618004676609)
