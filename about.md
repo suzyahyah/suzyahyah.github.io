@@ -31,7 +31,7 @@ Some real life about:
 
 * [My other cv]({{ site.baseurl }}{% link othercv.md %}) outside the lab. 
 
-* I [played Chess when I was younger](https://en.wikipedia.org/wiki/Singaporean_Chess_Championship) and am unusually opiniated about whether people should play chess competitively. Easiest non-taboo topic to trigger me at a party.
+* I [played Chess when I was younger](https://en.wikipedia.org/wiki/Singaporean_Chess_Championship). More than a decade later, my mind might be in the right place to try again.
 
 * Amateur drummer, always down to jam. Here's a [small contribution to the drumming
   world](https://twitter.com/suzyahyah/status/1344525618004676609)
