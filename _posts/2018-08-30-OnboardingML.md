@@ -9,6 +9,8 @@ categories: [Machine Learning]
 
 Contributors: Suzanna Sia, Pan Xinghao, Chieu Hai Leong
 
+*If you're from DSO, I also recommend: [advice about the workplace]({{ site.baseurl }}{% link _posts/2015-01-13-Advice.md %})*
+
 ### Introduction
 
 The intended audience is people who are just starting out in a ML research outfit. Although examples are written using a Linux, NLP, Python slant, the points here are meant to be OS, Language and Application agnostic. 
@@ -325,3 +327,7 @@ Then you can logout and your jobs will be safely running in the server. The next
 "Keep a research diary. Have a single log for every day you work on the project and section it
 into focus/meeting notes/bug fixes/ bug watch/changes etc. and preliminary results just copying
 and pasting from logs. It helps keep track of things you've tried and how you fixed errors."  -- Alexandra Delucia
+
+
+---
+
