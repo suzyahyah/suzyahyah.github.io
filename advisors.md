@@ -10,7 +10,10 @@ My primary advisor is [Kevin Duh](http://cs.jhu.edu/~kevinduh/). I'm also very l
 
 In my previous life I learnt some Human Factors and Social psychology from [Angela Tan](https://www.linkedin.com/in/angela-tan-aa67487/) and [Bernice Khoo](https://www.linkedin.com/in/bernicekhoo/?originalSubdomain=sg). 
 
-I owe much to [Dr. How Khee Yin](https://sg.linkedin.com/in/khee-yin-how-28367319), [Chua Kuan Seah](https://sg.linkedin.com/in/kuanseah), [Sng Mui Tiang](https://sg.linkedin.com/in/mui-tiang-sng), and too much to [Natalia Edzgveradze](https://ratings.fide.com/profile/13600788).
+I owe much to [Dr. How Khee Yin](https://sg.linkedin.com/in/khee-yin-how-28367319), [Chua Kuan Seah](https://sg.linkedin.com/in/kuanseah), [Sng Mui Tiang](https://sg.linkedin.com/in/mui-tiang-sng), and too much to [Natalia Edzgveradze](https://ratings.fide.com/profile/13600788). 
+
+<br>
+I'm thankful to Mr Enrique Pacencia and Mr Viktor Varavin who taught me Chess most patiently when I was a child.
 
 <br>
 My blogging style is inspired by [Jeremy Kun](https://jeremykun.com/) and [very recently]({{ site.baseurl }}{% link _posts/2021-02-09-USA4x1.md %}), [Tianna Bartoletta](https://tiannabee.com/).
