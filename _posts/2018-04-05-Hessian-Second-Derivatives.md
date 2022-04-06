@@ -6,6 +6,9 @@ mathjax: true
 status: [Instructional]
 categories: [Calculus]
 ---
+The eigenvalues of the Hessian matrix of the loss function, tell us the curvature of the loss
+function. The more we know about the loss function, the cleverer our optimisation methods.
+
 **Hessian matrix: Second derivatives and Curvature of function**
 * The Hessian is a square matrix of second-order partial derivatives of a scalar-valued function, $f:\mathbb{R}^n \rightarrow \mathbb{R}$. Let the second-order partial derivative $f\'\'(x)$, be the partial derivative of the gradient $f'(x)$. Then the Hessian, $H = f\'\'(x) \in \mathbb{R}^{n\times n}$. 
 * Recall that the gradient of $f:\mathbb{R}^n \rightarrow \mathbb{R}$ can be written as 

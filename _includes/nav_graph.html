@@ -15,6 +15,9 @@
             margin-right: 20px;
             margin-left: 20px;
         }
+        #nav-descript {
+            display: none;
+        }
     </style>
 
 
@@ -33,18 +36,15 @@ function hideshow(){
 <button type="button" class="btn btn-primary" onclick="hideshow()">Toggle Navigation</button>
 
 <div id="nav-descript" class="container-fluid", style="max-width:900px;">
-      The interactive display below provides a graphical overview and navigation for the
-      content in this blog. Each node(circle) represents a post and links are drawn between
-      posts if they belong to the same category.
+      The interactive display below provides a graphical overview and navigation. Each node(circle) represents a post and links are drawn between posts if they belong to the same category.
       <br><br>
       Actions:
       <li> Click on the link to see the category. </li>
       <li> Mouseover the post to see the post title. </li>
       <li> Click on the node to navigate to the post. </li>
-
       <br><br>
 
-<div id="mynetwork", class="container-fluid", style="max-width: 800px;"></div>
+<div id="mynetwork", class="container-fluid", style="max-width: 500px;"></div>
 </div>
 
 <script type="text/javascript">
