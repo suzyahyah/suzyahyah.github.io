@@ -1,0 +1,47 @@
+---
+layout: post
+title: Large-scale Language Modeling is Hand-wavily Meta learning
+date: 2021-10-10"
+mathjax: true
+status: [Under Construction]
+categories: [Speculative]
+---
+
+#### Background on Meta-Learning
+
+Meta-learning, or "learning to learn", refers to a learning paradigm that infers an inductive bias from data corresponding to multiple related tasks, with the goal of improving the sample efficiency for new, previously unobserved tasks. A typical presentation of meta-learning has two optimizations at play – the task specific parameters $\theta_{1 \cdots j}$, which learns new tasks, and the meta-learner with parameters $\theta_{\textrm{shared}}$, which trains the learner. For task $j$, which defines a sequence of tokens $x_1, \cdots, ,x_t, \cdots, x_T$, the task $j$ specific parameters $\theta_j$ are
+
+$$
+\theta_j^{*} = \mathrm{argmin}_{\theta_j} \mathbb{E}_{\textbf{x}\sim \mathcal{D}_{\varphi_j}^{\textrm{train}}}
+$$
+
+  and the shared parameters $\theta_{\textrm{shared}}$ are found by minimising the loss on the test distributions, with the goal of finding $\theta_{\textrm{shared}}^*$ that can generalise to new tasks on a few training samples.
+
+$$
+\theta_{\textrm{shared}}^{*} = \textrm{argmin}_{\theta_{\textrm{shared}}} \sum_{j}^{\textrm{ntasks}} \mathbb{E}_{\textbf{x} \sim \mathcal{D}^{\textrm{test}}_{\varphi_j}} [\mathcal{L}(f_{\theta_{\textrm{shared}}, \theta_j} (x_<t), x_t)]
+$$
+
+Methods for meta-learning have typically fallen into one of three categories: blackbox meta-learning (with recurrent models), metric learning, and learning optimizers. In the case of blackbox meta-learning, the parameters are not explicitly separate, and meta-learning is expected to arise from the conditions of the data distribution $D$.
+
+$$
+\theta = \mathrm{argmin}_{\theta}\mathbb{E}_{D\sim p(D)}[\mathcal{L}(f_{\theta}, D)       ]
+$$
+
+In a typical meta-learning set up, machine learning researchers control the base-train, meta-train datasets, learning algorithm so as to induce meta-learning. This is all very carefully constructed. But in Large-scale Language Modeling the construction comes for free.
+
+<br>
+
+#### Language Modeling is Multi-task Learning
+
+  In language modeling, a document or sequence of tokens, is a realisation of an episodic rollout from a task. i.e, each token is an "instance" drawn from that "task". We can think of different genres or topics as different distributions over sequences and therefore different tasks, but really the mapping of tasks to topics is as arbitrary as topics themselves, since topics are traditionally defined as a distribution over tokens. 
+
+   In Natural Language, the space of possible strings is infinitely large. But many of these strings have probability practically close to 0. At any point $t$, the subset of output tokens which have any significant probability is very small. The probability of string sequences up to time $t$ which are associated with this space of outputs is also small. The whole space of Language Modeling can therefore be seen as many small (possibly overlapping) tasks. 
+
+**What are these tasks and how are they defined?** The way we typically define "tasks" in NLP is something which is useful to humans (sentiment analysis, QA), or based on linguistics (POS tagging, Entity Resolution). However, the language model does not care about these constructs. Loosely we can consider a task $j$ as a prediction problem which requires the model to learn a non-trivial mapping $f_{\theta_j}$ to differentiate amongst a subset of the vocabulary $y \in \mathcal{V}_j$, when provided with related contexts. As the parameters fit to language modeling, the "number of tasks" as defined by the context and space of plausible next tokens is ill-defined. But conceptually this should increase/become increasingly refined as the model learns more and more about subspaces (or manifolds if you like that hypothesis) in language. 
+
+<!--At initialisation, there is 1 task, where each vocabulary output has uniform probability of $\frac{1}{\mathcal{V}}$. After several iterations of training n example of this picture, is how fluency is usually a precursor to semantic coherence in Language Model training. It is "easy" for language model to be fluent because the space of possible output tokens that can be selected for a fluent sentence is large. Also in multi-task learning, the models learn shared parameters which are useful for across tasks. This is what we consistently observe with earlier layers of modern large LMs.-->
+
+#### Language Modeling on Diverse (web) texts is Meta-Learning
+
+  Language Modeling as Multi-task learning has been observed since before the era of Transformers with large LMs based on Recurrent neural Networks.  The type of data on the web used to train these large LMs are similar to a base-learn, meta-learn setup that meta-learning researchers actively try to construct. Due to the size of the corpuses, it is handwavily conceivable, that training simulates a scenario where each step of batch gradient descent could be done on several distinct types of domains, simulating a meta-train procedure. 
+
