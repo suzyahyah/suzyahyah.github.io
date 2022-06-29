@@ -6,7 +6,7 @@ permalink: /about/
 
 I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins.
 
-This blog exists for me to learn stuff. But if another human were to benefit, that would be quite
+This blog exists for me to learn. But if another human were to benefit, that would be quite
 fantastic! 
 
 <br>

@@ -16,4 +16,5 @@ I owe much to [Dr. How Khee Yin](https://sg.linkedin.com/in/khee-yin-how-2836731
 I'm thankful to Mr Enrique Pacencia and Mr Viktor Varavin who taught me Chess most patiently when I was a child.
 
 <br>
-My blogging style is inspired by [Jeremy Kun](https://jeremykun.com/) and [very recently]({{ site.baseurl }}{% link _posts/2021-02-09-USA4x1.md %}), [Tianna Bartoletta](https://tiannabee.com/).
+My blogging style is inspired by [Jeremy Kun](https://jeremykun.com/) and my hero is Allyson Felix. 
+
