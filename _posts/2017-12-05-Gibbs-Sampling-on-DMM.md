@@ -227,7 +227,7 @@ P(\theta_0\|L_1^{(t+1)}, .., L_N^{(t+1)}, C, \theta_1^{(t)}, \gamma_\theta,
 \gamma_\pi)
 \end{equation}
 
-<span style="color:#ff6666">**To help us with all the counts, we create document and corpus [classes](https://github.com/suzyahyah/llda/blob/master/struct_utils.py) that can be easily re-used for texxt models related to probabilistic MCMC updates.**</span>
+<span style="color:#ff6666">**To help us with all the counts, we create document and corpus [classes](https://gist.github.com/suzyahyah/7ba0884141b756134f21d0a225718cf7) that can be easily re-used for texxt models related to probabilistic MCMC updates.**</span>
 
 **3.1 Conditional update of $L_j$**
 
