@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "You’re not good enough, but its not a competition"
+title: "You don't feel like you're good enough, but its not a competition"
 date: "2022-06-28"
 mathjax: true
 status: 
@@ -20,3 +20,5 @@ The universe has put you here, and asks only for you to gain and then return kno
 
 Maybe someone would have built something "better". But for whatever reason, the one who happened to wander into that space was you. You might be jostling for a while, and a while might mean years, but in the end you will find the knowledge that was always meant for you to find.
 
+
+**Writer's note; what I wish I could say to some of my friends, if ever I manage to frame it in a less obnoxious/preachy way.
