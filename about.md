@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins. I seem to have settled on the research topic of autoregressive LLM Machine Translation. I am Singaporean and served my time (government bond) at DSO National Labs from 2013-2018, first as a cognitive and social psychologist, and then as a NLP Engineer. I have a joint major in A.I and Psychology from the University of Edinburgh.
+I am a CS PhD student (2018-) focusing on NLP at Johns Hopkins. I seem to have settled on the research topic of autoregressive LLM Machine Translation. I am Singaporean and was at DSO National Labs from 2013-2018, first as a cognitive and social psychologist, and then as a NLP Engineer. Before that I joint majored in A.I and Psychology from the University of Edinburgh.
 
 This blog exists for me, but if another human were to benefit, that would be quite
 fantastic! 

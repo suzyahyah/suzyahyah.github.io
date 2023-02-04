@@ -1,0 +1,14 @@
+---
+layout: post
+title: "Dynamic Programming for Reinforcement Learning, the importance of the Bellman equations; (with Gymnasium)"
+date: 2023-02-01
+mathjax: true
+status: [Code samples, Instructional]
+categories: [Reinforcement Learning]
+---
+
+The Bellman optimality equation is the necessary condition to solve the RL problem via dynamic Programming, which is the problem of finding the optimal policy.
+
+### Deriving Bellman Equations in RL
+
+To guide us on how to act on the current time step, we need **Value Functions** of either being in a state, or of taking a particular action in a state (state-action).  A key assumption to deriving this is the Reward Hypothesis: *All that is goals and plans can be described as the cumulative sum of future rewards.* The sum of future rewards from time $t$, can be expressed as the reward at that timestep, $R_t$, and a  discounted future sum of rewards $G_{t+1}$ which is itself is defined in terms of future rewards. 
