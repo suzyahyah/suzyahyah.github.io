@@ -4,7 +4,7 @@ title: "Recipe for connecting to Google Drive from Remote Server"
 date: 2022-05-10
 mathjax: true
 status: []
-categories: [Misc]
+categories: [Code]
 ---
 
 This recipe uses Python API to connect to Google Drive for personal use. When doing collaborative research we may want to upload results files for easy
