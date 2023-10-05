@@ -117,6 +117,6 @@ It took a while to develop but utimately it paid off immensely as I managed to
 * reliably retrieve results by changing just the config file or changing a nested config.
 * ran all 5 projects in my dissertation using the same codebase.
 
-The second biggest secret is my build system, which I might write about later.
+The second biggest secret is my build system, which relates to the point about "keep things modular by organising configs to match modules". I might write about this later.
 
 P.S When I started my PhD I was running bash scripts [like this](https://github.com/suzyahyah/adaptive_mixture_topic_model/blob/master/bin/runGaussian_py.sh).
