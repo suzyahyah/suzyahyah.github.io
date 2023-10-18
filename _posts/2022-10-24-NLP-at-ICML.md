@@ -3,7 +3,8 @@ layout: post
 title: "NLP Papers at ICML2022"
 date: "2022-10-24"
 mathjax: true
-status: 
+status: [Conference Review]
+tldr: Several papers were presented at ICML 2022, including topics such as co-training large language models with smaller models, using derivative-free optimization for language models, interpretable text modeling, generative cooperative networks for language generation, language model architecture for zero-shot generalization, coherent entity use in narrative generation, retrieval-augmented language models, and self-conditioning pre-trained language models. Some papers proposed new methods, while others explored existing techniques in various ways.
 categories: [Review]
 ---
 

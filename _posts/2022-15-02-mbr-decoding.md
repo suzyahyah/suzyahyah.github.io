@@ -4,6 +4,7 @@ title: "Minimum Bayes Risk Decoding"
 date: "2022-02-15"
 mathjax: true
 status: [Instructional]
+tldr: Minimum Bayes Risk (MBR) Decoding is a decision-making approach used in fields like Automatic Speech Recognition and Machine Translation. It aims to select the best sequence or hypothesis from a set of possibilities by minimizing the expected loss over a probability distribution of sequences. MBR decoding is based on consensus and often involves approximations, making it an alternative to Beam Search, the default decoding method in sequence models. However, MBR Decoding does not necessarily minimize the actual Bayes Risk but is a form of consensus decoding. Its effectiveness depends on the nature of the learned probability distribution, and it may struggle with pathological or unusual sequences. Researchers have flexibility in applying various loss functions to the decoding process.
 categories: [Bayesian Inference, Machine Translation]
 ---
 

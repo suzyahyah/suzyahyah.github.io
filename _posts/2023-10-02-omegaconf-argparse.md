@@ -4,6 +4,7 @@ title: "Lean OmegaConf Argparse System"
 date: "2023-10-01" 
 mathjax: true 
 status: [Code samples]  
+tldr: Discusses a YAML-based hierarchical configuration system called OmegaConf, which is useful for managing configurations across multiple sources. It explains the challenges of using argparse for nested configurations and introduces a custom file naming system for easy organization and retrieval of project-specific files. The post concludes by highlighting the benefits of this approach in terms of reducing project switch lag, improving file naming, and streamlining configuration management for various projects.
 categories: [Code]
 ---
 

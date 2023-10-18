@@ -5,6 +5,7 @@ date: "2022-06-28"
 mathjax: true
 status: 
 shape: dot
+tldr: Success in academia shouldn't be about competition but gaining and sharing knowledge. External metrics like publications, citations, and retweets don't define your true academic worth. It's more about what you learn and contribute. Your unique journey in the pursuit of knowledge, no matter how long, will ultimately lead to discoveries meant for you to find and share with the world.
 categories: [Work Experiences]
 ---
 

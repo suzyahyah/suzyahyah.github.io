@@ -4,6 +4,7 @@ title: "Clean TreeLSTMs implementation in PyTorch using NLTK treepositions and E
 date: 2019-08-11
 mathjax: true
 status: [Code samples, Instructional]
+tldr: Tree LSTMs are an extension of traditional LSTMs designed for tree-structured network topologies. Unlike sequential models, which process words in temporal order, tree-structured models follow the given syntactic structure of a sentence, composing phrases based on this structure. The implementation of Tree LSTMs involves a parser to generate a parse tree, conversion of this tree into instructions for combining words, and the use of these instructions to progressively update RNN units. 
 categories: [PyTorch]
 ---
 

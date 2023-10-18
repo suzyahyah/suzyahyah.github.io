@@ -4,6 +4,7 @@ title: "Adversarial NLP examples with Fast Gradient Sign Method"
 date: 2020-12-02
 mathjax: true
 status: [Code samples, Instructional]
+tldr: Explores the possibility of generating adversarial examples in natural language processing (NLP) using the Fast Gradient Sign Method (FGSM). Adversarial examples are inputs that change the model's output prediction while appearing benign. The FGSM is commonly used in computer vision to create adversarial images but can be adapted for NLP tasks.
 categories: [Misc]
 ---
 

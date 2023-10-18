@@ -9,9 +9,9 @@ layout: default
 -->
 
 <body>
-  <div class="home">
-    {% include nav_graph.html %}
 
+  <div class="home">
+  <button id="toggleGptSummary" type="button" class="btn btn-primary"> Toggle ChatGPT Summaries</button>
     <ul class="post-list">
       {% for post in site.posts %}
         <li>
@@ -20,31 +20,59 @@ layout: default
           <h2>
             <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
           </h2> 
-          {% assign statuses = post.status %}
+
+        <div class="gptSummary", style="max-width:900px;">
+            <span class="tldr">{{ post.tldr }}</span>
+        </div>
+
+
+  
+          {% assign statuses = post.categories %}
+<!--          {% assign yellow = "PyTorch, Code, Projects" | split: ", " %}
+          {% assign green = "Optimization, Bayesian Inference, Calculus" | split: ", " %}
+          {% assign blue = "Misc, Review" | split: ", " %}
+          {% assign teal= "Machine Learning" | split: ", " %} 
+          {% assign grey= "Work Experiences" | split: ", " %} -->
+          
           
           {% for status in statuses %}
 
-            {% if status == "Hackathon" %}
-              <span class="label label-warning">{{status}}</span>
+            {% if status == "Projects" %}
+              <span class="label label-warning" disabled>{{status}}</span>
+            {% elsif status == "Code" %}
+              <span class="label label-warning" disabled>{{status}}</span>
+            {% elsif status == "PyTorch" %}
+              <span class="label label-warning" disabled>{{status}}</span>
+ 
           
-              {% elsif status == "Under construction" %}
-                <span class="label label-default">{{status}}</span>
+              {% elsif status == "Optimization" %}
+                <span class="label label-success">{{status}}</span>
           
-              {% elsif status == "Instructional" %}
-                <span class="label label-info">{{status}}</span>
+              {% elsif status == "Bayesian Inference" %}
+                <span class="label label-success">{{status}}</span>
             
-              {% elsif status == "Code samples" %}
+              {% elsif status == "Calculus" %}
                 <span class="label label-success">{{status}}</span>
 
-              {% elsif status == "Book Review" %}
+               {% elsif status == "Misc" %}
                 <span class="label label-primary">{{status}}</span>
- 
-            
-              {% else %}
+                
+                {% elsif status == "Review" %}
                 <span class="label label-primary">{{status}}</span>
+
+               {% elsif status == "Machine Learning" %}
+              <span class="label label-info">{{status}}</span>
+
+                {% elsif status == "Reinforcement Learning" %}
+              <span class="label label-info">{{status}}</span>
+
+                {% elsif status == "Work Experiences" %}
+              <span class="label label-default">{{status}}</span>
             
             {% endif %}
           {% endfor %}
+
+
         </li>
       {% endfor %}
 
@@ -53,5 +81,6 @@ layout: default
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
 
   </div>
+  <script type="text/javascript" src="{{ site.baseurl }}/assets/js/toggle-summary.js"></script>
 
 </body>

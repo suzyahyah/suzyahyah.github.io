@@ -4,6 +4,7 @@ title: "Lagrange Multipliers and Constrained Optimization"
 date: 2018-04-7
 mathjax: true
 status: [Under construction, Instructional] 
+tldr: The Lagrange Multiplier method is a technique for finding local minima and maxima of a differentiable function while subject to equality constraints on its independent variables. This method involves ensuring that the function and constraint are tangent to each other at the solution point. It can be applied to various optimization problems and has applications in machine learning, information theory, and more. While it can handle complex constraint equations and inequality constraints, it may not be suitable for large-scale problems.
 categories: [Calculus, Optimization]
 ---
 <u>Intuition</u>

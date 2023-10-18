@@ -5,6 +5,7 @@ date: "2022-11-27"
 mathjax: true
 status: [Review]
 shape: dot
+tldr:  The debate about consciousness in language models (LLMs) is complex, with arguments both for and against. David Chalmers defines consciousness as subjective experience and suggests breaking it down into dimensions like sensory, affective, cognitive, agentive, and self-consciousness. Arguments for consciousness in LLMs include self-reporting and conversational abilities, but these are debatable. Arguments against involve the absence of biology, senses, world-models, self-models, unified agency, and recurrent processing. The debate continues, with the likelihood of LLM consciousness emerging in the next 10-20 years is 50-50.
 categories: [Misc]
 ---
 

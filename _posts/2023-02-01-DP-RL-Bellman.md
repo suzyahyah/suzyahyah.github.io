@@ -4,6 +4,7 @@ title: "Dynamic Programming for Reinforcement Learning, the importance of the Be
 date: 2023-02-01
 mathjax: true
 status: [Code samples, Instructional]
+tldr: Explains the Bellman optimality equation, which is crucial for finding the optimal policy in Markov Decision Processes (MDPs) using dynamic programming. It explores the concept of value functions, both for states and state-action pairs, and how they are essential in reinforcement learning. The post also discusses the Policy Iteration algorithm, breaking it down into policy evaluation and policy improvement phases. It provides insights into the centrality of Bellman equations in RL optimization and concludes with experiments on the Gymnasium Frozen Lake environment.
 categories: [Reinforcement Learning]
 ---
 

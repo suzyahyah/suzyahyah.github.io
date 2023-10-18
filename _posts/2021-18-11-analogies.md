@@ -4,6 +4,7 @@ title: "Formalising Analogies for A.I"
 date: "2021-11-18"
 mathjax: true
 status: [Review]
+tldr: Analogies are comparisons between two things based on their similarities and are essential for human communication and reasoning. However, defining and using analogies in AI is challenging due to their complexity. Various formalisms, such as arithmetic, geometric, logical, algebraic, complexity, and functional views, have been proposed to represent and use analogies computationally. Each approach has its strengths and weaknesses, and there is ongoing research in this field.
 categories: [Machine Learning]
 ---
 
