@@ -35,8 +35,8 @@ end=$2
 while true; do
   for jobID in `seq ${start} 1 ${end}`; do
     if [ -e logs_o/*$jobID ]; then # it's your file
-      echo -n "$x>"; sed -n 1p logs_o/*$x # command used to run the job
-      cat logs_e/*$x
+      echo -n "$jobID>"; sed -n 1p logs_o/*$jobID # prints command used to run the job
+      cat logs_e/*$jobID # prints job progress
       echo "" 
     fi
   done
