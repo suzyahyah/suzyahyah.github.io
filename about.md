@@ -3,7 +3,7 @@ layout: page
 title: About
 permalink: /about/
 ---
-I joined Hyundai Motor Group as a Senior AI Research Engineer to chart and implement LMMM Strategy in their smart factory - I just like the [car](https://insideevs.com/news/674289/hyundai-ioniq-6-car-and-driver-ev-of-the-year/). 
+I joined Hyundai Motor Group as a Senior AI Research Engineer to chart and implement Large Multimodal Model Strategy in their smart factory - I just like the [car](https://insideevs.com/news/674289/hyundai-ioniq-6-car-and-driver-ev-of-the-year/). 
 
 I graduated with a PhD in CS (Machine Larning and NLP) from Johns Hopkins researching [Autoregressive LLM Machine Translation](https://arxiv.org/pdf/2305.03573.pdf), and previously worked on [explainability in Natural Language Inference](https://arxiv.org/pdf/2205.12469.pdf), [Topic Modeling](https://aclanthology.org/2021.eacl-main.209.pdf), [Clustering](https://arxiv.org/pdf/2108.05525.pdf), [Computational Arguments](https://aclanthology.org/2022.emnlp-main.818.pdf), [Speaker Diarization](https://arxiv.org/pdf/2008.13213.pdf) and [Conversational Systems](https://dl.acm.org/doi/abs/10.1145/3132847.3133185). I did two Covid internships at Facebook AI Integrity (Hate Speech). 
 
