@@ -1,13 +1,13 @@
 --- 
 layout: post
-title: "A modern LLM research landscape"
+title: "A modern LLM research landscape if you're not Pre-training"
 date: "2023-12-05"
 mathjax: true
 status: [NLP]
 categories: []
 ---
 
-The papers from this year's major NLP/ML conferences (ACL, EMNLP, Neurips, ICML) indicate that community has pretty much accepted that Large Language Models (LLM) are here to stay. The paradigm has clearly shifted from one that is task or methods centric, to one that is model centric. One might wonder what the "NLP" research areas in this new paradigm are. The chart below is my current interpretation of the landscape in 2023. 
+The papers from this year's major NLP/ML conferences (ACL, EMNLP, Neurips, ICML) indicate that community has pretty much accepted that Large Language Models (LLM) are here to stay. The paradigm has clearly shifted from one that is task or methods centric, to one that is model centric. One might wonder what the "NLP" research areas in this new paradigm are for those who are not in the business of training from scratch. The chart below is my current interpretation of the landscape in 2023. 
 
 <u>Training and Inference Pipelines</u>
  
