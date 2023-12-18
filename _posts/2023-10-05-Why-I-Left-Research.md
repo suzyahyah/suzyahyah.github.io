@@ -18,7 +18,7 @@ I don't think it's too controversial to say the next model release can effective
 
 Whereas in contrast, the Technology Readiness Level (TRL) is high enough that working on transitioning LLMs to real world use cases is *real*, it’s not the chatbot hype of 2014. NLP Research is branching into all things surrounding LLMs from new lightweight training schemes, to Fast inference, to making them play-well with all sorts of input data and generations. But what do companies really care about? Somehow I doubt most companies care about how well a model can caption an image or whether we can detect LLM generated text. While different companies have different use-cases, a common painpoint would be on how to most *painlessly* make LLMs play well with existing organisational knowledge which can come in *any form of data*. **We need to be in the front line of new NLP Applications, experience the struggle and excitement of early adopters, and to see and work with their data.**
 
-Hence, while I still enjoy research. But I’m strategically pivoting out of it when it’s the hottest and most
+I still enjoy research. But I’m strategically pivoting out of it when it’s the hottest and most
 lucrative that it’s ever been.
 
 <br>
