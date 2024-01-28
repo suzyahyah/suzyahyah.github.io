@@ -4,7 +4,7 @@ title: "Python Decorators for Monitoring GPU Usage"
 date: "2024-01-25"
 mathjax: true
 status: [Code samples]
-categories: [code, PyTorch]
+categories: [Code, PyTorch]
 ---
 
 
