@@ -1,6 +1,6 @@
 --- 
 layout: post
-title: "The LLM Research Landscape"
+title: "LLM Research and Adaptation Landscape"
 date: "2023-12-05"
 mathjax: true
 status: [NLP]
@@ -34,3 +34,10 @@ Within the training and inference pipelines, we often see work around Data, Cont
 
 You can also download this as a [pptx](/assets/LLMResearchLandscape.pptx).
 
+I recently plugged and played the components for a hackathon-ish slide illustrating the phases of LLM domain adaptation. I used this for medical originally (hence the emphasis on privacy and what not) but the phases are generalisable to any domain. Some time spent working in the domain is necessary to build an intuition of what components of the models need more tuning and what is fine to just use off-the-shelf pre-trained LLMs. 
+
+<div id="image-container">
+    <a href="{{ site.baseurl }}/assets/domain_adapt_phase.png" target="_blank" id="zoomable-link">
+        <img src="{{ site.baseurl }}/assets/domain_adapt_phase.png" alt="Zoomable Image">
+    </a>
+</div>
