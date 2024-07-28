@@ -4,7 +4,7 @@ title: "A classical NLP researcher and a GPT-era Engineer meet at the coffee mac
 date: "2024-02-15"
 mathjax: true
 status: [Misc]
-categories: [Misc]
+categories: [Generative Models]
 ---
 
 ### **Preface**

@@ -4,7 +4,7 @@ title: "LLM Research and Adaptation Landscape"
 date: "2023-12-05"
 mathjax: true
 status: [NLP]
-categories: []
+categories: [Generative Models]
 ---
 
 The papers from this year's major NLP/ML conferences (ACL, EMNLP, Neurips, ICML) indicate that community has pretty much accepted that Large Language Models (LLM) are here to stay. The paradigm has clearly shifted from one that is task or methods centric, to one that is model centric. 
