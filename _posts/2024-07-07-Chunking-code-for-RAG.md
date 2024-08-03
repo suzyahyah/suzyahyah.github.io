@@ -14,7 +14,7 @@ For RAG on code, a natural way to chunk code blocks is by parsing the code using
 
 #### **Method**
 
-The `tree-sitter` library allows us to produce concrete syntax trees for various programming language. In this example, we're working with parsing C#. 
+The `tree-sitter` library allows us to produce concrete syntax trees for various programming language. 
 
 #### <u>Build the relevant grammar and parser</u>
 
