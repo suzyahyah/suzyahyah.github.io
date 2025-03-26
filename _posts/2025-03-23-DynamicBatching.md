@@ -12,19 +12,18 @@ categories: [Code]
 
 To maximise GPU memory when training large models, we want to pack tokens such that sequence padding is minimised and GPU memory is maximised. 
 
-We have several options, starting with the default.
+1. `torch.utils.data.dataloader` is an python iterable over a PyTorch dataset
+2. `torch.utils.data.dataset` implements `__getitem()__`, which maps keys to data samples.
+3. `torch.utils.data.sampler` specifies the sequences of keys used in data loading.
+
+By default, the `DataLoader` will collate individual fetched samples into batches using the arguments `batch_size`, `drop_last`, `batch_sampler`, and `collate_fn`. An alternatively, if `batch_size` is None, we can construct a `BatchSampler` which yields a list of keys at a time.
+
 
 #### **Default Approach**
 
-The most default thing to do is to pad every sequence to the maximimum context window, and return a fixed batch size. 
+We have several options, starting with the default.
 
-{% highlight python%}
-from transformers import AutoTokenizer
-tokenizer = AutoTokenizer.from_pretrained(<model_id>, use_fast=True)
-tokenizer(examples['text'], truncation=True, max_length=max_seq_length, padding='longest')
-{% endhighlight %}
-
-However, this is incredibly wasteful. Imagine a batch size of 2, where we have a sequence X1 of length 10 and sequence X2 of length 1000 in the same batch. Sequence X1 will be padded for 990 token positions, which is nearly 50\% wasted GPU memory.
+The most default thing to do is to pad every sequence to the maximimum context window, and return a fixed batch size. However, this is incredibly wasteful. Imagine a batch size of 2, where we have a sequence X1 of length 10 and sequence X2 of length 1000 in the same batch. Sequence X1 will be padded for 990 token positions, which is nearly 50% wasted GPU memory.
 
 <br>
 
@@ -132,3 +131,8 @@ class MyTrainer(Trainer):
 {% endhighlight %}
 
 Then we can easily do `trainer = MyTrainer(..); trainer.train()`. Because we used BatchSampler, the `batch_size` argument given to trainer should be empty or there will be an error thrown regarding a conflict in `batch_size` number.
+
+<br>
+#### **References**
+
+[PyTorch Data Utils Reference](https://pytorch.org/docs/stable/data.html)

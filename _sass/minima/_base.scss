@@ -139,14 +139,14 @@ blockquote {
  */
 pre,
 code {
-  @include relative-font-size(0.8);
+  @include relative-font-size(0.7);
   border: 2px solid $grey-color-light;
   border-radius: 0.5px;
-  background-color: #ccf9f4;
+  background-color: light-grey;
 }
 
 code {
-  padding: 0.5px 3px;
+  padding: 0.5px 1px;
 }
 
 pre {
