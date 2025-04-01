@@ -4,7 +4,7 @@ title: "Dynamic Batching for Training Large Sequence Models (LLMs)"
 date: "2025-03-25"
 mathjax: true
 status: [Code samples]
-categories: [Code]
+categories: [Code, PyTorch]
 ---
 
 
@@ -127,10 +127,28 @@ class MyTrainer(Trainer):
   def _get_train_sampler(self):
     dynamic_sampler = DynamicBatchSampler((trainer.train_dataset['lengths']), max_seq_len=1024, med_batchsize=64)
     return dynamic_sampler
+  
+  def get_train_dataloader(self):
+  # override this method
+    ...
+    dataloader_params = {"collate_fn": data_collator,
+                         "num_workers": self.args.dataloader_num_workers,
+                         "pin_memory": self.args.dataloader_pin_memory,
+                         "shuffle": False,
+                         "sampler": None,
+                         "batch_sampler": self._get_train_sampler(),
+                         "drop_last": False,
+                         "persistent_workers": self.args.dataloader_persistent_workers}
+    dataloader = DataLoader(self.train_dataset, **dataloader_params)
+    return self.accelerator.prepare(DataLoader(self.train_dataset, **dataloader_params))
 
 {% endhighlight %}
 
-Then we can easily do `trainer = MyTrainer(..); trainer.train()`. Because we used BatchSampler, the `batch_size` argument given to trainer should be empty or there will be an error thrown regarding a conflict in `batch_size` number.
+Then we can easily do `trainer = MyTrainer(..); trainer.train()`. 
+
+*Implementation Note*: 
+
+It's necessary to override the `get_train_dataloader()` method to have full control over the dataloader_params. For instance, because we constructed a custom BatchSampler, the `batch_size` argument given to trainer should be empty or there will be an error thrown regarding a conflict in `batch_size` number. This defaults to 1 in Pytorch but defaults to 8 in HuggingFace Trainer.
 
 <br>
 #### **References**
