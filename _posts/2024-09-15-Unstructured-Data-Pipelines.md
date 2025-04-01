@@ -78,7 +78,8 @@ Since we are working with enterprise documents, most likely the paid option to g
 
 With many document sources, we would want to plug-and-play these solutions depending on how well they are performing on each of the unstructured document sources. As long as the library is well-supported, I dont have a good way to know what works *sufficiently well*, and trial and error on any new extraction method that comes along seems to be the way-of-life.
 
-In my limited experience, Proprietary Solutions > Open-source Libraries > Multimodal Prompting > Trained ML models. The reason why trained ML models are ranked last is they probably overfit heavily to the dataset they published on.
+In my limited experience, Proprietary Solutions > Open-source Libraries > Multimodal Prompting > Off-the-shelf Pre-Trained ML models. The reason why trained ML models are ranked last is they probably overfit heavily to the dataset they published on. *Edit (2025)* Proprietary Solutions >  Multimodal Prompting > Open-source Libraries > Off-the-shelf Pre-Trained ML models
+
 
 
 ### **2.2 Visual sanity check**
