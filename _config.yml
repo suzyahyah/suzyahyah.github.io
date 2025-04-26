@@ -39,6 +39,8 @@ sass:
   sass_dir: _sass
   style: compressed
 #Suz added variables
+include:
+  - assets
 styles: "/assets/css/"
 quotes: Quality means doing it right when no one is looking - Henry Ford
 startdate: October 2017

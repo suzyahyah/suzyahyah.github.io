@@ -337,3 +337,38 @@ a.category-post-link {
   width: 100%;
   height: 100%;
 }
+
+
+.pdf-container {
+  width: 100%;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: 600px;
+}
+
+@media (max-width: 768px) {
+  .pdf-viewer {
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-viewer {
+    height: 400px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
