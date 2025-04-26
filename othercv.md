@@ -1,10 +1,16 @@
 ---
-layout: page
+layout: default
 title: Interests
 permalink: /othercv/
 ---
 
-#### **Workaway**
+#### **Main Interest**
+
+Programming. Writing.
+
+<br>
+
+#### **Life Interest**
 
 Workaway is an arrangement where you live and work at one place 5 hours a day 5 days a week in exchange for food and accomodation. 
 
@@ -25,4 +31,12 @@ My Workaway CV, last updated 2021.
 * Very Amateur drummer. Here's a [small contribution to the drumming
   world](https://twitter.com/suzyahyah/status/1344525618004676609), and here's a video from 2021 Covid lockdown. It's not great, I'm still learning.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G66GelPi-t8?si=ejeLKQGbB87XFPmX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="iframe-container">
+  <iframe src="https://www.youtube.com/embed/G66GelPi-t8?si=ejeLKQGbB87XFPmX"
+          title="YouTube video player" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" 
+          allowfullscreen>
+  </iframe>
+</div>

@@ -3,9 +3,9 @@ layout: post
 title: "Data Extraction for Unstructured Document Data"
 date: "2024-09-15"
 mathjax: true
-status: [Review]
+status: [NLP]
 shape: dot
-categories: [NLP]
+categories: [Projects]
 ---
 
 ### **Preliminaries**

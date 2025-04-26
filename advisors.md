@@ -4,6 +4,8 @@ title: Advisors
 permalink: /Advisors/
 ---
 
+#### **Major Influences**
+
 [Han Seunghoon](https://www.linkedin.com/in/louie-han-299584136) (HMGICS) taught me many things about translational RnD strategy and management.
 
 My primary advisor during PhD is [Kevin Duh](http://cs.jhu.edu/~kevinduh/). I'm also very lucky to work with [Kokil Jaidka](https://kokiljaidka.wordpress.com/about/) (National University of Singapore), Lambert Mathias (Facebook AI Integrity), and [Jason Eisner](https://www.cs.jhu.edu/~jason) (JHU).
