@@ -314,14 +314,8 @@ a.category-post-link {
 }
 
 .nav-logo {
-  height: 1.2em; /* This makes it match the font size of the text */
+  height: 40px; /* This makes it match the font size of the text */
   margin-right: 1em;
   vertical-align: middle;
   display: inline-block;
-}
-
-@media screen and (max-width: 600px) {
-  .nav-logo {
-    display: none;
-  }
 }
