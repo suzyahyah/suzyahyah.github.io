@@ -14,8 +14,8 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: "܀ 🏡܀"
-logo: "assets/logo.jfif"
+title: ""
+logo: "/assets/suzyahyah_logo.png"
 email: suzyahyah@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   The best time to plant a tree was 20 years ago. The second best time is now. - Japanese proverb  
@@ -32,6 +32,9 @@ header_pages:
   - about.md
   - category.md
   - advisors.md
+  - talks.md
+  - papers.md
+  - othercv.md
 sass:
   sass_dir: _sass
   style: compressed

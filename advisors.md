@@ -4,7 +4,9 @@ title: Advisors
 permalink: /Advisors/
 ---
 
-My primary advisor is [Kevin Duh](http://cs.jhu.edu/~kevinduh/). I'm also very lucky to work with [Kokil Jaidka](https://kokiljaidka.wordpress.com/about/) (National University of Singapore), Lambert Mathias (Facebook AI Integrity), and [Jason Eisner](https://www.cs.jhu.edu/~jason) (JHU).
+[Han Seunghoon](https://www.linkedin.com/in/louie-han-299584136) (HMGICS) taught me many things about translational RnD strategy and management.
+
+My primary advisor during PhD is [Kevin Duh](http://cs.jhu.edu/~kevinduh/). I'm also very lucky to work with [Kokil Jaidka](https://kokiljaidka.wordpress.com/about/) (National University of Singapore), Lambert Mathias (Facebook AI Integrity), and [Jason Eisner](https://www.cs.jhu.edu/~jason) (JHU).
 
 [Chieu Hai Leong](https://chaileon.github.io) (DSO National Labs), [Steve Renals](http://homepages.inf.ed.ac.uk/srenals/) (University of Edinburgh) and briefly [Jiang Jing](http://w.mysmu.edu/faculty/jingjiang/) taught me things before grad school. 
 
@@ -18,3 +20,4 @@ I'm thankful to Mr Enrique Pacencia and Mr Viktor Varavin who taught me Chess mo
 <br>
 My blogging style is inspired by [Jeremy Kun](https://jeremykun.com/) and my hero is Allyson Felix. 
 
+<br>
