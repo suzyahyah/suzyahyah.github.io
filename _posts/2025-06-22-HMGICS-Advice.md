@@ -51,11 +51,11 @@ Taking stock compared to when I [first wrote about the workplace]({{ site.baseur
 
 * It is not true that with enough time and energy you can achieve anything. Direction, focus and sustaining the momentum of a group is more important, because energy is always lost changing direction.
 
-* To move fast, management should be willing to compromise on the rigour of reporting and exert the effort to fill in the gaps, just as the working level should compromise on the clarity of communication and exert the effort to fill in the gaps. 
+* To move fast, management should be willing to compromise on the rigour of bottom-up reporting and exert the effort to fill in the gaps, just as the working level should exert the effort to fill in the gaps in top-down communication. 
 
-* Every activity should be traceable (at least conceptually) to a ROI. Not having this in mind will lead to many unproductive activities and busy work.
+* Every activity should be traceable (at least conceptually) to its ROI. Not keeping this in mind at individual, team and org level will lead to many unproductive activities and busy work at their respective levels.
 
-* When combating legacy systems, people and mindsets, one can choose gradual transformation or immediate disruption. Generally, gradual transformation can build trust, rare but masterful strokes can successfully execute disruption.
+* When combating legacy systems, people and mindsets, one can choose gradual transformation or immediate disruption. Generally, gradual transformation can build trust, masterful strokes can successfully execute disruption, but it is very rare.
 
 * The vector sum of Individual Contributor's work is the company’s output, management sets and drives the strategic direction of this vector, org culture and infrastructure form the scalar multiplier. 
 
@@ -86,6 +86,6 @@ Taking stock compared to when I [first wrote about the workplace]({{ site.baseur
 
 * Applied Translational R&D does not mean adapt academic results to improve baseline performance, it means, make it work well enough to be put into production.
 
-* Engineers just want to work on and solve interesting problems. Management wants to create reusable frameworks and show progress on KPIs. Tension arises when neither can properly appreciate each other’s priorities. The customer doesn't care and just wants a reliable, stress free product. 
+* Engineers just want to work on and solve interesting problems. Management wants to create reusable frameworks and show progress on project KPIs. Neither can properly appreciate each other’s priorities. The bottom line will suffer when both are detached from the real objective: The customer wants the cheapest possible, reliably engineered, well-designed, stress free product. 
 
 
