@@ -15,7 +15,7 @@ Taking stock compared to when I [first wrote about the workplace]({{ site.baseur
 
 * The youth are the strongest force for positive change until disillusionment sets in from disappointments. We should be intentional about protecting their positive energy and avoid overexposure to things that are out of their control. 
 
-* The sum of ICs work is the company’s output, management sets the strategic direction, org culture and infrastructure form the scalar multiplier. To have alignment with work-life, we need alignment with strategy, culture, and be sufficiently supported by infra.
+* Most people are intrinsically motivated to build something sustainable and scalable. However in a high intensity workplace, the actions which remove the sources of discomfort that weigh most heavily end up being prioritised. 
 
 
 <br>
@@ -56,6 +56,8 @@ Taking stock compared to when I [first wrote about the workplace]({{ site.baseur
 * Every activity should be traceable (at least conceptually) to a ROI. Not having this in mind will lead to many unproductive activities and busy work.
 
 * When combating legacy systems, people and mindsets, one can choose gradual transformation or immediate disruption. Generally, gradual transformation can build trust, rare but masterful strokes can successfully execute disruption.
+
+* The vector sum of Individual Contributor's work is the company’s output, management sets and drives the strategic direction of this vector, org culture and infrastructure form the scalar multiplier. 
 
 <br>
 
