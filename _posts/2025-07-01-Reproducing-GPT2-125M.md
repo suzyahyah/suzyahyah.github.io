@@ -47,16 +47,16 @@ The Meta-goal, is to figure out a good set of hyperparameters and viable hobbyis
 I chose to use [Runpod](https://www.runpod.io) for historical reasons and also because I think they offer the best raw pricing for hobbyist grade second-tier GPUs. There are many alternatives like Lambda labs, aws, google vertex, etc. 
 
 
-1. **Basic Setup.** Create account, setup billing and create ssh keys in Runpod Interface. These are SOPs for working with any cloud provider, nothing special here. Copy private key into ~/.ssh/<ssh_key> so that we can ssh directly into the runpod terminal. 
+1. **Basic Setup.** Create account, setup billing and create ssh keys in Runpod Interface. These are SOPs for working with any cloud provider, nothing special here. Copy private key into ~/.ssh/<ssh_key> and ssh directly into the runpod terminal. 
 
-2. **Create Volume.** This is also standard across any cloud provider, and is used to persist all data and scripts  when spinning up new VMs. The main decision is which data center to create the volume in. Different data centers have different availability of compute resources, so we should create the volume where there are high availability of the machines that we are expecting to use. The amount of volume is not that critical because you can always start with a smaller volume and update this later. 
+2. **Create Volume.** This is also standard across any cloud provider, and is used to persist all data and scripts  when spinning up new VMs. The main decision is which data center to create the volume in. Different data centers have different availability of compute resources, so the volume should be created where there are high availability of the target machines. The amount of volume is not that critical because you can always start with a smaller volume and update this later. 
 
-3. **Create Virtual Machine (VM)**  from existing base image (“Template”). It’s important to choose > Pytorch 2.1.0, because flash-attn needs cuda>12.6. For e.g., we need to use `runpod/pytorch:2.8.0-py3.11-cuda12.8.1-cudnn-devel-ubuntu22.04`, or `runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04`.
+3. **Create Virtual Machine (VM)**  from existing base image (“Template”). It’s important to choose > Pytorch 2.1.0, because flash-attn needs cuda>12.6. For e.g., `runpod/pytorch:2.8.0-py3.11-cuda12.8.1-cudnn-devel-ubuntu22.04`, or `runpod/pytorch:2.4.0-py3.11-cuda12.4.1-devel-ubuntu22.04`.
 
-4. **Prepare Start up Scripts for new VMs.** Everytime we start and stop the VM, we need to run a [basic setup Script on root](https://gist.github.com/suzyahyah/cef48a606e5ab16dce32613a2726246e), because runpod spins up a new container each time.  Python packages and installations can be installed once as long as the are package manager (I used miniconda) saves it to the mounted volume (on /workspace) which can persist across the creation of new VMs. *There are many known issues related to building the .whl file for Flash Attention. It's easier to find the .whl from the [assets releases](https://github.com/Dao-AILab/flash-attention/releases) and do a pip install .*
+4. **Prepare Start up Scripts for new VMs.** Everytime the VM is restarted, run a [basic setup Script on root](https://gist.github.com/suzyahyah/cef48a606e5ab16dce32613a2726246e), because runpod spins up a new container each time.  Python packages and installations can be installed once as long as the are package manager (I used miniconda) saves it to the mounted volume (on /workspace) which can persist across the creation of new VMs. *There are many known issues related to building the .whl file for Flash Attention. It's easier to find the .whl from the [assets releases](https://github.com/Dao-AILab/flash-attention/releases) and do a pip install .*
 
 
-5. **Optional Cloud Storage**. Create cheaper storage on AWS or other cloud options so that we dont have to persist the runpod volume when we are not using. Runpod provides GUI-mouse click for Syncing between the Runpod Volume and popular storages like S3 Storage/Google Drive/Dropbox (although this is also by rsync on the command line). A runpod volume of 500-1000Gb costs $25-50 a month which is very pricey and I suspect how they makes most of their money. 
+5. **Optional Cloud Storage**. Create cheaper storage on AWS or other cloud options so that I dont have to persist the runpod volume. Runpod provides GUI-mouse click for Syncing between the Runpod Volume and popular storages like S3 Storage/Google Drive/Dropbox (although this is also by rsync on the command line). A runpod volume of 500-1000Gb costs $25-50 a month which is very pricey and I suspect how they makes most of their money. 
 
 *Note: A detailed comparison of GPU Cloud platforms is complicated because there are many things to consider besides raw pricing, such as integration with other platforms, availability of the GPUs, ease of setup and access, cold-start time etc, interconnectivity of GPU cards, documentation and community support.*
 
@@ -81,7 +81,7 @@ mixed\_precision: bf16
 2. **DeepSpeed**. I mainly rely on deepspeed:ZeRO stage 1 which partitions optimizer states across GPUs to reduce memory usage during distributed training.
 
 
-3. **Underlying Hardware Connections**. On cloud infra, even though we select “multiple GPUs” and they become visibly “available” (via `nvidia-smi`) for use on the single virtual machine that we ssh into, they may not actually be on the same physical device/server. There are multiple avenues for GPU cards inter-connection links. The output of `nvidia-smi topo -m` shows us the topography of the NVIDIA-GPU Network connections.
+3. **Underlying Hardware Connections**. On cloud infra, even though “multiple GPUs” are selected and they become visibly “available” (via `nvidia-smi`) for use on the single virtual machine, they may not actually be on the same physical device/server. There are multiple avenues for GPU cards inter-connection links. The output of `nvidia-smi topo -m` shows us the topography of the NVIDIA-GPU Network connections.
 
 
 <div id='image-container'>
@@ -101,7 +101,7 @@ mixed\_precision: bf16
 
 * NUMA: The system has at least two NUMA (Non-uniform Memory Access) nodes 0 and 1, and the GPU0 is on NUMA0 while GPU1,2,3 are on NUMA1. Data has to traverse the inter-NUMA interconnect of the CPUs. 
 
-The implications of this GPU Interconnectivity (or lack of) is that we may experience hanging or instability during multi-GPU training, preventing Peer-to-peer (P2P) GPU Communication from working correctly. This means we may not be able to rely on all of the NVIDIA Collective Communications Library (NCCL) optimisations. 
+The implications of this GPU Interconnectivity (or lack of) is possible hanging or instability during multi-GPU training, preventing Peer-to-peer (P2P) GPU Communication from working correctly. This means we may not be able to rely on all of the NVIDIA Collective Communications Library (NCCL) optimisations. 
 
 
 
@@ -121,12 +121,12 @@ The two main open-source datasets available for pre-training are
 * [Fineweb](https://huggingface.co/datasets/HuggingFaceFW/fineweb), another dataset which  is thought to be higher quality than Openwebtext. The size of Openwebtext vs Fineweb training set are not directly comparable, although Openwebtext and the Fineweb-edu/10B tokens are both in the range of ~40GB of data. Although the train time perplexity scores are not directly comparable, training on Fineweb achieves better scores on the downstream eval dataset. 
 
 
-**Download Dataset to Disk**. We first download to disk setting the cache_dir to avoid the latencies of streaming data over the network. For validation (not evaluation) during training, split 0.1% of the data. We could also use a separate dataset to check for overfitting, for e.g., the validation split of wikitext-103-raw
+**Download Dataset to Disk**. I first download to disk setting the cache_dir to avoid the latencies of streaming data over the network. For validation (not evaluation) during training, split 0.1% of the data. I could also use a separate dataset to check for overfitting, for e.g., the validation split of wikitext-103-raw but decided that this was better as a test set instead.
 
 **Preprocessing of Dataset**
 * WrapText for those sentences that are too long
 * Filter out those that are either too short or too long. This includes the short segments that overflow (text-wrapped)
-* Write a tokenizer function, which preprocesses the data into tokens and saves to disk so that we dont need to keep tokenizing everytime we train the model. 
+* Write a tokenizer function, which preprocesses the data into tokens and saves to disk so that there is no bottleneck at preprocessing during training.
 * Save pre-tokenized dataset to disk for more efficient loading during training
 
 {% highlight python %}
@@ -157,7 +157,7 @@ tokenized_ds = tokenized_ds.filter(lambda x: sum(x['attention_mask'])>=min_len, 
 tokenized_ds.save_to_disk(f"corpus/tokenized_{ds_name}_{split}_pack{min_len}-{max_len}tokens_overflow")
 {% endhighlight %}
 
-After filtering, we have 11B tokens:
+After filtering there are 11B tokens:
 
 {% highlight python %}
 import pyarrow.compute as pc
@@ -166,9 +166,7 @@ total = pc.sum(pc.list_value_length(array)).as_py() # 11007602548
 {% endhighlight %}
 
 
-Clearly many opportunities for improvement here, because empty tokens are padded within sequences of a batch to the max sequence length. Another way to handle the preprocessing is by **wrapping and packing** all tokens to the max sequence length [like here](https://github.com/karpathy/llm.c/blob/f1e2ace651495b74ae22d45d1723443fd00ecd3a/train_llama3.py#L819), but this produces confounds as now sequences may have incorrect prior context due to the packing. or by implementing [dynamic batching](https://suzyahyah.github.io/code/pytorch/2025/03/25/DynamicBatching.html).
-
-**Data Structures**: The estimated amount of RAM the dataset needs to load into memory is 11GB for this dataset, and can be much larger for larger-scale LLM training. Modern dataset libraries (such as HF Datasets) uses Apache Arrow format (columnar memory layout), which allows zero-copy reads removing virtually all serialization overhead. Arrow treats datasets as a memory-mapped file from disk, and not loaded in memory. This means we can access chunks without having to read the whole file into memory, and allows multiple processes to access the data without moving or copying.
+**Data Structures**: The estimated amount of RAM the dataset needs to load into memory is 11GB for this dataset, and can be much larger for larger-scale LLM training. Modern dataset libraries (such as HF Datasets) uses Apache Arrow format (columnar memory layout), which allows zero-copy reads removing virtually all serialization overhead. Arrow treats datasets as a memory-mapped file from disk, and not loaded in memory. This means I can access chunks without having to read the whole file into memory, and allows multiple processes to access the data without moving or copying.
 
 
 <br>
@@ -191,7 +189,7 @@ tokenizer = AutoTokenizer.from_pretrained("gpt2")
 {% endhighlight %}
 
 
-**Quantisation**: Training the model with torch.float16 results in degenerate weights. However, this isn't the case when we do precision at torch_dtype=torch.bfloat16. 
+**Quantisation**: Training the model with torch.float16 results in degenerate weights. However, this isn't the case with precision at torch_dtype=torch.bfloat16. 
 
 <div id='image-container'>
   <a href="{{ site.baseurl }}/assets/quantisation.png" target="_blank" id="zoomable-link">
@@ -200,9 +198,9 @@ tokenizer = AutoTokenizer.from_pretrained("gpt2")
 </div>
 
 
-float16 has higher precision for small numbers but a smaller range, while bfloat16 has the same range as float32 (±3.39×10^38) but less precision. It’s possible that if we had better initialisation within the appropriate range, we could enjoy better precision with float16.
+float16 has higher precision for small numbers but a smaller range, while bfloat16 has the same range as float32 (±3.39×10^38) but less precision. It’s possible that if I had better initialisation within the appropriate range,  could enjoy better precision with float16.
 
-**Architecture**: Although we will maintain the GPT2 architecture to get comparable results, there has been several advances in model architecture 
+**Architecture**: Although I will maintain the GPT2 architecture to get comparable results, there has been several advances in model architecture 
 * Position Embeddings; Absolute -> Rope). 
 * Position of NormLayer (PreNorm -> Multiple LayerNorms moving out of residual stream),
 * Form Of Layer Norm (--> RMSNorm), Activation Unit (Gelu->SwiGLU)
@@ -211,34 +209,25 @@ float16 has higher precision for small numbers but a smaller range, while bfloat
 
 
 
+<br>
+
 ---
-
-
 
 <br>
 
 #### <u>Hyperparameters</u>
 
-We cannot afford to do large hyperparameter sweeps treating each hyperparameter as a blackbox. Instead we will reference known hyperparameter configs. The model architecture and the open weights for GPT2 is released, but many of the training hyperparameters and data for GPT2 were never released. The best we can do is to try to achieve comparable evaluation scores against the released gpt model (on HuggingFace).
+I cannot afford to do large hyperparameter sweeps treating each hyperparameter as a blackbox. Instead I referenced known hyperparameter configs. The model architecture and the open weights for GPT2 is released, but many of the training hyperparameters and data for GPT2 were never released. 
 
-Hyperparameter | Best Known Configs | HuggingFace Defaults | Comments 
-Max Sequence Length | 1024  | 512 | Related to total no. of tokens per gradient step 
-Batch Size | 64 | 8 | Related to no. of tokens per gradient step
-Optimizer | AdamW | AdamW | Default
-Optimizer-weight decay | 0.1 | 0 | Not critical 
-Learning Rate | 6e-4 (source GPT3) | 5e-5 | Should  be at least in e-4 or e-3, otherwise learning rate is too low
-Tokenizer | Pretrained GPT2Tok | Pretrained GPT2Tok | 
-Precision | bf16 | fp32 | bf16 to save on memory 
-Learning Rate Decay End | 0 | 0 
-Learning Rate Rampup | 700 | 0 
-Gradient Clipping | 1.0 | 1.0
+<br>
 
+---
 
 <br>
 
 #### <u>Evaluation</u>
 
-To standardise the setup for evaluation, we download the pre-trained model from huggingface, and benchmark it against llm-eval, which is an open-source reproducible evalution benchmark. 
+To standardise the setup for evaluation, I download the pre-trained model from huggingface, and benchmark it against llm-eval, which is an open-source reproducible evalution benchmark. 
 
 {% highlight bash %}
 
@@ -251,33 +240,211 @@ To standardise the setup for evaluation, we download the pre-trained model from 
 
 {% endhighlight %}
 
-*Note: This is a more robust comparison approach than following numbers in the paper, as the evaluation setup differs. For instance, since our training only goes up to the context window of 512 tokens, to make comparison fair against the other pre-trained models, we are going to truncate evaluation examples to the max sequence length of 512.*
+*Note: This is a more robust comparison approach than following numbers in the paper, as the evaluation setup differs. For instance, since our training only goes up to the context window of 512 tokens, to make comparison fair against the other pre-trained models, the evaluation examples were truncated to the max sequence length of 512.*
 
 <br>
+
 ---
+
 <br>
 
 #### <u>Training and Logging Setup</u>
 
-*under writing construction*
+
+Since the training is very standard and self-contained, I used HuggingFace trainer. HuggingFace trainer has a ridiculous number of arguments, hence I maintain my sanity by categorising the arguments as either batch, optimizer, logging, or init arguments and combining these together later.
+
+{% highlight python %}
+
+import wandb
+from transformers import GPT2Config, AutoModelForCausalLM, AutoTokenizer
+from transformers import DataCollatorForLanguageModeling
+from transformers import Trainer, TrainingArguments
+
+wandb.init(project='gpt2-train')
+
+batch_args = ...
+optimizer_args = ...
+logging_args = ... #"report_to": "wandb"
+trainer_init_args = ...
+
+all_args = batch_args | optimizer_args | logging_args | trainer_init_args
+
+def main_train_loop():
+    training_args = TrainingArguments(**all_args)
+    data_collator = DataCollatorForLanguageModeling(tokenizer=tokenizer, mlm=False) 
+
+    trainer = Trainer(
+            model=model,
+            args=training_args,
+            train_dataset=tokenized_ds_train,
+            eval_dataset=tokenized_ds_val,
+            data_collator=data_collator)
+    trainer.train()
+
+
+{% endhighlight %}
+
+<br>
+
+---
+
+<br>
 
 #### <u>Tokenizer</u>
 
-*under writing construction*
+
+It is also possible to train a tokenizer from scratch on the training set, rather than using the pretrained GPT2 Tokenizer and it is quite straightforward to do so with HuggingFace Tokenizers.
+
+{% highlight python %}
+
+from tokenizers import Tokenizer
+from tokenizers.trainers import BpeTrainer
+from tokenizers.pre_tokenizers import ByteLevel
+from tokenizers.decoders import ByteLevel as ByteLevelDecoder
+
+trainer = BpeTrainer(
+  vocab_size=vocab_size,
+  min_frequency=min_frequency,
+  special_tokens=special_tokens,
+  show_progress=True,
+  initial_alphabet=ByteLevel.alphabet()
+)
+
+tokenizer.pre_tokenizer = ByteLevel(add_prefix_space=True)
+tokenizer.decoder = ByteLevelDecoder()
+text_iterator = create_text_iterator(dataset=dataset['train'])
+tokenizer.train_from_iterator(text_iterator, trainer=trainer)
+
+
+def create_text_iterator(text_column:str='text',
+                         dataset=None,
+                         max_samples: Optional[int]=None,
+                         batch_size: int=1000) -> Iterator[List[str]]:
+  def text_generator():
+    batch = []
+    for sample in dataset:
+      text = sample[text_column]
+      if isinstance(text, str) and text.strip():
+        batch.append(text)
+
+        if len(batch) >= batch_size:
+          yield batch
+          batch = []
+    if batch:
+      yield batch
+  return text_generator()
+
+{% endhighlight %}
+
+<br>
+
+---
+
+<br>
+
 
 
 #### <u>Training Ablations</u>
 
-*under writing construction*
+**Data: Fineweb-Edu vs OpenwebText**
+
+Fineweb-Edu and OpenwebText are both in the order of ~10B tokens. The training and validation loss curves are nearly indistinguishable.
+
+
+<div id='image-container'>
+  <a href="{{ site.baseurl }}/assets/wandb_charts/openweb_fineweb.png" target="_blank" id="zoomable-link">
+    <img src="{{ site.baseurl }}/assets/wandb_charts/openweb_fineweb.png" alt="Zoomable Image">
+  </a>
+</div>
+
+However after 1 epoch of training over the dataset, the model trained on Fineweb-edu performs slightly better than the model trained on OpenwebText, suggesting that Fineweb-edu is better for generalisation to downstream eval tasks.
+
+
+{:.table .table-striped .table-hover .table-bordered .table-sm}
+**Dataset** | **Tasks** | **Version** | **n-shot** | **Metric** | **value** | **StdErr**
+OpenwebText | Hellaswag | 1 | 0 | acc | 0.2745 | 0.0045 
+Findweb-Edu | Hellaswag | 1 | 0 | acc | 0.2882 |  0.0045 
 
 <br>
+
+
+**Learning Rate: 5e-4 vs 5e-5**
+
+Learning rate has a large impact on the model training. The default HuggingFace trainer hyperparameters for learning rate are 5e-5, because it expects fine-tuning as the purpose rather than training from scratch.
+
+<div id='image-container'>
+  <a href="{{ site.baseurl }}/assets/wandb_charts/learning_rate.png" target="_blank" id="zoomable-link">
+    <img src="{{ site.baseurl }}/assets/wandb_charts/learning_rate.png" alt="Zoomable Image">
+  </a>
+</div>
+
+Other hyperparameters related to learning rate such as weight decay, learning rate decay, and learning rate warmup were not critical. I used AdamW as the optimizer.
+
+<br>
+
 ---
+
 <br>
 
+**Tokenizer**
+
+The Custom Tokenizer on the Training set achieves much lower loss on the train and dev set than the Pre-trained GPT2 Tokenizer. However, this does not translate into stronger downstream evaluation performance.
 
 
+<div id='image-container'>
+  <a href="{{ site.baseurl }}/assets/wandb_charts/tokenizer.png" target="_blank" id="zoomable-link">
+    <img src="{{ site.baseurl }}/assets/wandb_charts/tokenizer.png" alt="Zoomable Image">
+  </a>
+</div>
+
+{:.table .table-striped .table-hover .table-bordered .table-sm}
+**Dataset** | **Tokenizer** | **Tasks** | **Version** | **n-shot** | **Metric** | **value** | **StdErr**
+OpenwebText | Pretrained | Hellaswag | 1 | 0 | acc | 0.2745 | 0.0045 
+OpenwebText | Custom Retrain | Hellaswag | 1 | 0 | acc | 0.2759 |  0.0045 
+
+
+<br>
+
+---
+
+<br>
+
+#### <u>Critical Parameters</u>
+
+- The effective **total number of tokens per update** should be somewhere in the range of (at least) 500k. This is the `effective_tokens = non-padded sequence length * batch size * nGPUs * no. of gradient accumulation steps`. 
+
+*A better way to handle the preprocessing is by **wrapping and packing** all tokens to the max sequence length [like here](https://github.com/karpathy/llm.c/blob/f1e2ace651495b74ae22d45d1723443fd00ecd3a/train_llama3.py#L819), but this produces confounds as now sequences may have incorrect prior context due to the packing. Another optimisation is **[dynamic batching](https://suzyahyah.github.io/code/pytorch/2025/03/25/DynamicBatching.html)**.*
+
+- For the effective number of tokens (~500k), the **learning rate** must be in the range of 5e-4. A learning rate of 5e-3 has very unstable training with large fluctuations in loss, and 5e-5 convergence is very poor.
+
+
+<br>
+
+---
+
+<br>
 
 #### <u>Key Result</u>
 
-Accuracy on Hellaswag was replicated, in both HuggingFace GPT and Kaparthy llmc.However, wikitext was 10 ppl points off (20-25% worse), and lambada_openai was a lot worse. We dont know if it was something in the dataset or training, and don’t have a different open source replication to compare it against, because Kaparthy’s llm.c only reported Hellaswag. 
+Accuracy on Hellaswag was replicated. 
+
+{:.table .table-striped .table-hover .table-bordered .table-sm}
+**Model** | **Dataset** | **Tokenizer** |  **Tasks** |  **n-shot** | **Metric** | **value** | **StdErr**
+OpenAI | ?? | Pretrained | Hellaswag | 0 | acc | 0.287 | 0.0045
+FromScratch | Fineweb-Edu10B | Pretrained |   Hellaswag | 0 | acc | 0.2882 |  0.0045 
+OpenAI | ?? | Pretrained | WikiText | 0 | ppl | 42.5 | N/A
+FromScratch | Fineweb-Edu10B | Pretrained |   WikiText | 0 | ppl | 52.1 | N/A 
+
+(OpenAI - [Official Release](https://huggingface.co/openai-community/gpt2) supported by HuggingFace)
+<br>
+
+However, wikitext was 10 ppl points off under the same setup in `llm-eval` with 512 context window. It's unclear if the difference is due to training dataset or hyperparameters, because we don’t have a different open source replication to compare it against. The only other reliable reproduction (Kaparthy’s llm.c) only reports Hellaswag. 
+
+
+<br>
+#### **References**
+
+[Kaparthy LLM.c](https://github.com/karpathy/llm.c/discussions/481)
+
+
 
