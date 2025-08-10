@@ -164,15 +164,11 @@ LLM providers and us can use any specification, as long as it provides sufficien
 
 #### **What’s wrong with MCP**
 
-There’s nothing thaaaat wrong with MCP, I think people’s dissatisfaction with it just stems from the fact that it is not the final and complete solution of A2A protocol and so it falls below their expectation. 
+There’s nothing that wrong with MCP, I think people’s dissatisfaction with it just stems from the fact that it is not the final and complete solution of A2A protocol and so it falls below their expectation. 
 
-The basic concept exposes APIs to agents safely (and so Anthropic can have some predictability over the response signature), but if we wanted to use this in production, there’s a lot of things missing like the versioning for backward compatibility, guidelines on how to structure the data, separate fields for LLM agent vs display items, authentication, type checking … 
+The basic concept exposes APIs to agents safely (and so Anthropic can have some predictability over the response signature), but if we wanted to use this in production, there’s a lot of things missing like the versioning for backward compatibility, guidelines on how to structure the data, separate fields for LLM agent vs display items, authentication, type checking … All the things that Software Engineers deal with when designing and working with APIs. 
 
-... Although that’s all evolving and there are multiple frameworks building on top of MCP to bridge the gaps. For instance, FastMCP supports [HTTP authentication with JWT tokens](https://gofastmcp.com/servers/auth/verifiers), swag documentation via FastAPI and type checking via Pydantic. 
-
-It’s all things that Software Engineers deal with when designing and working with APIs, but tech-bro and linkedin “builders” are just discovering, or may never need to worry about if they are just doing a weekend project. 
-
-Which is probably why MCP was announced in a "hobbyist" state - it is designed for quick uptake, and people extend the API contract if they need to.
+MCP was announced in a "hobbyist" state - it is designed for quick uptake, and people extend the API contract if they need to. For instance, there are multiple frameworks building on top of MCP to bridge the gaps. For instance, FastMCP supports [HTTP authentication with JWT tokens](https://gofastmcp.com/servers/auth/verifiers), swag documentation via FastAPI and type checking via Pydantic. 
 
 <br>
 

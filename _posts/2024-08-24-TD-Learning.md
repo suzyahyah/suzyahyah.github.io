@@ -127,8 +127,12 @@ Q(S_t, A_t) = Q(S_t, A_t) + \alpha(R_{t+1} + \gamma Q(S_{t+1}, A_{t+1}) - Q(S_t,
 
 Learning state-action values is almost the same as learning state values. Computationally it is
 a more direct approach for policy control, to learn state-action values as the state-action
-value already includes the expected reward of taking that action. However in terms of memory,
-the agent must store a much larger number of State \times Action, vs just storing States. 
+value already includes the expected reward of taking that action. 
+
+If we only had $V(s)$, we still need a model of the environment to figure out which action would lead to the next state with high values.
+
+However in terms of memory,
+the agent must store a much larger number of State $\times$ Action, vs just storing States. 
 
 
 <br>
@@ -140,6 +144,9 @@ sometimes the agent follows an exploratory policy (for e.g., $\epsilon$ greedy),
 Q(S_t, A_t) = Q(S_t, A_t) + \alpha (R_{t+1} + \gamma \max_{A_{t+1}} Q(S_{t+1}, A_{t+1}) - Q(S_t,
 A_t))
 \end{align}
+
+
+The key is $\max_{A+1}$, which indicates that the update will be performed based on the best Action, rather than the actual action taken. 
 
 
 
