@@ -4,7 +4,7 @@
 
 //$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $base-font-family: 'Open Sans', sans-serif;
-$base-font-size:   14px !default;
+$base-font-size:   12px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
 $base-line-height: 1.8 !default;
@@ -45,8 +45,20 @@ $on-laptop:        800px !default;
 }
 
 // Import partials.
-@import
-  "minima/base",
-  "minima/layout",
-  "minima/syntax-highlighting"
-;
+@import "minima/base";
+@import "minima/layout";
+@import "minima/syntax-highlighting";
+
+.post-content {
+  // Add margin to paragraphs and lists
+  p, ul, ol, blockquote {
+    margin-bottom: 1em;
+  }
+
+  // Add margin to headings to separate them from the content
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
+
