@@ -13,8 +13,7 @@ My name is Suzanna Sia. I lead agentic LLM-RAG at Hyundai Motor Group Innovation
 <b>Disclaimers</b>
 1. PLEASE contact me, if you find an error at any point, so that others reading it will not be misled.
 
-2. ChatGPT was not used in writing any of the posts or pages, but was used to debug html/css and
-   write the post summaries (on the landing page).
+2. ChatGPT was not used in writing any of the posts or pages, but was used to debug html/css.
 
 3. This blog exists for me, but if another human were to benefit, that would be quite fantastic! 
 
