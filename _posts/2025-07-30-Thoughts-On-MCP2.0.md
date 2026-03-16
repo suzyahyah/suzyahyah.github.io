@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Thoughts on MCP"
+title: "Is MCP a USB connector?"
 date: 2025-07-30
 mathjax: true
 status: [Work experience, Misc, Review]
