@@ -18,7 +18,9 @@ This raises several challenges for Logging AI Agents
 2. Recording and uncovering Silent Failures
 3. Metrics for Aggregate Reporting (Dashboards)
 
-This post uses the airline booking example from [tau-2 bench](https://github.com/sierra-research/tau2-bench) (*which by the way is a very impressively engineered benchmark.*)
+This post uses the airline booking example from [tau-2 bench](https://github.com/sierra-research/tau2-bench).
+
+*Disclaimer: Code examples were generated from claude using tau-2 bench as the scenario.**
 
 ---
 <br><br>

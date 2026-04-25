@@ -32,7 +32,6 @@ header_pages:
   - about.md
   - category.md
   - advisors.md
-  - talks.md
   - papers.md
   - othercv.md
 sass:
