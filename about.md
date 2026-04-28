@@ -13,11 +13,11 @@ This blog exists for me, but if another human were to benefit, that would be qui
 <b>interests</b>
 <br>
 
-[workaway](https://docs.google.com/presentation/d/e/2PACX-1vQ0cesjknOpkAfD3Jq0v0ogNd_DtRP2t7-F7B_OWieuuJqF4NbcCGGb0sQWHVQqxdd7KnwG0D4PwLDK/pub?start=false&loop=false&delayms=3000).
+[workaway](/assets/cv-workaway-2.pdf)
 
 <br>
 
-[Chess](https://docs.google.com/document/d/1Tej-o315uOPSX_d4_eL9adGrp3Nw02-Qplw4U42ehH4/edit?usp=sharing)
+[Chess](/assets/Chess2200-2.pdf)
 
 <br>
 Drums, Uke
