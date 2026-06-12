@@ -65,7 +65,9 @@ There are three layers to handling this:
 2. Heuristics to capture bad behavior
 3. Creating new Logging for Emergent Events
 
-<u>Layer 1: Handling Silent Failures with Structural Bounds</u>
+<br>
+
+##### <u>Layer 1: Handling Silent Failures with Structural Bounds</u>
 
 An Agent is effectively a while loop. Hence in many agentic harnesses, engineer defined settings exist to define the limits of this while loop. These include maximum tool calls per run, maximum retries per tool, maximum token budget. These are engineering guardrails that don't require understanding the agent's intent. 
 
@@ -85,7 +87,7 @@ if self.done:
 
 <br>
 
-<u>Layer 2: Heuristics to capture Bad Behavior</u>
+#### <u>Layer 2: Heuristics to capture Bad Behavior</u>
 
 Some failure patterns do not hit hard engineering limits and result in agent loop termination. For instance, an agent makes a tool call thrice. did the tool had internal failures, and the agent retried multiple times? Did the agent lose track of the goal and therefore continues to retry. Did the tool gave useful error messages to the agent, causing it to retry meaningfully each time until it eventually got the answer?
 
@@ -104,7 +106,7 @@ This surfaces a named warning event which we can then find in our logs postmorte
 
 <br>
 
-<u>Layer 3: Creating new events for real “Silent Failures”</u>
+#### <u>Layer 3: Creating new events for real “Silent Failures”</u>
 
 In practice, the most difficult failures are silent exactly because we don’t know how to characterise these in advance (If we do they wouldnt be silent). For instance, without seeing cases of models not being time aware, we wouldn’t be able to log this in the first place. 
 
