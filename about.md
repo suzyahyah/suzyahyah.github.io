@@ -32,7 +32,7 @@ If you admire Simone Weil, Marguerite Yourcenar, or Allyson Felix we'll surely b
 
 <br>
 
-Contact me if you find an error at any point, so that others reading it will not be misled.
+[Contact me](https://www.linkedin.com/in/suzanna-sia-83b032bb/) if you find an error at any point, so that others reading it will not be misled.
 
 <br>
 
@@ -41,6 +41,18 @@ The writing on this page is 100% human unless explicitly stated otherwise.
 <br>
 
 
+
 <b>Credits</b>
 
 This site is based off jekyll minima. Thanks also to [Wenshan](https://www.linkedin.com/in/wenshan-chen/) for suggestions.
+
+
+<a class="twitter-timeline"
+  href="https://x.com/suzyahyah"
+  data-tweet-limit="3"
+  data-width="500"
+  data-theme="light">
+</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
