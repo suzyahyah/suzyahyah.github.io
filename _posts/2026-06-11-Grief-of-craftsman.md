@@ -76,6 +76,7 @@ Another typical response is "you should decide what problems to solve". Perhaps,
 I think what's left for us is working in the space of undefined / unclear business requirements, where certain context picked up in human interactions with other humans, or in the physical space does not (yet) get fed into AI. The other major area is scaffolding the glue between other large scale systems. For instance scaffolding production to evaluation pipelines and providing strong priors on non-standard ways of deploying, or wiring up software within a company's proprietary tech stack. If we fully embraced the idea of closed loop optimisation, most of our time would be spent in gathering optimisable / verifiable metrics. 
 
 
+
 **Maybe the Skills.md**
 
 The highest probability generated sequence from AI is not the best sequence for our use-case.
@@ -90,7 +91,7 @@ The usual recommendation is to put our human judgement and steering into a `skil
 But after we've put all this down, what is there left to do? 
 
 
-I think that as humans we should treat the skills.md file differently from the prompt file, in that it as an extension of our own understanding. Every day, every week, something new should be added that is based on our own initiative, and not merely by constructing self-learning loops. We should get better at the meta-level thinking of how to do something cleaner, better, and more efficient.
+I think that as humans we should have a `my-skills.md` file which is different from a `claude.md` or `skills.md` file. The `claude.md` is where we're actively steering AI into a lower probability sequence generation space to deal with its training kinks - but it still has that knowledge in the LLM weights, whereas for `my-skills.md`, it should be an extension of our own understanding. Every day, every week, something new should be added that is based on our own initiative, and not merely by constructing Agent self-learning, self-profiling loops under a set of test cases. I think Craftsmen will start to operate in the limits of software engineering knowledge (limits encoded in the LLM weights) using experience and taste to push into some really low probability spaces to innovate either much deeper, or higher into the callstack. 
 
 **A non-conclusion**
 
