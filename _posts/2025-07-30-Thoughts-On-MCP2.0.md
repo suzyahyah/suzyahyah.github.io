@@ -1,11 +1,13 @@
 ---
 layout: post
-title: "Is MCP a USB connector?"
+title: "MCP without analogies"
 date: 2025-07-30
 mathjax: true
 status: [Work experience, Misc, Review]
 categories: [Work Experiences, Misc, Review]
 ---
+
+**Note:** Edited in August 8 2026.
 
 #### **Preview**
 
@@ -98,15 +100,36 @@ Here's a workflow with MCP:
 
 
 
-#### **What MCP is about**
+#### **MCP from a functional point of view**
 
 We want to give LLM-Agents the ability to execute functions to overcome their limitations. 
 
-But this is ridiculously dangerous. If you give code execution control to an LLM or allow it to access an SDK (e.g., allow it to do `code.eval()`), there must be endless checks on what actually gets executed. 
+But this is ridiculously dangerous. If you give code execution control to an LLM or allow it to access an SDK (e.g., allow it to do `code.eval()`), there must be endless checks on what actually gets executed. The entire Google Drive API which has been exposed to human programmers may be more than what we’d like an LLM to be able to execute.
 
-We might say that we only give Agents read access (`GET`, no `POST`), but sometimes we do want to let Agents have some write access if we know those can happen reliably. Meaning, we need to control the kinds of write access they have gradually. The entire Google Drive API which has been exposed to human programmers may be more than what we’d like an LLM to be able to execute.
+
+Perhaps we only give Agents read access (`GET`, no `POST`), but sometimes we want Agents to have some write access if we know those can happen reliably. Meaning, we need to control the kinds of write access they have gradually. 
 
 Hence a LLM-safe-access wrapper needs to be constructed to expose a subset of the full APIs and SDKs that we are prepared for Agents to hit.
+
+The wrapper itself is thin. For instance, the following weather-mcp tool exposes `get_alert` and nothing else, no delete_forecast, no admin endpoints.
+
+{% highlight python %}
+from fastmcp import FastMCP
+import httpx
+
+mcp = FastMCP("weather")
+
+@mcp.tool
+def get_alerts(state: str) -> str:
+    """Active weather alerts for a US state (read-only)."""
+    r = httpx.get(f"https://api.weather.gov/alerts/active?area={state}",
+                  headers={"User-Agent": "mcp-demo"})
+    return r.text
+
+if __name__ == "__main__":
+    mcp.run()  # stdio by default
+
+{% endhighlight %}
 
 <br> 
 
@@ -119,56 +142,90 @@ That's akin to a local MCP server, but using stdio as a transport protocol.
 
 #### **But why do we need to set up this stdio and separate client and servers. Can't we directly expose these "llm-safe" functions to the Agent?**
 
-Technically we can, and that's what LangGraph did for exposing Tool Calls for a while (I'm not sure if they still do). The main advantage of setting up server-client architecture, is for applications to be language agnostic so that different programming languages can be used at different parts of the stack. For e.g., we may want the front end to be completely written in node, while the backend is in Python.
+Technically we can, and that's what LangGraph, OpenAI Agent SDK among others, did for exposing functions as Tool Calls. The main advantage of setting up server-client architecture and having a transport layer protocol is for applications to be language agnostic so that different programming languages can be used at different parts of the stack. For e.g., we may want the front end to be completely written in node, while the backend is in Python. That's not unique to agents and AI engineering.
 
 For LLM-providers doing agentic workflows at the backend, being language agnostic is really important because Claude might be optimised in Rust or C++ for performance, while the majority of the API callers use Node or Python.
 
-
+Also, the server and code functionality isn't always controlled at the AI Agent application / caller or client side, and so thinking of it as a service rather than a local piece of code is a more general scenario.
 
 
 <br>
 
-#### **What is this stdio, why isn’t the MCP client sending messages over HTTP via REST API to a server?**
+#### **Ok so let's assume I agree we should think of it as client-server architecture, but what is stdio, why not good old HTTP and REST API?**
 
-It just depends if we are calling locally, or across machines over a network. If claude is calling MCP servers by spinning up subprocess, this has less overhead of spinning up a Web Server listening for HTTP Requests. 
+Good old http can work pretty well for most cases actually. Well, good old http ++. You may have read that REST is so-called "stateless" and cannot handle streaming, but REST API can be made stateful by sending a session cookie, and can maintain a streaming connection through streaming http which makes it sufficient for most chat applications. 
 
-However, I think for most people it is easier to always spin up a web server for the MCP Server, as this is a general solution for MCP Servers on local machines, and MCP servers across a network. It does matter if we are trying to squeeze performance and avoiding the HTTP Overhead. 
+In practice, it mostly depends if we are calling locally (stdio) or across machines over a network (streamable http). While stdio is typically only used for local, and streamable http can "easily" be used for both local and remote, if the AI agent is working locally, calling MCP servers by spinning up subprocesses has less overhead of spinning up a Web Server listening for HTTP Requests. 
+
+However, while I was researching this topic, I found that `stdio` is actually more powerful because it is bidirectional and allows server push. This means it can send a message to the client without any explicit request.
+
+{% highlight python%}
+{ "jsonrpc": "2.0", "method": "notifications/tools/list_changed" }
+{% endhighlight %}
+
+Imagine youre working on a claude code session. Boss sends you a slack message, technically claude-slack mcp integration can push the notification to your working window session without you explicitly polling for slack updates.
+
+**Whatever happened to websockets?**
+Websockets used to be the defacto transport protocol for bidirectional streaming chat applications (anecdotally, at least in 2023). I'm not sure why it wasn't adopted by MCP, not a networking expert.
+
+<br>
 
 
-#### **What’s JSON-RPC?**
+#### **Why did we give it a new name - Model-Context Protocol, aren't the above known transport protocols**
+
+Yeah so, MCP actually consists of three kinds of protocols. The **Transport Layer Protocol** (stdio, streaming http) which we just covered, the  **Language protocol** (json-rpc), and the **Application /Schema Protocol** (resources, context, actions, and prompts).
+
+These are three layers of decisions across the networking stack. (If this doesnt sound familiar, see 7 layer OSI model)
+
+<br>
+
+
+
+#### **Why JSON-RPC?**
 
 JSON-RPC is programming language neutral, there's a lot of JSON on the internet, and LLMs are great at generating JSON. 
 
 Recall at Step 3. Claude **generates** and sends the JSON-RPC message itself, this is not generated by human code (altho it can be aided with prompt template).
 
-JSON-RPC itself is a specification and standard that goes back to 2000s and was last updated in 2013. It’s a good idea for MCP to adopt this industry standard, because it is well-tested. (It even has pre-defined error codes.)
+JSON-RPC itself is a specification and standard that goes back to 2000s and was last updated in 2013. It’s a good idea for MCP to adopt this industry standard, because it is well-tested and well-known. It also has pre-defined standard [error codes](https://json-rpc.dev/docs/reference/error-codes), although I think most people default to http error codes which are more well-known.
 
 <br>
 
 #### **Why do we need this specification. Couldnt LLM Agents just handle whatever the Response is as long as it’s a JSON object.**
 
 
-They could.. But it’s an additional LLM-postprocessing-call on every tool call, just to do formatting over whatever the JSON object is. 
+They could.. But it’s an additional LLM-postprocessing-call on every tool call, just to do formatting over whatever the JSON object is. Standardising the JSON allows you to parse it in code.
 
 <br>
 
-#### **What MCP is really about**
+#### **Whats in Application/Schema protocols?**
 
-Hence, I think what MCP is really about is <span style="color:blue">educating AI Engineers about using JSON-RPC 2.0 Standard, so that at their backend, Anthropic does not need to do additional backend LLM-post-tool-call-processing, and can handle the fields programmatically</span>. 
+Application/schema protocols is an actively evolving protocol and has changed the most since I originally wrote this in 2025. Initially it was released in a barebones hobbyist state.
 
-Same for the input signature. Technically the client could query for the input schema that the server expects at each time, and then a LLM-preprocessing-call formatting to this specific input schema, but we'd rather save on LLM-runtime and handle this in actual code.
+Now, there are richer schema definitions like resources (read-only context the server can expose, like files) and prompts (templates the server offers to the client). 
 
-LLM providers and us can use any specification, as long as it provides sufficient coverage over all the use-cases. 
+For the most updated protocol one should check the [docs](https://modelcontextprotocol.io/specification). Whenever there are new innovations or use-cases in AI agent/LLM , which require more structured API request response, we would expect this layer to change.
+
+<br>
+
+#### **Ok, can see why people call it a "USB-C Connector".. But is that really so important**
+
+Standardisation removes headaches and alot of toil at integration time. Without standardisation, LLM providers and us can invent any specification as long as it provides sufficient coverage over all the use-cases. But agreeing on a standard makes everyone's lives easier, and removes the need for wrapper applications. 
+
+People might take this for granted now but in the 2010s there were many chatbot API wrappers where every client and server had a different protocol and if you wantd to connect to Telegram, FB messenger or Microsoft Bot you had to use a wrapper or roll your own adaptor for every custom client and server. It's doable (it's been done), but it's unnecessary if the community can collectively standardise and it's better to avoid all this toil in the first place.
+
 
 <br>
 
 #### **What’s wrong with MCP**
 
-There’s nothing that wrong with MCP, I think people’s dissatisfaction with it just stems from the fact that it is not the final and complete solution of A2A protocol and so it falls below their expectation. 
+There’s nothing that wrong with MCP, I think people’s dissatisfaction with it just stems from the fact that it is not the final and complete solution of A2A protocol and so it falls below their expectation. While there are authentication protocols baked in, some security experts may not be satisfied but I'm not qualified to comment on that.
 
-The basic concept exposes APIs to agents safely (and so Anthropic can have some predictability over the response signature), but if we wanted to use this in production, there’s a lot of things missing like the versioning for backward compatibility, guidelines on how to structure the data, separate fields for LLM agent vs display items, authentication, type checking … All the things that Software Engineers deal with when designing and working with APIs. 
+~~The basic concept exposes APIs to agents safely (and so Anthropic can have some predictability over the response signature), but if we wanted to use this in production, there’s a lot of things missing like the versioning for backward compatibility, guidelines on how to structure the data, separate fields for LLM agent vs display items, authentication, type checking … All the things that Software Engineers deal with when designing and working with APIs.~~
 
-MCP was announced in a "hobbyist" state - it is designed for quick uptake, and people extend the API contract if they need to. For instance, there are multiple frameworks building on top of MCP to bridge the gaps. For instance, FastMCP supports [HTTP authentication with JWT tokens](https://gofastmcp.com/servers/auth/verifiers), swag documentation via FastAPI and type checking via Pydantic. 
+~~MCP was announced in a "hobbyist" state - it is designed for quick uptake, and people extend the API contract if they need to. For instance, there are multiple frameworks building on top of MCP to bridge the gaps. For instance, FastMCP supports [HTTP authentication with JWT tokens](https://gofastmcp.com/servers/auth/verifiers), swag documentation via FastAPI and type checking via Pydantic.~~
+
+Edit: ~~July 2025~~ August 2026.
 
 <br>
 
