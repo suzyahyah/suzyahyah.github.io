@@ -208,7 +208,7 @@ For the most updated protocol one should check the [docs](https://modelcontextpr
 
 <br>
 
-#### **Ok, can see why people call it a "USB-C Connector".. But is that really so important**
+#### **Is standardisation really so important?**
 
 Standardisation removes headaches and alot of toil at integration time. Without standardisation, LLM providers and us can invent any specification as long as it provides sufficient coverage over all the use-cases. But agreeing on a standard makes everyone's lives easier, and removes the need for wrapper applications. 
 
@@ -217,20 +217,28 @@ People might take this for granted now but in the 2010s there were many chatbot 
 
 <br>
 
-#### **What’s wrong with MCP**
+#### **What’s wrong with MCP?**
 
-There’s nothing that wrong with MCP, I think people’s dissatisfaction with it just stems from the fact that it is not the final and complete solution of A2A protocol and so it falls below their expectation. While there are authentication protocols baked in, some security experts may not be satisfied but I'm not qualified to comment on that.
+Standardisation makes sense, I think few would argue with that. I think people’s dissatisfaction with it stems from the fact that it is not the final and complete solution of A2A protocol, and so it falls below their expectation, and a couple of concerns that aren't really MCP's "fault". 
+
+Prompt injection attacks, while difficult to guard against are not MCP specific, that has always been the case for any chat application. 
+
+Concerns like tool descriptions and schemas greedily blowing up context is not a MCP specific issue either, they can occur with or without the MCP protocol, because the tool's incentives are not necessarily aligned with the caller in terms of cost savings and tools compete with other tools for in LLM context. However, the MCP schema does give tool owners more "hidden" injection vectors that can affect the caller in unexpected ways, and the lack of transparency is bad but then again it's not that different all the non-transparent code use that goes around when we use open-source.
+
+Also server quality or bad documentation around MCP servers gives it a bad name, but it is a marketplace problem rather than a protocol problem. There is a whole ecosystem of badly designed plugins on nearly everything.
+
+Imo security is the only real deal-breaker for *vanilla* adoption, while there are authentication protocols baked in, some security experts may not be satisfied although I'm not qualified to comment on that. 
 
 ~~The basic concept exposes APIs to agents safely (and so Anthropic can have some predictability over the response signature), but if we wanted to use this in production, there’s a lot of things missing like the versioning for backward compatibility, guidelines on how to structure the data, separate fields for LLM agent vs display items, authentication, type checking … All the things that Software Engineers deal with when designing and working with APIs.~~
 
 ~~MCP was announced in a "hobbyist" state - it is designed for quick uptake, and people extend the API contract if they need to. For instance, there are multiple frameworks building on top of MCP to bridge the gaps. For instance, FastMCP supports [HTTP authentication with JWT tokens](https://gofastmcp.com/servers/auth/verifiers), swag documentation via FastAPI and type checking via Pydantic.~~
 
-Edit: ~~July 2025~~ August 2026.
+Edit: July 2025, bearish. August 2026, bullish.
 
 <br>
 
 #### **References**
-[MCP](https://modelcontextprotocol.io/overview)\\
+[MCP](https://modelcontextprotocol.io)\\
 [JSON-RPC](https://www.jsonrpc.org/specification)\\
 [Fast-MCP](https://gofastmcp.com/getting-started/welcome)
 

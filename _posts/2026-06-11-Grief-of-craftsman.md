@@ -90,8 +90,14 @@ The usual recommendation is to put our human judgement and steering into a `skil
 
 But after we've put all this down, what is there left to do? 
 
+**Where I'm placing my bets personally**
 
-I think that as humans we should have a `my-skills.md` file which is different from a `claude.md` or `skills.md` file. The `claude.md` is where we're actively steering AI into a lower probability sequence generation space to deal with its training kinks - but it still has that knowledge in the LLM weights, whereas for `my-skills.md`, it should be an extension of our own understanding. Every day, every week, something new should be added that is based on our own initiative, and not merely by constructing Agent self-learning, self-profiling loops under a set of test cases. I think Craftsmen will start to operate in the limits of software engineering knowledge (limits encoded in the LLM weights) using experience and taste to push into some really low probability spaces to innovate either much deeper, or higher into the callstack. 
+I think that as humans we should consciously update our internal skills and knowledge, which is different from a `claude.md` or `skills.md` file. The `claude.md` is where we're actively steering AI into a lower probability sequence generation space to deal with its training kinks. But in order to do that effectively (at least at time of writing), it still requires some taste and background knowledge to know which probability spaces to steer into.
+
+
+Hence my recommendation is that for every prompt, every interaction with AI, something new about how technology works should be added to *our biological brains*, that is something that we can reason about. And not merely by constructing Agent self-learning, self-profiling loops under a set of test cases and reading the ["5 ladder rung"](https://x.com/suzyahyah/status/2076023886269837430) analysis later. Of course, knowing how to construct self-learning self-profiling loops is a useful skill itself but its also a bit of a gamble of whether that will be subsumed by AI Companies.
+
+I suppose Craftsmen might start to operate in the limits of engineering knowledge (limits encoded in the LLM weights) using experience and taste to push into some really low probability spaces to innovate either much deeper, or higher into the callstack. 
 
 **A non-conclusion**
 

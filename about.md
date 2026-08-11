@@ -36,7 +36,7 @@ If you admire Simone Weil, Marguerite Yourcenar, or Allyson Felix we'll surely b
 
 <br>
 
-The writing on this page is 100% human unless explicitly stated otherwise. Also 110\% human (oversharing) on twitter.
+The writing on this page is 100% human unless explicitly stated otherwise. Also 110% human (oversharing) on twitter.
 
 <br>
 
