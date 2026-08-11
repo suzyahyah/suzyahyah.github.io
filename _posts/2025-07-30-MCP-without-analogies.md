@@ -3,8 +3,8 @@ layout: post
 title: "MCP without analogies"
 date: 2025-07-30
 mathjax: true
-status: [Work experience, Misc, Review]
-categories: [Work Experiences, Misc, Review]
+status: [Misc, Review]
+categories: [Misc, Review]
 ---
 
 **Note:** Edited in August 8 2026.
