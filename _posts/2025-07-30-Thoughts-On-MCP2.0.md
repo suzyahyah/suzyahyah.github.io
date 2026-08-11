@@ -173,7 +173,7 @@ Websockets used to be the defacto transport protocol for bidirectional streaming
 
 #### **Why did we give it a new name - Model-Context Protocol, aren't the above known transport protocols**
 
-Yeah so, MCP actually consists of three kinds of protocols. The **Transport Layer Protocol** (stdio, streaming http) which we just covered, the  **Language protocol** (json-rpc), and the **Application /Schema Protocol** (resources, context, actions, and prompts).
+MCP actually consists of three kinds of protocols. The **Transport Layer Protocol** (stdio, streaming http) which we just covered, the  **Language protocol** (json-rpc), and the **Application /Schema Protocol** (resources, context, actions, and prompts).
 
 These are three layers of decisions across the networking stack. (If this doesnt sound familiar, see 7 layer OSI model)
 
