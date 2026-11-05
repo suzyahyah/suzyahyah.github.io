@@ -23,9 +23,9 @@ In C) on occassions I manage. But it's a certain (*unpleasant*) state of mind th
 
 This is not a Philosophy learning app. It’s also not a course. It’s an idea I dreamed up on the subway at 11pm some summer months back when I was oscillating between B and C, but was not ready to commit to either.
 
-Human minds are blobs of grey matter climbing and falling on different levels of the Maslows hierarchy of needs. The irony (again) is that if you have the luxury to escape the lower levels and peek into the highest level of hierarchy, then you might be mortally trapped there. Climbing higher is usually better except there's no way out. Unless you can climb out of the pyramid completely, spread your wings and fly away. Is that even possible?
+Human minds are blobs of grey matter climbing and falling on different levels of the Maslows hierarchy of needs. The irony (again) is that if you have occasionally have the luxury to escape the lower levels and peek into the highest level of hierarchy, then you might be mortally trapped there. Unless you can climb out of the pyramid completely, spread your wings and fly away. Is that even possible?
 
-I “made” (*vibed*) this site with the idea that great philosophers, while genetically brilliant (*doomed*) individuals, have a story which causes their neural circuits to fire a certain way (*trapped*).
+I “made” (*vibed*) this site with the idea that the great philosophers, while genetically brilliant (*doomed*) individuals, have a story which causes their neural circuits to fire a certain way (*trapped*).
 
 
 **Preface II**
@@ -35,10 +35,14 @@ When we read or hear something, shouldn't we always try to understand the contex
 
 **Disclaimer I**
 
-AI Generated text on [philosophy-lives](https://philosophy-lives.vercel.app) makes me feel inauthentic, but i have spent so much time editing, auditing, grinding over the content correctness, the interactions, how it all sounds.. and there are some fully human written parts! The original writings where they land in non-copyright public domain.
+AI Generated text on [philosophy-lives](https://philosophy-lives.vercel.app) makes me feel inauthentic, but i have spent so much time editing, auditing, grinding over the content correctness, the interactions, design.. that I know there's something valuable here (for me). Plus there are some fully human written parts - the originals where they land in non-copyright public domain.
 
-I'm still writing/auditing/addint content but I've a pretty good flow now.
+I'm still writing, auditing, adding content but I've a pretty good flow now.
 
 **Disclaimer II**
+
+There are no points and nothing to win.
+
+**Disclaimer III**
 
 I understand nothing.
