@@ -188,11 +188,19 @@
 }
 
 .post-list {
-  margin-left: 0.3;
+  padding-left: 0;
   list-style: none;
 
   > li {
-    margin-bottom: $spacing-unit;
+    margin-bottom: $spacing-unit / 2;
+  }
+
+  h2 {
+    margin: 0;
+  }
+
+  .post-meta {
+    color: $text-color;
   }
 }
 
@@ -203,17 +211,16 @@
 
 .post-link {
   display: block;
-  @include relative-font-size(1.3);
-  // Pulls the category tags up toward the title: collapses against the h2's 15px
-  // bottom margin, so the net title→tags gap is ~7px. Tweak this to taste.
-  margin-bottom: -8px;
+  @include relative-font-size(1.2);
 }
 
+a.post-link,
 a.post-link:visited {
-  color: #666666;
+  color: $text-color;
 }
-a.post-link {
-  color: #002107;
+
+.post-meta-category {
+  color: $theme-color;
 }
 
 .post-status {
@@ -223,26 +230,40 @@ a.post-link {
  * Categories
  */
 
-.category-head{
-  padding-top: 30px;
-  background: linear-gradient(to right, #ff6b6b, #607d8b);
-    -webkit-background-clip: text;
-      color: transparent;
-    transform: skewX(-15deg);
-    font-weight: bold;
+.category-head {
+  margin: $spacing-unit 0 8px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid $grey-color-light;
+  color: $text-color;
+  font-weight: 600;
+  @include relative-font-size(1.2);
+}
+
+.category-count {
+  color: $grey-color;
+  font-weight: normal;
+  font-size: $small-font-size;
 }
 
 .category-post-link {
   display: block;
-  margin-left: 20px; 
-  @include relative-font-size(1);
+  padding: 2px 0;
 }
 
-a.category-post-link:visited {
-  color: #888888;
+.category-post-year {
+  display: inline-block;
+  width: 3.5em;
+  color: $grey-color;
+  font-size: $small-font-size;
 }
-a.category-post-link {
-  color: #002107;
+
+a.category-post-link,
+a.category-post-link:visited {
+  color: $text-color;
+}
+
+.post-meta-category {
+  color: $theme-color;
 }
 
 .post-status {

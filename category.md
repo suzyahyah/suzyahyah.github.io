@@ -18,11 +18,10 @@ permalink: /categories
     <div id="#{{ category_name }}"></div>
     <p></p>
     
-    <h3 class="category-head">{{ category_name }}</h3>
-    <a name="{{ category_name | slugize }}"></a>
+    <h3 class="category-head" id="{{ category_name | slugify }}">{{ category_name }} <span class="category-count">{{ site.categories[category_name].size }}</span></h3>
     {% for post in site.categories[category_name] %}
       {% assign date_format = site.minima.date_format | default: "%b, %Y" %}
-      <a class="category-post-link" padding-left="20px" href="{{ site.baseurl }}{{ post.url }}">{{post.date | date: "%Y"}} &nbsp; {{post.title}}</a>
+      <a class="category-post-link" href="{{ site.baseurl }}{{ post.url }}"><span class="category-post-year">{{ post.date | date: "%Y" }}</span>{{ post.title }}</a>
     {% endfor %}
   </div>
 {% endfor %}

@@ -1,0 +1,7 @@
+{% comment %} ponytail: one fetch per page load; GoatCounter counts from signup, GA history not migrated {% endcomment %}
+<span class="view-count"></span>
+<script>
+  fetch('https://{{ site.goatcounter_code }}.goatcounter.com/counter/' + encodeURIComponent(location.pathname) + '.json')
+    .then(r => r.json())
+    .then(d => { document.querySelector('.view-count').textContent = ' • ' + d.count + ' views'; });
+</script>
