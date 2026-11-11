@@ -1,0 +1,8 @@
+---
+layout: null
+---
+# Allow all crawlers, including AI search/answer bots (OAI-SearchBot, Claude-SearchBot, PerplexityBot).
+User-agent: *
+Allow: /
+
+Sitemap: {{ "/sitemap.xml" | absolute_url }}

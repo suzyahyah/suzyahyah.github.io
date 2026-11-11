@@ -20,7 +20,7 @@ email: suzyahyah@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   The best time to plant a tree was 20 years ago. The second best time is now. - Japanese proverb  
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://suzyahyah.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: suzyahyah
 github_username: suzyahyah
 # Build settings
@@ -28,6 +28,7 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
 header_pages:
   - about.md
   - category.md

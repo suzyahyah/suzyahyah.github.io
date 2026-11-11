@@ -10,6 +10,11 @@ This blog exists for me, but if another human were to benefit, that would be qui
 
 Professional bio: [LinkedIn](https://www.linkedin.com/in/suzanna-sia-83b032bb/)
 
+The writing here is 100% human unless explicitly stated otherwise. 
+
+Also 110% human (oversharing) on [twitter](https://x.com/suzyahyah).
+
+{% comment %} Mentors section temporarily hidden
 ---
 <br>
 <b>Mentors</b>
@@ -31,6 +36,7 @@ Professional bio: [LinkedIn](https://www.linkedin.com/in/suzanna-sia-83b032bb/)
 
 [Dr. How Khee Yin](https://sg.linkedin.com/in/khee-yin-how-28367319), [Sng Mui Tiang](https://sg.linkedin.com/in/mui-tiang-sng), Richie, and [Natalia Edzgveradze](https://ratings.fide.com/profile/13600788) showed me the importance of being kind and supporting others.
 
+{% endcomment %}
 ---
 <br>
 <b>interests</b>
@@ -46,15 +52,7 @@ Drums, Uke
 If you admire Simone Weil, Marguerite Yourcenar, or Allyson Felix we'll surely be friends. If not, we could also be friends.
 
 ---
-<br>
-<b>Disclaimers</b>
-<br>
-[Contact me](https://www.linkedin.com/in/suzanna-sia-83b032bb/) if you find an error at any point, so that others reading it will not be misled.
-<br>
 
-The writing on this page is 100% human unless explicitly stated otherwise. 
-
-Also 110% human (oversharing) on [twitter](https://x.com/suzyahyah).
 
 <br>
 
