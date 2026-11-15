@@ -6,6 +6,7 @@ permalink: /about/
 
 <br>
 
+
 This blog exists for me, but if another human were to benefit, that would be quite fantastic! 
 
 Professional bio: [LinkedIn](https://www.linkedin.com/in/suzanna-sia-83b032bb/)
@@ -49,7 +50,9 @@ Also 110% human (oversharing) on [twitter](https://x.com/suzyahyah).
 Drums, Uke
 <br>
 
-If you admire Simone Weil, Marguerite Yourcenar, or Allyson Felix we'll surely be friends. If not, we could also be friends.
+If you admire Simone Weil or Allyson Felix we'll surely be friends. If not, we could also be friends.
+
+In the sengoku era I would have fancied myself a ronin. In DnD though, I'd fancy myself a bard. If I was an animal I'd be a deep sea shrimp chilling on hydrothermic vents in the mid-atlantic ridge. 
 
 ---
 
