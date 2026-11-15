@@ -63,3 +63,17 @@ $on-laptop:        800px !default;
   }
 }
 
+
+// Clickable arrow on <details> (bootstrap normalize sets summary display:block, which hides the native marker)
+summary {
+  cursor: pointer;
+  &::before {
+    content: "▸";
+    display: inline-block;
+    margin-right: 0.4em;
+    transition: transform 0.2s;
+  }
+}
+details[open] > summary::before {
+  transform: rotate(90deg);
+}

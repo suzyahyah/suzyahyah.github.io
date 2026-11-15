@@ -6,6 +6,7 @@ permalink: /about/
 
 <br>
 
+**About**
 
 This blog exists for me, but if another human were to benefit, that would be quite fantastic! 
 
@@ -13,7 +14,17 @@ Professional bio: [LinkedIn](https://www.linkedin.com/in/suzanna-sia-83b032bb/)
 
 The writing here is 100% human unless explicitly stated otherwise. 
 
-Also 110% human (oversharing) on [twitter](https://x.com/suzyahyah).
+Also 110% human oversharing on [twitter](https://x.com/suzyahyah).
+
+<details markdown="1">
+<summary><b>More about</b></summary>
+
+In the sengoku era I would have fancied myself a ronin. In DnD though, I'd fancy myself a bard. 
+
+If I was an animal I'd be a deep sea shrimp, [*shrimping*](https://www.sas.upenn.edu/~cavitch/pdf-library/Nagel_Bat.pdf) on hydrothermic vents in the mid-atlantic ridge. 
+
+</details>
+
 
 {% comment %} Mentors section temporarily hidden
 ---
@@ -52,7 +63,6 @@ Drums, Uke
 
 If you admire Simone Weil or Allyson Felix we'll surely be friends. If not, we could also be friends.
 
-In the sengoku era I would have fancied myself a ronin. In DnD though, I'd fancy myself a bard. If I was an animal I'd be a deep sea shrimp chilling on hydrothermic vents in the mid-atlantic ridge. 
 
 ---
 
