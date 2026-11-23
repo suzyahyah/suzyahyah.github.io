@@ -4,7 +4,7 @@ title: "Reproducing GPT2-125M"
 date: "2025-07-07"
 mathjax: true
 status: [LLM]
-categories: [Code]
+categories: [PyTorch]
 ---
 
 <br>

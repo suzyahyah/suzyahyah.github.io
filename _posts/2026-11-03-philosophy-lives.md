@@ -7,7 +7,9 @@ status: [Notes]
 categories: [Misc]
 ---
 
--->[Here's what this post is about.](https://philosophy-lives.vercel.app/)<--
+-->[Click to navigate to site](https://philosophy-lives.vercel.app/)<--
+
+[![philosophy-lives](/assets/philosophy-lives.png)](https://philosophy-lives.vercel.app/)
 
 **Preface I**
 

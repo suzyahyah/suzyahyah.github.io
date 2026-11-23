@@ -1,0 +1,14 @@
+services:
+  web:
+    image: python:3.12-slim
+    volumes:
+      - .:/app   # mount the folder; single-file mounts go stale when editors replace the file
+    working_dir: /app
+    command: python3 app.py
+    init: true   # tiny init as PID 1 so Ctrl+C / restarts stop python instantly (else 10s kill timeout)
+    ports:
+      - "3000:5000"   # host:container
+    develop:
+      watch:
+        - path: ./app.py
+          action: restart   # restart container when app.py changes

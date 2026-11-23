@@ -4,7 +4,7 @@ title: "Deriving the minimax equation for GANs"
 date: "2024-07-25"
 mathjax: true
 status: [Code samples]
-categories: [Generative Models]
+categories: [Misc]
 ---
 
 

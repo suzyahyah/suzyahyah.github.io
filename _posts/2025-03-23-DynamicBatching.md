@@ -4,7 +4,7 @@ title: "Dynamic Batching for Training Large Sequence Models (LLMs)"
 date: "2025-03-25"
 mathjax: true
 status: [Code samples]
-categories: [Code, PyTorch]
+categories: [PyTorch]
 ---
 
 

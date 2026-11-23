@@ -4,7 +4,7 @@ title: "Vibe Coding Car Racing Simulator (Fail)"
 date: "2024-11-01"
 mathjax: true
 status: [Code samples]
-categories: [Code, Misc]
+categories: [Code, Projects]
 ---
 
 ### **Summary**
