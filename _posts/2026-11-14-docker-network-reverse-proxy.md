@@ -3,7 +3,7 @@ layout: post
 title: "Docker Networking: Bridges, DNS, Reverse Proxy"
 date: 2026-11-14
 status: [Notes]
-categories: [Projects, Misc]
+categories: [Production]
 ---
 
 #### **Preview**

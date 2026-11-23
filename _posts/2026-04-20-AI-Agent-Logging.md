@@ -4,7 +4,7 @@ title: "(Production) Logging for AI Agents"
 date: "2026-04-20"
 mathjax: true
 status: []
-categories: [Code, Generative Models]
+categories: [Code, Production]
 ---
 
 ### **Summary**

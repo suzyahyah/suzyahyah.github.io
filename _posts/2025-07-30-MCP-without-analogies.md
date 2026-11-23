@@ -4,7 +4,7 @@ title: "MCP without analogies"
 date: 2025-07-30
 mathjax: true
 status: [Misc, Review]
-categories: [Misc, Review]
+categories: [Production]
 ---
 
 **Note:** Edited in August 8 2026.

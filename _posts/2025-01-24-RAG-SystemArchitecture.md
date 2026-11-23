@@ -4,7 +4,7 @@ title: "RAG System Architecture"
 date: "2025-01-24"
 mathjax: true
 status: [Architecture]
-categories: [Projects]
+categories: [RAG]
 ---
 
 How I think about RAG these days. 

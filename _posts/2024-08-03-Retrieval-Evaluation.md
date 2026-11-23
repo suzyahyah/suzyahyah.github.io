@@ -4,7 +4,7 @@ title: "Synthetic Question Generation for Retrieval Evaluation of RAG"
 date: "2024-08-03"
 mathjax: true
 status: []
-categories: [NLP]
+categories: [RAG]
 ---
 
 #### **Prelminaries**

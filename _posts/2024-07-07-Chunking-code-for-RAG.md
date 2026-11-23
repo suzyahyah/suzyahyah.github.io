@@ -4,7 +4,7 @@ title: "Chunking code for RAG; parsing-recursion-stack"
 date: "2024-07-07"
 mathjax: true
 status: [Code samples]
-categories: [Code]
+categories: [Code, RAG]
 ---
 
 

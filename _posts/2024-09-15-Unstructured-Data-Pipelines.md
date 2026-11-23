@@ -5,7 +5,7 @@ date: "2024-09-15"
 mathjax: true
 status: [NLP]
 shape: dot
-categories: [Projects]
+categories: [RAG]
 ---
 
 ### **Preliminaries**
