@@ -124,7 +124,7 @@ A reverse proxy (such as nginx) allows us to route traffic from a central locati
 With no port in the URL, curl defaults to port `80`, so a command like `curl http://appA.localhost` becomes
 1. `*.localhost` resolves to `127.0.0.1` on the host and goes to port `80`
 2. Docker bridge forwards it to the nginx container IP on port 80. 
-3. nginx reads the `Host: appA.localhost` header, and the nginx config maps that header to an upstream `proxy_pass http://app-a:3000` (the hostname is arbitrary; the upstream is the container name).
+3. nginx reads the `Host: appA.localhost` header, and the nginx config maps that header to an upstream `proxy_pass http://app-a:3000`.
 4. nginx resolves the name `app-a` through Docker's embedded DNS at 127.0.0.11, which sits inside the container's network namespace.
 
 The nginx conf looks like
