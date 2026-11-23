@@ -65,19 +65,14 @@ splits_by_id = {
 It is however, possible that function profiling and then directing advanced versions of AI to address targeted areas, will resolve software performance issues.
 
 
-
-
-**What's left for Craftsmen**
+**What's left for Craftsmen (pessimistic)**
 
 A typical response to the above is “you should transition to Architect”, but can’t (future) AI be the Architect? Give it the 20x load tests, the operational constraints, the cost budget, acceptance criteria, compliance, evaluations and even historical incidents. Would it not generate the architecture with a more business-satisfying speed to correctness trade-off for the software to ship? 
 
 Another typical response is "you should decide what problems to solve". Perhaps, but product people, and engineering managers closer to business lines are better positioned to do that. Business acumen and product sense is a rarer commodity than the technical skills when AI is increasingly advanced, because software can be a closed loop optimisation problem on any given metrics. 
 
-I think what's left for us is working in the space of undefined / unclear business requirements, where certain context picked up in human interactions with other humans, or in the physical space does not (yet) get fed into AI. The other major area is scaffolding the glue between other large scale systems. For instance scaffolding production to evaluation pipelines and providing strong priors on non-standard ways of deploying, or wiring up software within a company's proprietary tech stack. If we fully embraced the idea of closed loop optimisation, most of our time would be spent in gathering optimisable / verifiable metrics. 
 
-
-
-**Maybe the Skills.md**
+**Maybe Skills.md**
 
 The highest probability generated sequence from AI is not the best sequence for our use-case.
 
@@ -90,14 +85,22 @@ The usual recommendation is to put our human judgement and steering into a `skil
 
 But after we've put all this down, what is there left to do? 
 
-**Where I'm placing my bets personally**
+**What's left for Craftsmen (optimistic)**
 
-I think that as humans we should consciously update our internal skills and knowledge, which is different from a `claude.md` or `skills.md` file. The `claude.md` is where we're actively steering AI into a lower probability sequence generation space to deal with its training kinks. But in order to do that effectively (at least at time of writing), it still requires some taste and background knowledge to know which probability spaces to steer into.
+It's non-controversial to state that to have any professional value as humans, we should consciously update our internal skills and knowledge, and **embrace the discomfort of being slower, actually thinking about, learning and digesting, instead of hitting dangerously-skip-permissions loop-all review-all fix-all**. 
 
+The `claude.md` is where we're actively steering AI into a lower probability sequence generation space to deal with its training kinks. But in order to do that effectively (at least at time of writing), it still requires some taste and background knowledge to know which probability spaces to steer into.
 
-Hence I hope that for every prompt, every interaction with AI, something new about how technology works should be added to *our biological brains*, that is something that we can reason about. And not merely by constructing Agent self-learning, self-profiling loops under a set of test cases and reading the ["5 ladder rung"](https://x.com/suzyahyah/status/2076023886269837430) analysis later. Of course, knowing how to construct self-learning self-profiling loops is a useful skill itself but its also a bit of a gamble of whether that will be subsumed by AI Companies.
+I hope that for every prompt, every interaction with AI, something new about how technology works should be added to *our biological brains*, that is something the human can reason about. Merely constructing Agent self-learning, self-profiling loops under a set of test cases is a useful skill itself, but its also a bit of a gamble of whether that will be subsumed by AI companies.
 
-I suppose Craftsmen might start to operate in the limits of engineering knowledge (limits encoded in the LLM weights) using experience and taste to push into some really low probability spaces to innovate either much deeper, or higher into the callstack. 
+I think there are three archetypes that can surivive the AI-coding Apocalypse:
+
+1. Operating in the limits of engineering knowledge (limits encoded in the LLM weights) using experience and taste to push into some really low probability spaces to innovate either much deeper, or higher into the callstack.
+
+2. Using AI to broaden knowledge of multiple technologies across the entire tech stack, so that we can better make conscious decisions, optimise and scaffold large systems. For instance scaffolding production to evaluation pipelines and providing strong priors on non-standard ways of deploying, or wiring up software within a company's proprietary tech stack. 
+
+3. Working in the space of undefined / unclear business requirements to define verifiable metrics.  If we fully embraced the idea of closed loop optimisation, most of our time would be spent in gathering optimisable / verifiable metrics, which is still a very challenging problem under real-world business settings. 
+
 
 **A non-conclusion**
 
