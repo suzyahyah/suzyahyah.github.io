@@ -162,3 +162,11 @@ Overall I find that perhaps the most confusing thing about docker networking, as
 <br>
 
 
+
+#### **References**
+[Docker Docs: Networking overview](https://docs.docker.com/engine/network/)\\
+[Docker Docs: Bridge network driver (default vs user-defined bridges)](https://docs.docker.com/engine/network/drivers/bridge/)\\
+[Docker Docs: Packet filtering and firewalls (iptables, published ports)](https://docs.docker.com/engine/network/packet-filtering-firewalls/)\\
+[Docker Docs: Networking in Compose](https://docs.docker.com/compose/how-tos/networking/)\\
+[nginx Docs: resolver directive](https://nginx.org/en/docs/http/ngx_http_core_module.html#resolver)\\
+[RFC 6761: Special-Use Domain Names (.localhost)](https://www.rfc-editor.org/rfc/rfc6761#section-6.3)
