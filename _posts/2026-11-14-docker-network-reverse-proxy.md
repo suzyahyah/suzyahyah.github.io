@@ -81,14 +81,14 @@ We can create the custom network, and start each container on it with `--network
 
 Then, run both apps on `custom1`, each with a name (which is its DNS name)
 
-`docker run -d --name app-a --network custom1 -p 3000:3000 <image-a>` \\
-`docker run -d --name app-b --network custom1 -p 4000:3000 <image-b>` 
+`docker run -d --name appA --network custom1 -p 3000:3000 <image-a>` \\
+`docker run -d --name appB --network custom1 -p 4000:3000 <image-b>` 
 
 ![Fig4](/assets/docker_pictures/docker_4.png){: style="max-width: 80%; height: auto;"}
 
 Now containers can talk to each other by resolving the app names to the IP addresses using the DNS inside custom1. 
 
-within appA, `curl http://app-b:3000` will hit the DNS, get app-B's IP address (172.18.0.3) , and then send the request via the Custom1 Bridge Interface (virtual switch) to hit appB, without going through port `4000` on the machine host.
+within appA, `curl http://appB:3000` will hit the DNS, get appB's IP address (172.18.0.3) , and then send the request via the Custom1 Bridge Interface (virtual switch) to hit appB, without going through port `4000` on the machine host.
 
 *Note:*
 1. `dockerd` stands for the docker daemon, its the background service that manages all the docker objects.
@@ -103,11 +103,11 @@ within appA, `curl http://app-b:3000` will hit the DNS, get app-B's IP address (
 The custom network got us a DNS for free, but each of our containers still needs to be published at the host port with `-p` to allow our host to call them. We need to test individual services and also the e2e service, so every container needs its own entry point from the host. 
 
 
-![Fig5](/assets/docker_pictures/docker_5.png){: style="max-width: 80%; height: auto;"}
+![Fig5](/assets/docker_pictures/docker_5.png){: style="max-width: 100%; height: auto;"}
 
 This is still a maintenance burden as we need to be tracking which port is associated with which container inside the docker network. Wouldn't it be great if we could **directly start up new containers, and hit the container services reliably from the host without explicitly managing the mapping of which container is on which port.**
 
-It would be great if the host could resolve the name via the dockerd DNS, e.g., with `curl http://app-a:3000`, and get the IP address for the container. However the DNS server is not a global directory. Although dockerd process (running the DNS server) lives on the host, its listening socket sits inside each container's own network namespace. So the host has no address it can send the DNS queries to.
+It would be great if the host could resolve the name via the dockerd DNS, e.g., with `curl http://appA:3000`, and get the IP address for the container. However the DNS server is not a global directory. Although dockerd process (running the DNS server) lives on the host, its listening socket sits inside each container's own network namespace. So the host has no address it can send the DNS queries to.
 
 *Note:*
 1. Technically in linux the host can reach containers directly by IP e.g., it could hit appB by `curl http://172.18.0.3:3000`. However since the IP addresses may change on restart and there's no name lookup, it's also not a reliable path. Also, it doesn't work on Docker Desktop (Mac/Windows) and is not a generic development workflow.
@@ -119,43 +119,48 @@ It would be great if the host could resolve the name via the dockerd DNS, e.g., 
 
 A reverse proxy (such as nginx) allows us to route traffic from a central location, e.g., port 80, without needing to do `-p` per container app. The nginx reverse proxy is itself a docker container running inside the dev network, and is the only container that publishes a host port:
 
-`docker run -d --name proxy --network custom1 -p 127.0.0.1:80:80 nginx`  
+`docker run -d --name proxy --network custom1 -p 127.0.0.1:80:80 -v $PWD/proxy.conf:/etc/nginx/conf.d/default.conf:ro nginx`  
 
 With no port in the URL, curl defaults to port `80`, so a command like `curl http://appA.localhost` becomes
 1. `*.localhost` resolves to `127.0.0.1` on the host and goes to port `80`
 2. Docker bridge forwards it to the nginx container IP on port 80. 
-3. nginx reads the `Host: appA.localhost` header, and the nginx config maps that header to an upstream `proxy_pass http://app-a:3000`.
-4. nginx resolves the name `app-a` through Docker's embedded DNS at 127.0.0.11, which sits inside the container's network namespace.
+3. nginx reads the `Host: appA.localhost` header, and the nginx config maps that header to an upstream `proxy_pass http://appA:3000`.
+4. nginx resolves the name `appA` through Docker's embedded DNS at 127.0.0.11, which sits inside the container's network namespace.
 
-The nginx conf looks like
 
-{% highlight python %}
+<u>Dynamic registration with a regex server_name</u>
+
+There's a regex trick in the nginx conf which allows us to dynamically register new applications.
+
+
+{% highlight nginx %}
   server {
     listen 80;
-    server_name appA.localhost;
+    server_name ~^(?<svc>[^.]+)\.localhost$;
     resolver 127.0.0.11 valid=10s;
-    set $upstream http://app-a:3000;
-    location / { proxy_pass $upstream; }
+    location / { proxy_pass http://$svc:3000; }
   }
 {% endhighlight %}
 
+Now `curl http://appX.localhost` reaches a freshly started `appX` container with no nginx edit or reload, since `$svc` is a variable and gets resolved through Docker's DNS on each request.
+
+![Fig6](/assets/docker_pictures/docker_6.png){: style="max-width: 100%; height: auto;"}
 
 
-![Fig6](/assets/docker_pictures/docker_6.png){: style="max-width: 80%; height: auto;"}
 
 *Note:*
 1. It's called reverse proxy because it's a proxy that sits in front of services, in contrast with the forward proxy which acts for the client.
 2. In nginx, we need to point nginx at Docker's DNS with `resolver 127.0.0.11` and use a variable in `proxy_pass`, which forces a lookup at request time. Without that nginx resolves once at startup and caches the IP, which goes stale when the container restarts.
-3. Other reverse proxy options include Traefik, Caddy. Traefik finds containers automatically from Docker labels so there's no need to maintain an additional nginx config, but there's an additional security risk of Traefix having access to the full Docker sockets API.
+3. Other reverse proxy options include Traefik, Caddy. Traefik finds containers automatically from Docker labels so there's no need to maintain an additional nginx config, but there's an additional security risk of Traefik having access to the full Docker sockets API.
 4. `*.localhost` resolving to 127.0.0.1 is done by browsers and curl. However going through the system resolver (Python `requests`, `wget`, `ping`) fail because the macOS resolver doesn't map `*.localhost`. Those need to set the header e.g. `requests.get("http://localhost", headers={"Host": "appA.localhost"})`. 
 
 
 <br>
 #### **Conclusion**
 
-Back to our initial goals and what this set up gives us: custom networks with DNS give M×N container-to-container calls by name which avoids IP churn. The reverse proxy means only one host port is published, so there's no port stomping, and every service can still be hit individually from the host. For working with A/B versions of microservices, dynamic registration when new services come online is only partially addressed as a nginx config file still need to be maintained.
+Back to our initial goals and what this set up gives us: custom networks with DNS give M×N container-to-container calls by name which avoids IP churn. The reverse proxy means only one host port is published, so there's no port stomping, and every service can still be hit individually from the host. For working with A/B versions of microservices, dynamic registration when new services come online is handled by the regex `server_name`, as long as services share a container port; otherwise a per-service nginx block (or Traefik labels) is still needed.
 
-Overall I find that perhaps the most confusing thing about docker networking, as with most of programming abstractions, *is that there are multiple ways to achieve the same thing*, and so we're always trading off the complexity of layered abstraction, isolation and hierarchies, with the complexity (and security risks) of mapping MxN way connections in flat files.
+Overall I find that perhaps the trickiest thing about docker networking, as with most of programming abstractions, *is that there are multiple ways to achieve the same thing*, and so we're always trading off the complexity of layered abstraction, isolation and hierarchies, with the complexity (and security risks) of mapping MxN way connections in flat files.
 
 *Disclaimers:*
 1. I'm no networking or security engineer, though I had some experience grinding cloud containerised deployment and dockerfiles by hand before the AI-LLM era. 
