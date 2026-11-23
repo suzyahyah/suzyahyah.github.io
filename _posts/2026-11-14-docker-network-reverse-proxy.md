@@ -19,8 +19,6 @@ At the end of the day, we want
 3. avoid stomping on each other's host ports 
 4. avoid calling the wrong service due to changing IP addresses.
 
-*Disclaimer: I'm no networking or security engineer, though I did muck around with devops and dockerfiles by hand before LLM era. This is not a suggestion on how to organise production networks. All diagrams and writing in this post are fully human, but fact-checked with AI.*
-
 <br>
 #### **Single service stack, single port**
 
@@ -158,6 +156,11 @@ The nginx conf looks like
 Back to our initial goals and what this set up gives us: custom networks with DNS give M×N container-to-container calls by name which avoids IP churn. The reverse proxy means only one host port is published, so there's no port stomping, and every service can still be hit individually from the host. For working with A/B versions of microservices, dynamic registration when new services come online is only partially addressed as a nginx config file still need to be maintained.
 
 Overall I find that perhaps the most confusing thing about docker networking, as with most of programming abstractions, *is that there are multiple ways to achieve the same thing*, and so we're always trading off the complexity of layered abstraction, isolation and hierarchies, with the complexity (and security risks) of mapping MxN way connections in flat files.
+
+*Disclaimers:*
+1. I'm no networking or security engineer, though I did grind cloud containerised deployment and dockerfiles by hand before LLM era. 
+2. This is not a suggestion on how to organise production networks. 
+3. All diagrams and writing in this post are fully human, but fact-checked with AI.
 
 <br>
 
