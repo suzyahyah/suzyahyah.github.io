@@ -158,7 +158,7 @@ Back to our initial goals and what this set up gives us: custom networks with DN
 Overall I find that perhaps the most confusing thing about docker networking, as with most of programming abstractions, *is that there are multiple ways to achieve the same thing*, and so we're always trading off the complexity of layered abstraction, isolation and hierarchies, with the complexity (and security risks) of mapping MxN way connections in flat files.
 
 *Disclaimers:*
-1. I'm no networking or security engineer, though I did grind cloud containerised deployment and dockerfiles by hand before LLM era. 
+1. I'm no networking or security engineer, though I had some experience grinding cloud containerised deployment and dockerfiles by hand before the AI-LLM era. 
 2. This is not a suggestion on how to organise production networks. 
 3. All diagrams and writing in this post are fully human, but fact-checked with AI.
 
