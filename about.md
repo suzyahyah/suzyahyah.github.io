@@ -19,7 +19,9 @@ Also 110% human oversharing on [twitter](https://x.com/suzyahyah).
 <details markdown="1">
 <summary><b>More about</b></summary>
 
-In the sengoku era I would have fancied myself a ronin. In DnD though, I'd fancy myself a bard. 
+In the sengoku era I would have fancied myself a ronin. 
+
+In DnD though, I'd fancy myself a bard. 
 
 If I was an animal I'd be a deep sea shrimp, [*shrimping*](https://www.sas.upenn.edu/~cavitch/pdf-library/Nagel_Bat.pdf) on hydrothermic vents in the mid-atlantic ridge. 
 
