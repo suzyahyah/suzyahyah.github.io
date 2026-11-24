@@ -67,7 +67,7 @@ appA does know that appB is registered on the host port `4000`. A request from A
 This is clearly a roundabout way for A to call B. Shouldn't we be having a **live dynamic registry of the IP Addresses in the network**, so that A and B can call each other without going back out to the host network? Our registry also needs to handle app restarts and changing IP addresses... Well basically, we want the Domain Name System (DNS). 
 
 *Note*:
-1. Only Linux needs to specify `--add-host=host.docker.internal:host-gateway`, as Docker Desktop (Mac/Windows) provides this by default. On Docker Desktop it resolves to the VM's gateway IP (e.g. 192.168.65.254), not docker0, but the roundabout path is the same.
+1. Only Linux needs to specify `--add-host=host.docker.internal:host-gateway`, as Docker Desktop (Mac/Windows) provides this by default. On Docker Desktop it resolves to the VM's gateway IP, not docker0, but the roundabout path is the same.
 
 <br>
 
